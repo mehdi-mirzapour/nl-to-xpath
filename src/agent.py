@@ -1,10 +1,19 @@
+from dotenv import load_dotenv
 import os
 from langchain_mistralai import ChatMistralAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnableLambda
 
-# Set your API key
-os.environ["MISTRAL_API_KEY"] = "4dVfoQuBXJAe9nsjZnCAXWR8pbGrC5wV"
+# Load environment variables from .env
+load_dotenv()
+
+# Read Mistral API key from .env
+api_key = os.getenv("MISTRAL_API_KEY")
+if not api_key:
+    raise ValueError("MISTRAL_API_KEY not set in environment.")
+
+# Set the API key for LangChain use
+os.environ["MISTRAL_API_KEY"] = api_key
 
 # Load HTML content from a file
 with open("resources/test_case_1.html", "r", encoding="utf-8") as f:
