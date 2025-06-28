@@ -1,0 +1,189 @@
+[
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "ChatMistralAI",
+        "importPath": "langchain_mistralai",
+        "description": "langchain_mistralai",
+        "isExtraImport": true,
+        "detail": "langchain_mistralai",
+        "documentation": {}
+    },
+    {
+        "label": "ChatMistralAI",
+        "importPath": "langchain_mistralai",
+        "description": "langchain_mistralai",
+        "isExtraImport": true,
+        "detail": "langchain_mistralai",
+        "documentation": {}
+    },
+    {
+        "label": "PromptTemplate",
+        "importPath": "langchain_core.prompts",
+        "description": "langchain_core.prompts",
+        "isExtraImport": true,
+        "detail": "langchain_core.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "PromptTemplate",
+        "importPath": "langchain_core.prompts",
+        "description": "langchain_core.prompts",
+        "isExtraImport": true,
+        "detail": "langchain_core.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "RunnableLambda",
+        "importPath": "langchain_core.runnables",
+        "description": "langchain_core.runnables",
+        "isExtraImport": true,
+        "detail": "langchain_core.runnables",
+        "documentation": {}
+    },
+    {
+        "label": "RunnableLambda",
+        "importPath": "langchain_core.runnables",
+        "description": "langchain_core.runnables",
+        "isExtraImport": true,
+        "detail": "langchain_core.runnables",
+        "documentation": {}
+    },
+    {
+        "label": "sync_playwright",
+        "importPath": "playwright.sync_api",
+        "description": "playwright.sync_api",
+        "isExtraImport": true,
+        "detail": "playwright.sync_api",
+        "documentation": {}
+    },
+    {
+        "label": "etree",
+        "importPath": "lxml",
+        "description": "lxml",
+        "isExtraImport": true,
+        "detail": "lxml",
+        "documentation": {}
+    },
+    {
+        "label": "html",
+        "importPath": "lxml",
+        "description": "lxml",
+        "isExtraImport": true,
+        "detail": "lxml",
+        "documentation": {}
+    },
+    {
+        "label": "extract_json_from_codeblock",
+        "kind": 2,
+        "importPath": "src.agent",
+        "description": "src.agent",
+        "peekOfCode": "def extract_json_from_codeblock(output: str) -> str:\n    \"\"\"Remove code block markdown from model output.\"\"\"\n    lines = output.strip().splitlines()\n    if lines[0].strip().startswith(\"```\"):\n        lines = lines[1:]\n    if lines and lines[-1].strip().startswith(\"```\"):\n        lines = lines[:-1]\n    return \"\\n\".join(lines)\ndef process_instruction_with_html(instruction: str, html: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"",
+        "detail": "src.agent",
+        "documentation": {}
+    },
+    {
+        "label": "process_instruction_with_html",
+        "kind": 2,
+        "importPath": "src.agent",
+        "description": "src.agent",
+        "peekOfCode": "def process_instruction_with_html(instruction: str, html: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Load environment variables\n    load_dotenv()\n    api_key = os.getenv(\"MISTRAL_API_KEY\")\n    if not api_key:\n        raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\n    os.environ[\"MISTRAL_API_KEY\"] = api_key\n    # Prompt template\n    template = \"\"\"",
+        "detail": "src.agent",
+        "documentation": {}
+    },
+    {
+        "label": "extract_json_from_codeblock",
+        "kind": 2,
+        "importPath": "src.classifier",
+        "description": "src.classifier",
+        "peekOfCode": "def extract_json_from_codeblock(output: str) -> str:\n    \"\"\"Remove code block markdown from model output.\"\"\"\n    lines = output.strip().splitlines()\n    if lines[0].strip().startswith(\"```\"):\n        lines = lines[1:]\n    if lines and lines[-1].strip().startswith(\"```\"):\n        lines = lines[:-1]\n    return \"\\n\".join(lines)\ndef process_instruction_with_html(instructions: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"",
+        "detail": "src.classifier",
+        "documentation": {}
+    },
+    {
+        "label": "process_instruction_with_html",
+        "kind": 2,
+        "importPath": "src.classifier",
+        "description": "src.classifier",
+        "peekOfCode": "def process_instruction_with_html(instructions: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Load environment variables\n    load_dotenv()\n    api_key = os.getenv(\"MISTRAL_API_KEY\")\n    if not api_key:\n        raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\n    os.environ[\"MISTRAL_API_KEY\"] = api_key\n    # Prompt template\n    template = \"\"\"",
+        "detail": "src.classifier",
+        "documentation": {}
+    },
+    {
+        "label": "describe_element",
+        "kind": 2,
+        "importPath": "test.test_nl_to_xpath",
+        "description": "test.test_nl_to_xpath",
+        "peekOfCode": "def describe_element(elem):\n    tag = elem.tag\n    text = (elem.text or \"\").strip()\n    attrib = {k: v for k, v in elem.attrib.items()}\n    return f\"<{tag} {attrib}> text='{text}'\"\nfor entry in instructions:\n    nl = entry[\"nl\"]\n    xpath = entry[\"xpath\"]\n    elements = dom.xpath(xpath)\n    print(f\"Instruction: {nl}\")",
+        "detail": "test.test_nl_to_xpath",
+        "documentation": {}
+    },
+    {
+        "label": "instructions",
+        "kind": 5,
+        "importPath": "test.test_nl_to_xpath",
+        "description": "test.test_nl_to_xpath",
+        "peekOfCode": "instructions = [\n    {\n        \"nl\": \"Click on 'about us'\",\n        \"xpath\": \"//a[normalize-space(text())='About Us']\"\n    },\n    {\n        \"nl\": \"Hover over 'ok' under 'Employee' section\",\n        \"xpath\": (\n            \"//section[@id='employee-section']\"\n            \"//div[contains(@class, 'employee')]\"",
+        "detail": "test.test_nl_to_xpath",
+        "documentation": {}
+    },
+    {
+        "label": "html_file_path",
+        "kind": 5,
+        "importPath": "test.test_nl_to_xpath",
+        "description": "test.test_nl_to_xpath",
+        "peekOfCode": "html_file_path = \"resources/test_case_1.html\"\n# Read HTML from file\nwith open(html_file_path, 'r', encoding='utf-8') as f:\n    html_content = f.read()\n# Parse the HTML string into an lxml etree object\ndom = etree.HTML(html_content)\ndef describe_element(elem):\n    tag = elem.tag\n    text = (elem.text or \"\").strip()\n    attrib = {k: v for k, v in elem.attrib.items()}",
+        "detail": "test.test_nl_to_xpath",
+        "documentation": {}
+    },
+    {
+        "label": "dom",
+        "kind": 5,
+        "importPath": "test.test_nl_to_xpath",
+        "description": "test.test_nl_to_xpath",
+        "peekOfCode": "dom = etree.HTML(html_content)\ndef describe_element(elem):\n    tag = elem.tag\n    text = (elem.text or \"\").strip()\n    attrib = {k: v for k, v in elem.attrib.items()}\n    return f\"<{tag} {attrib}> text='{text}'\"\nfor entry in instructions:\n    nl = entry[\"nl\"]\n    xpath = entry[\"xpath\"]\n    elements = dom.xpath(xpath)",
+        "detail": "test.test_nl_to_xpath",
+        "documentation": {}
+    },
+    {
+        "label": "tree",
+        "kind": 5,
+        "importPath": "test.test_xpath",
+        "description": "test.test_xpath",
+        "peekOfCode": "tree = html.fromstring(content)\n# Define XPath expressions to test\nxpaths = {\n    \"All links\": \"//a\",\n    \"About Us link by text\": \"//a[text()='About Us']\",\n    \"About Us link by href\": \"//a[@href='/about-us']\",\n    \"All buttons\": \"//button\",\n    \"Visible OK buttons\": \"//button[text()='OK' and not(contains(@style, 'display: none'))]\",\n    \"Hidden button\": \"//button[contains(@style, 'display: none')]\",\n    \"Country dropdown\": \"//select[@id='country-select']\",",
+        "detail": "test.test_xpath",
+        "documentation": {}
+    },
+    {
+        "label": "xpaths",
+        "kind": 5,
+        "importPath": "test.test_xpath",
+        "description": "test.test_xpath",
+        "peekOfCode": "xpaths = {\n    \"All links\": \"//a\",\n    \"About Us link by text\": \"//a[text()='About Us']\",\n    \"About Us link by href\": \"//a[@href='/about-us']\",\n    \"All buttons\": \"//button\",\n    \"Visible OK buttons\": \"//button[text()='OK' and not(contains(@style, 'display: none'))]\",\n    \"Hidden button\": \"//button[contains(@style, 'display: none')]\",\n    \"Country dropdown\": \"//select[@id='country-select']\",\n    \"Employee section header\": \"//section[@id='employee-section']/h2\",\n    \"Option with value='canada'\": \"//option[@value='canada']\",",
+        "detail": "test.test_xpath",
+        "documentation": {}
+    }
+]

@@ -13,7 +13,7 @@ def extract_json_from_codeblock(output: str) -> str:
         lines = lines[:-1]
     return "\n".join(lines)
 
-def process_instruction_with_html(instruction: str, html: str) -> str:
+def process_instruction_with_html(instructions: str) -> str:
     """Run the instruction + HTML through Mistral and return JSON result."""
     # Load environment variables
     load_dotenv()
@@ -25,36 +25,34 @@ def process_instruction_with_html(instruction: str, html: str) -> str:
 
     # Prompt template
     template = """
-You are an expert UI assistant that converts natural language commands into web automation steps.
+You are an intelligent instruction classifier.
+Your task is to read a long natural language input where each line represents an instruction to be executed in a web automation context.
 
-You will be given:
-- A web page's full HTML
-- A natural language instruction from the user
+For each line, classify it as one of the following actions:
+   - page.goto
+   - page.fill
+   - page.click
+   - page.wait
+   - browser.close
 
-Your job:
-- Translate the instruction into 1 or more steps, each using an action from: "click", "hover", "scroll" — all lowercase.
-- Always use "click" for dropdown toggles (e.g., class includes `w-dropdown-toggle`) — never "hover" for those.
-- XPaths must be **valid XPath 1.0** and use `//` syntax where needed.
-- The output must be ONLY valid JSON (no text or explanation), following this format:
 
-{{
-  "steps": [
-    {{"action": "click", "xpath": "//div[@id='w-dropdown-toggle-0']"}},
-    {{"action": "click", "xpath": "//a[contains(text(), 'AI-Powered Widget')]"}}
+Output in JSON format:
+
+{
+  "instructions": [
+    { "original instruction": STRING, "classification": STRING },
+    ...
   ]
-}}
+}
 
---- Page HTML ---
-{html}
-
---- Command ---
-{instruction}
+--- Instructions ---
+{instructions}
 """
     prompt = PromptTemplate.from_template(template)
     llm = ChatMistralAI(model="mistral-large-latest", temperature=0)
 
     chain = (
-        {"instruction": RunnableLambda(lambda _: instruction), "html": RunnableLambda(lambda _: html)}
+        {"instructions": RunnableLambda(lambda _: instructions), "html": RunnableLambda(lambda _: html)}
         | prompt
         | llm
     )

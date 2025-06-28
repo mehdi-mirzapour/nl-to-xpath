@@ -29,9 +29,15 @@ with sync_playwright() as p:
     # page.wait_for_timeout(10000)
     # page.locator("//div[text()='Quality practices']").click()
 
+    page.locator("//input[@id='founded']").fill("2029")
+    page.locator("//span[text()='Save']/ancestor::button").click()
 
+    page.wait_for_timeout(5000)
+    page.goto("https://app.thundercode.ai/#/organization/quality-practices")
+    page.locator("//input[@id='otherStandards']").fill("ISO 9001, ISO 27002")
+    page.locator("//span[text()='Save']/ancestor::button").click()
 
     # Optional: wait to observe the result
-    page.wait_for_timeout(10000)
+    page.wait_for_timeout(1000)
 
     browser.close()
