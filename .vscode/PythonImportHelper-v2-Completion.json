@@ -1,5 +1,63 @@
 [
     {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "sync_playwright",
+        "importPath": "playwright.sync_api",
+        "description": "playwright.sync_api",
+        "isExtraImport": true,
+        "detail": "playwright.sync_api",
+        "documentation": {}
+    },
+    {
+        "label": "sync_playwright",
+        "importPath": "playwright.sync_api",
+        "description": "playwright.sync_api",
+        "isExtraImport": true,
+        "detail": "playwright.sync_api",
+        "documentation": {}
+    },
+    {
         "label": "load_dotenv",
         "importPath": "dotenv",
         "description": "dotenv",
@@ -73,14 +131,6 @@
         "documentation": {}
     },
     {
-        "label": "sync_playwright",
-        "importPath": "playwright.sync_api",
-        "description": "playwright.sync_api",
-        "isExtraImport": true,
-        "detail": "playwright.sync_api",
-        "documentation": {}
-    },
-    {
         "label": "etree",
         "importPath": "lxml",
         "description": "lxml",
@@ -97,39 +147,66 @@
         "documentation": {}
     },
     {
-        "label": "extract_json_from_codeblock",
+        "label": "extract_url",
         "kind": 2,
-        "importPath": "src.agent",
-        "description": "src.agent",
-        "peekOfCode": "def extract_json_from_codeblock(output: str) -> str:\n    \"\"\"Remove code block markdown from model output.\"\"\"\n    lines = output.strip().splitlines()\n    if lines[0].strip().startswith(\"```\"):\n        lines = lines[1:]\n    if lines and lines[-1].strip().startswith(\"```\"):\n        lines = lines[:-1]\n    return \"\\n\".join(lines)\ndef process_instruction_with_html(instruction: str, html: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"",
-        "detail": "src.agent",
+        "importPath": "src.agentic-workflow",
+        "description": "src.agentic-workflow",
+        "peekOfCode": "def extract_url(text: str) -> Optional[str]:\n    \"\"\"\n    Extract the first URL found in the input text.\n    \"\"\"\n    pattern = r'https?://[^\\s\")]+'\n    match = re.search(pattern, text)\n    return match.group(0) if match else None\ndef main():\n    with INPUT_PATH.open(\"r\") as f:\n        data = json.load(f)",
+        "detail": "src.agentic-workflow",
         "documentation": {}
     },
     {
-        "label": "process_instruction_with_html",
+        "label": "main",
         "kind": 2,
-        "importPath": "src.agent",
-        "description": "src.agent",
-        "peekOfCode": "def process_instruction_with_html(instruction: str, html: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Load environment variables\n    load_dotenv()\n    api_key = os.getenv(\"MISTRAL_API_KEY\")\n    if not api_key:\n        raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\n    os.environ[\"MISTRAL_API_KEY\"] = api_key\n    # Prompt template\n    template = \"\"\"",
-        "detail": "src.agent",
+        "importPath": "src.agentic-workflow",
+        "description": "src.agentic-workflow",
+        "peekOfCode": "def main():\n    with INPUT_PATH.open(\"r\") as f:\n        data = json.load(f)\n    with sync_playwright() as p:\n        browser = p.chromium.launch(headless=False)\n        page = browser.new_page()\n        for item in data.get(\"instructions\", []):\n            classification = item.get(\"classification\")\n            instruction_text = item.get(\"original instruction\")\n            if classification in {\"page.fill\", \"page.click\"}:",
+        "detail": "src.agentic-workflow",
+        "documentation": {}
+    },
+    {
+        "label": "INPUT_PATH",
+        "kind": 5,
+        "importPath": "src.agentic-workflow",
+        "description": "src.agentic-workflow",
+        "peekOfCode": "INPUT_PATH = Path(\"resources/docs/classifier.json\")\ndef extract_url(text: str) -> Optional[str]:\n    \"\"\"\n    Extract the first URL found in the input text.\n    \"\"\"\n    pattern = r'https?://[^\\s\")]+'\n    match = re.search(pattern, text)\n    return match.group(0) if match else None\ndef main():\n    with INPUT_PATH.open(\"r\") as f:",
+        "detail": "src.agentic-workflow",
         "documentation": {}
     },
     {
         "label": "extract_json_from_codeblock",
         "kind": 2,
-        "importPath": "src.classifier",
-        "description": "src.classifier",
+        "importPath": "src.llm_classifier",
+        "description": "src.llm_classifier",
         "peekOfCode": "def extract_json_from_codeblock(output: str) -> str:\n    \"\"\"Remove code block markdown from model output.\"\"\"\n    lines = output.strip().splitlines()\n    if lines[0].strip().startswith(\"```\"):\n        lines = lines[1:]\n    if lines and lines[-1].strip().startswith(\"```\"):\n        lines = lines[:-1]\n    return \"\\n\".join(lines)\ndef process_instruction_with_html(instructions: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"",
-        "detail": "src.classifier",
+        "detail": "src.llm_classifier",
         "documentation": {}
     },
     {
         "label": "process_instruction_with_html",
         "kind": 2,
-        "importPath": "src.classifier",
-        "description": "src.classifier",
+        "importPath": "src.llm_classifier",
+        "description": "src.llm_classifier",
         "peekOfCode": "def process_instruction_with_html(instructions: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Load environment variables\n    load_dotenv()\n    api_key = os.getenv(\"MISTRAL_API_KEY\")\n    if not api_key:\n        raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\n    os.environ[\"MISTRAL_API_KEY\"] = api_key\n    # Prompt template\n    template = \"\"\"",
-        "detail": "src.classifier",
+        "detail": "src.llm_classifier",
+        "documentation": {}
+    },
+    {
+        "label": "extract_json_from_codeblock",
+        "kind": 2,
+        "importPath": "src.llm_xpath",
+        "description": "src.llm_xpath",
+        "peekOfCode": "def extract_json_from_codeblock(output: str) -> str:\n    \"\"\"Remove code block markdown from model output.\"\"\"\n    lines = output.strip().splitlines()\n    if lines[0].strip().startswith(\"```\"):\n        lines = lines[1:]\n    if lines and lines[-1].strip().startswith(\"```\"):\n        lines = lines[:-1]\n    return \"\\n\".join(lines)\ndef process_instruction_with_html(instruction: str, html: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"",
+        "detail": "src.llm_xpath",
+        "documentation": {}
+    },
+    {
+        "label": "process_instruction_with_html",
+        "kind": 2,
+        "importPath": "src.llm_xpath",
+        "description": "src.llm_xpath",
+        "peekOfCode": "def process_instruction_with_html(instruction: str, html: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Load environment variables\n    load_dotenv()\n    api_key = os.getenv(\"MISTRAL_API_KEY\")\n    if not api_key:\n        raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\n    os.environ[\"MISTRAL_API_KEY\"] = api_key\n    # Prompt template\n    template = \"\"\"",
+        "detail": "src.llm_xpath",
         "documentation": {}
     },
     {
