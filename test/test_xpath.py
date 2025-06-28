@@ -1,7 +1,7 @@
 from lxml import html
 
 # Load HTML/XML from file
-with open("resources/test_case_2.xml", "r", encoding="utf-8") as f:
+with open("resources/test_case_2.html", "r", encoding="utf-8") as f:
     content = f.read()
 
 # Parse content
