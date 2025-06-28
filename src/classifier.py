@@ -39,7 +39,7 @@ Output in JSON format:
 
 {{
   "instructions": [
-    {{ "original instruction": STRING, "classification": STRING }},
+    {{ "original instruction": STRING, "classification": STRING , "waiting_time": Float}},
     ...
   ]
 }}
