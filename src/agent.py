@@ -4,26 +4,27 @@ from langchain_mistralai import ChatMistralAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnableLambda
 
-# Load environment variables from .env
-load_dotenv()
+def extract_json_from_codeblock(output: str) -> str:
+    """Remove code block markdown from model output."""
+    lines = output.strip().splitlines()
+    if lines[0].strip().startswith("```"):
+        lines = lines[1:]
+    if lines and lines[-1].strip().startswith("```"):
+        lines = lines[:-1]
+    return "\n".join(lines)
 
-# Read Mistral API key from .env
-api_key = os.getenv("MISTRAL_API_KEY")
-if not api_key:
-    raise ValueError("MISTRAL_API_KEY not set in environment.")
+def process_instruction_with_html(instruction: str, html: str) -> str:
+    """Run the instruction + HTML through Mistral and return JSON result."""
+    # Load environment variables
+    load_dotenv()
 
-# Set the API key for LangChain use
-os.environ["MISTRAL_API_KEY"] = api_key
+    api_key = os.getenv("MISTRAL_API_KEY")
+    if not api_key:
+        raise ValueError("MISTRAL_API_KEY not set in environment.")
+    os.environ["MISTRAL_API_KEY"] = api_key
 
-# Load HTML content from a file
-with open("resources/test_case_1.html", "r", encoding="utf-8") as f:
-    html = f.read()
-
-# Natural language instruction
-instruction = "Select the dropdown next to 'Country'"
-
-# Prompt template with embedded HTML and instruction
-template = """
+    # Prompt template
+    template = """
 You are an expert UI assistant that converts natural language commands into web automation steps.
 
 You will be given:
@@ -49,20 +50,23 @@ Your job:
 --- Command ---
 {instruction}
 """
+    prompt = PromptTemplate.from_template(template)
+    llm = ChatMistralAI(model="mistral-large-latest", temperature=0)
 
-prompt = PromptTemplate.from_template(template)
+    chain = (
+        {"instruction": RunnableLambda(lambda _: instruction), "html": RunnableLambda(lambda _: html)}
+        | prompt
+        | llm
+    )
 
-# Use Mistral's largest available hosted model
-llm = ChatMistralAI(model="mistral-large-latest", temperature=0)
+    result = chain.invoke({})
+    return extract_json_from_codeblock(result.content.strip())
 
-# LCEL static flow
-chain = (
-    {"instruction": RunnableLambda(lambda _: instruction), "html": RunnableLambda(lambda _: html)}
-    | prompt
-    | llm
-)
-
-# Execute the flow
-result = chain.invoke({})
-print("NL Instruction:", instruction)
-print("XPath Output:", result.content.strip())
+if __name__ == "__main__":
+    instruction = "Select the dropdown next to 'Country'"
+    with open("resources/test_case_1.html", "r", encoding="utf-8") as f:
+        html = f.read()
+    
+    output = process_instruction_with_html(instruction, html)
+    print("NL Instruction:", instruction)
+    print("XPath Output:", output)
