@@ -35,24 +35,24 @@ For each line, classify it as one of the following actions:
    - page.wait
    - browser.close
 
-
 Output in JSON format:
 
-{
+{{
   "instructions": [
-    { "original instruction": STRING, "classification": STRING },
+    {{ "original instruction": STRING, "classification": STRING }},
     ...
   ]
-}
+}}
 
 --- Instructions ---
 {instructions}
 """
+
     prompt = PromptTemplate.from_template(template)
     llm = ChatMistralAI(model="mistral-large-latest", temperature=0)
 
     chain = (
-        {"instructions": RunnableLambda(lambda _: instructions), "html": RunnableLambda(lambda _: html)}
+        {"instructions": RunnableLambda(lambda _: instructions)}
         | prompt
         | llm
     )
@@ -61,10 +61,22 @@ Output in JSON format:
     return extract_json_from_codeblock(result.content.strip())
 
 if __name__ == "__main__":
-    instruction = "Click on 'Integrations'"
-    with open("resources/test_case_1.html", "r", encoding="utf-8") as f:
-        html = f.read()
-    
-    output = process_instruction_with_html(instruction, html)
+    instruction = """    
+- Navigate to the website: https://app.thundercode.ai
+- Enter the username (mehdi@proptexx.com) into the email input field.
+- Enter the password (9X4RKrkr9p5e3DH) into the password field.
+- Click the "Continue" button to log in.
+- Wait for 5 seconds to make sure the login process completes and everything loads properly.
+- Manually go to the "Company overview" section by changing the URL to: https://app.thundercode.ai/#/organization/overview
+- In the Company Overview form, fill in the "Year Founded" field with the value: 2029.
+- Click the "Save" button to store the changes.
+- Wait for 5 seconds to let the changes persist.
+- Navigate to the "Quality Practices" section via direct URL: https://app.thundercode.ai/#/organization/quality-practices
+- Fill the "Other Standards" field with the text: ISO 9001, ISO 27002.
+- Click the "Save" button again to confirm this information.
+- Wait 1 more second, likely to observe the saved result.
+- Close the browser.
+    """
+    output = process_instruction_with_html(instruction)
     print("NL Instruction:", instruction)
     print("XPath Output:", output)
