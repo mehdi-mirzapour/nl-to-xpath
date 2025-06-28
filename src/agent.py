@@ -23,20 +23,30 @@ with open("resources/test_case_1.html", "r", encoding="utf-8") as f:
 instruction = "Select the dropdown next to 'Country'"
 
 # Prompt template with embedded HTML and instruction
-template = """You are an expert in converting natural language into XPath.
+template = """
+You are an expert UI assistant that converts natural language commands into web automation steps.
 
 You will be given:
-- An HTML page (as a string)
-- A natural language instruction
+- A web page's full HTML
+- A natural language instruction from the user
 
-Based on the HTML structure, return the most accurate XPath that can fulfill the instruction.
+Your job:
+- Translate the instruction into 1 or more steps, each using an action from: "click", "hover", "scroll" — all lowercase.
+- Always use "click" for dropdown toggles (e.g., class includes `w-dropdown-toggle`) — never "hover" for those.
+- XPaths must be **valid XPath 1.0** and use `//` syntax where needed.
+- The output must be ONLY valid JSON (no text or explanation), following this format:
 
-Respond with ONLY the XPath string — no explanations.
+{{
+  "steps": [
+    {{"action": "click", "xpath": "//div[@id='w-dropdown-toggle-0']"}},
+    {{"action": "click", "xpath": "//a[contains(text(), 'AI-Powered Widget')]"}}
+  ]
+}}
 
-HTML:
+--- Page HTML ---
 {html}
 
-Instruction:
+--- Command ---
 {instruction}
 """
 
