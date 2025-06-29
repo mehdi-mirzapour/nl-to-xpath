@@ -66,6 +66,23 @@
         "documentation": {}
     },
     {
+        "label": "asyncio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "asyncio",
+        "description": "asyncio",
+        "detail": "asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "process_and_query_html",
+        "importPath": "rag_html_mistral_pinecone",
+        "description": "rag_html_mistral_pinecone",
+        "isExtraImport": true,
+        "detail": "rag_html_mistral_pinecone",
+        "documentation": {}
+    },
+    {
         "label": "load_dotenv",
         "importPath": "dotenv",
         "description": "dotenv",
@@ -164,15 +181,6 @@
         "documentation": {}
     },
     {
-        "label": "asyncio",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "asyncio",
-        "description": "asyncio",
-        "detail": "asyncio",
-        "documentation": {}
-    },
-    {
         "label": "PineconeVectorStore",
         "importPath": "langchain_pinecone",
         "description": "langchain_pinecone",
@@ -205,6 +213,14 @@
         "documentation": {}
     },
     {
+        "label": "RecursiveCharacterTextSplitter",
+        "importPath": "langchain_text_splitters",
+        "description": "langchain_text_splitters",
+        "isExtraImport": true,
+        "detail": "langchain_text_splitters",
+        "documentation": {}
+    },
+    {
         "label": "etree",
         "importPath": "lxml",
         "description": "lxml",
@@ -218,6 +234,15 @@
         "description": "lxml",
         "isExtraImport": true,
         "detail": "lxml",
+        "documentation": {}
+    },
+    {
+        "label": "sync_call_html_context_findre",
+        "kind": 2,
+        "importPath": "src.agentic-workflow",
+        "description": "src.agentic-workflow",
+        "peekOfCode": "def sync_call_html_context_findre(html_content, query, top_k=1):\n    \"\"\"Synchronous function that calls the async process_and_query_html.\"\"\"\n    try:\n        # Call the async function using asyncio.run\n        result = asyncio.run(process_and_query_html(html_content, query, top_k))\n        if result:\n            print(\"\\nQuery result:\")\n            print(f\"Chunk: {result['text'][:200]}...\")  # Truncate for display\n            print(f\"Source: {result['source']}\")\n            print(f\"Offsets: {result['start_offset']} - {result['end_offset']}\")",
+        "detail": "src.agentic-workflow",
         "documentation": {}
     },
     {
@@ -284,15 +309,6 @@
         "documentation": {}
     },
     {
-        "label": "chunk_raw_html",
-        "kind": 2,
-        "importPath": "src.rag_html_mistral_pinecone",
-        "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "def chunk_raw_html(html_content, max_chunk_size=300):\n    \"\"\"Chunk raw HTML content into documents with metadata.\"\"\"\n    return [\n        Document(\n            page_content=html_content[i:i + max_chunk_size],\n            metadata={\n                'source': 'raw_html',\n                'original_html': html_content,\n                'start_offset': i,\n                'end_offset': min(i + max_chunk_size, len(html_content))",
-        "detail": "src.rag_html_mistral_pinecone",
-        "documentation": {}
-    },
-    {
         "label": "mistral_api_key",
         "kind": 5,
         "importPath": "src.rag_html_mistral_pinecone",
@@ -324,7 +340,7 @@
         "kind": 5,
         "importPath": "src.rag_html_mistral_pinecone",
         "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "hf_token = os.getenv(\"HF_TOKEN\")\n# Validate environment variables\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not index_name:\n    raise ValueError(\"PINECONE_INDEX_NAME not set in environment.\")\nif not hf_token:\n    print(\"Warning: HF_TOKEN not set. Set it to avoid dummy tokenizer.\")",
+        "peekOfCode": "hf_token = os.getenv(\"HF_TOKEN\")\n# Validate environment variables\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not index_name:\n    raise ValueError(\"PINECONE_INDEX_NAME not set in environment.\")\nif not hf_token:\n    print(\"Warning: HF_TOKEN not set. Set it to avoid dummy tokenizer. Some functionality may be limited.\")",
         "detail": "src.rag_html_mistral_pinecone",
         "documentation": {}
     },
@@ -342,7 +358,7 @@
         "kind": 5,
         "importPath": "src.rag_html_mistral_pinecone",
         "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "embeddings = MistralAIEmbeddings(model=\"mistral-embed\", api_key=mistral_api_key)\nvector_store = PineconeVectorStore(index_name=index_name, embedding=embeddings)\ndef chunk_raw_html(html_content, max_chunk_size=300):\n    \"\"\"Chunk raw HTML content into documents with metadata.\"\"\"\n    return [\n        Document(\n            page_content=html_content[i:i + max_chunk_size],\n            metadata={\n                'source': 'raw_html',\n                'original_html': html_content,",
+        "peekOfCode": "embeddings = MistralAIEmbeddings(model=\"mistral-embed\", api_key=mistral_api_key)\nvector_store = PineconeVectorStore(index_name=index_name, embedding=embeddings)\nasync def process_and_query_html(html_content, query, top_k=1, chunk_size=1000, chunk_overlap=200):\n    \"\"\"Process HTML content by chunking it and query the vector store, returning the most relevant chunk with metadata.\"\"\"\n    # Initialize text splitter\n    text_splitter = RecursiveCharacterTextSplitter(\n        chunk_size=chunk_size,\n        chunk_overlap=chunk_overlap,\n        length_function=len,\n        add_start_index=True",
         "detail": "src.rag_html_mistral_pinecone",
         "documentation": {}
     },
@@ -351,7 +367,7 @@
         "kind": 5,
         "importPath": "src.rag_html_mistral_pinecone",
         "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "vector_store = PineconeVectorStore(index_name=index_name, embedding=embeddings)\ndef chunk_raw_html(html_content, max_chunk_size=300):\n    \"\"\"Chunk raw HTML content into documents with metadata.\"\"\"\n    return [\n        Document(\n            page_content=html_content[i:i + max_chunk_size],\n            metadata={\n                'source': 'raw_html',\n                'original_html': html_content,\n                'start_offset': i,",
+        "peekOfCode": "vector_store = PineconeVectorStore(index_name=index_name, embedding=embeddings)\nasync def process_and_query_html(html_content, query, top_k=1, chunk_size=1000, chunk_overlap=200):\n    \"\"\"Process HTML content by chunking it and query the vector store, returning the most relevant chunk with metadata.\"\"\"\n    # Initialize text splitter\n    text_splitter = RecursiveCharacterTextSplitter(\n        chunk_size=chunk_size,\n        chunk_overlap=chunk_overlap,\n        length_function=len,\n        add_start_index=True\n    )",
         "detail": "src.rag_html_mistral_pinecone",
         "documentation": {}
     },
