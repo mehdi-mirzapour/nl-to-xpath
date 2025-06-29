@@ -312,7 +312,7 @@
         "kind": 2,
         "importPath": "src.rag_html_mistral_pinecone",
         "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "def chunk_html(html_content, chunk_size):\n    chunks = []\n    for i in range(0, len(html_content), chunk_size):\n        chunk = html_content[i:i + chunk_size]\n        chunks.append(chunk)\n    return chunks\n# Find most similar chunk\ndef find_similar_chunk(html_content, chunk_size, query, index_name=\"default-index\"):\n    # Set Mistral AI embedding model (calls Mistral API)\n    Settings.embed_model = MistralAIEmbedding(",
+        "peekOfCode": "def chunk_html(html_content, chunk_size):\n    chunks = []\n    for i in range(0, len(html_content), chunk_size):\n        chunk = html_content[i:i + chunk_size]\n        chunks.append(chunk)\n    return chunks\n# Find most similar chunk\ndef find_similar_chunk(html_content, query, chunk_size= max_token_limitation, index_name=\"default-index\"):\n    # Set Mistral AI embedding model (calls Mistral API)\n    Settings.embed_model = MistralAIEmbedding(",
         "detail": "src.rag_html_mistral_pinecone",
         "documentation": {}
     },
@@ -321,7 +321,7 @@
         "kind": 2,
         "importPath": "src.rag_html_mistral_pinecone",
         "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "def find_similar_chunk(html_content, chunk_size, query, index_name=\"default-index\"):\n    # Set Mistral AI embedding model (calls Mistral API)\n    Settings.embed_model = MistralAIEmbedding(\n        model_name=\"mistral-embed\",\n        api_key=mistral_api_key\n    )\n    # Disable LLM since it's not needed for similarity search\n    Settings.llm = None\n    # Initialize Pinecone\n    pinecone_index = initialize_pinecone(index_name)",
+        "peekOfCode": "def find_similar_chunk(html_content, query, chunk_size= max_token_limitation, index_name=\"default-index\"):\n    # Set Mistral AI embedding model (calls Mistral API)\n    Settings.embed_model = MistralAIEmbedding(\n        model_name=\"mistral-embed\",\n        api_key=mistral_api_key\n    )\n    # Disable LLM since it's not needed for similarity search\n    Settings.llm = None\n    # Initialize Pinecone\n    pinecone_index = initialize_pinecone(index_name)",
         "detail": "src.rag_html_mistral_pinecone",
         "documentation": {}
     },
@@ -330,7 +330,7 @@
         "kind": 2,
         "importPath": "src.rag_html_mistral_pinecone",
         "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "def process_html_query(html_content, chunk_size, query, index_name=\"default-index\"):\n    result = find_similar_chunk(html_content, chunk_size, query, index_name)\n    output = f\"\"\"Number of chunks created: {result['total_chunks']}\nSelected chunk index: {result['selected_chunk_index']}\nSimilarity score: {result['similarity_score']:.4f}\nSelected chunk content:\n{result['selected_chunk']}\"\"\"\n    return output\n# Example usage\nif __name__ == \"__main__\":",
+        "peekOfCode": "def process_html_query(html_content, query, chunk_size=max_token_limitation, index_name=\"default-index\"):\n    result = find_similar_chunk(html_content, query, chunk_size, index_name)\n    output = f\"\"\"Number of chunks created: {result['total_chunks']}\nSelected chunk index: {result['selected_chunk_index']}\nSimilarity score: {result['similarity_score']:.4f}\nSelected chunk content:\n{result['selected_chunk']}\"\"\"\n    return output\n# Example usage\nif __name__ == \"__main__\":",
         "detail": "src.rag_html_mistral_pinecone",
         "documentation": {}
     },

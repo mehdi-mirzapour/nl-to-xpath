@@ -40,7 +40,7 @@ def chunk_html(html_content, chunk_size):
     return chunks
 
 # Find most similar chunk
-def find_similar_chunk(html_content, chunk_size, query, index_name="default-index"):
+def find_similar_chunk(html_content, query, chunk_size= max_token_limitation, index_name="default-index"):
     # Set Mistral AI embedding model (calls Mistral API)
     Settings.embed_model = MistralAIEmbedding(
         model_name="mistral-embed",
@@ -92,8 +92,8 @@ def find_similar_chunk(html_content, chunk_size, query, index_name="default-inde
     }
 
 # Main function to process HTML and query
-def process_html_query(html_content, chunk_size, query, index_name="default-index"):
-    result = find_similar_chunk(html_content, chunk_size, query, index_name)
+def process_html_query(html_content, query, chunk_size=max_token_limitation, index_name="default-index"):
+    result = find_similar_chunk(html_content, query, chunk_size, index_name)
     
     output = f"""Number of chunks created: {result['total_chunks']}
 Selected chunk index: {result['selected_chunk_index']}
@@ -111,5 +111,5 @@ if __name__ == "__main__":
     query = "example query text"
 
     # Process and print results
-    result = process_html_query(html_content, chunk_size, query)
+    result = process_html_query(html_content, query)
     print(result)
