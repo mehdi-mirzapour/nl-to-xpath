@@ -42,24 +42,6 @@
         "documentation": {}
     },
     {
-        "label": "nest_asyncio",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "nest_asyncio",
-        "description": "nest_asyncio",
-        "detail": "nest_asyncio",
-        "documentation": {}
-    },
-    {
-        "label": "asyncio",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "asyncio",
-        "description": "asyncio",
-        "detail": "asyncio",
-        "documentation": {}
-    },
-    {
         "label": "sync_playwright",
         "importPath": "playwright.sync_api",
         "description": "playwright.sync_api",
@@ -141,14 +123,6 @@
         "documentation": {}
     },
     {
-        "label": "MistralAIEmbeddings",
-        "importPath": "langchain_mistralai",
-        "description": "langchain_mistralai",
-        "isExtraImport": true,
-        "detail": "langchain_mistralai",
-        "documentation": {}
-    },
-    {
         "label": "PromptTemplate",
         "importPath": "langchain_core.prompts",
         "description": "langchain_core.prompts",
@@ -190,20 +164,43 @@
         "documentation": {}
     },
     {
-        "label": "time",
-        "kind": 6,
+        "label": "Document",
+        "importPath": "llama_index.core",
+        "description": "llama_index.core",
         "isExtraImport": true,
-        "importPath": "time",
-        "description": "time",
-        "detail": "time",
+        "detail": "llama_index.core",
+        "documentation": {}
+    },
+    {
+        "label": "VectorStoreIndex",
+        "importPath": "llama_index.core",
+        "description": "llama_index.core",
+        "isExtraImport": true,
+        "detail": "llama_index.core",
+        "documentation": {}
+    },
+    {
+        "label": "Settings",
+        "importPath": "llama_index.core",
+        "description": "llama_index.core",
+        "isExtraImport": true,
+        "detail": "llama_index.core",
+        "documentation": {}
+    },
+    {
+        "label": "MistralAIEmbedding",
+        "importPath": "llama_index.embeddings.mistralai",
+        "description": "llama_index.embeddings.mistralai",
+        "isExtraImport": true,
+        "detail": "llama_index.embeddings.mistralai",
         "documentation": {}
     },
     {
         "label": "PineconeVectorStore",
-        "importPath": "langchain_pinecone",
-        "description": "langchain_pinecone",
+        "importPath": "llama_index.vector_stores.pinecone",
+        "description": "llama_index.vector_stores.pinecone",
         "isExtraImport": true,
-        "detail": "langchain_pinecone",
+        "detail": "llama_index.vector_stores.pinecone",
         "documentation": {}
     },
     {
@@ -220,22 +217,6 @@
         "description": "pinecone",
         "isExtraImport": true,
         "detail": "pinecone",
-        "documentation": {}
-    },
-    {
-        "label": "Document",
-        "importPath": "langchain_core.documents",
-        "description": "langchain_core.documents",
-        "isExtraImport": true,
-        "detail": "langchain_core.documents",
-        "documentation": {}
-    },
-    {
-        "label": "RecursiveCharacterTextSplitter",
-        "importPath": "langchain_text_splitters",
-        "description": "langchain_text_splitters",
-        "isExtraImport": true,
-        "detail": "langchain_text_splitters",
         "documentation": {}
     },
     {
@@ -259,16 +240,7 @@
         "kind": 2,
         "importPath": "src.agentic-workflow",
         "description": "src.agentic-workflow",
-        "peekOfCode": "def extract_url(text: str) -> Optional[str]:\n    \"\"\"\n    Extract the first URL found in the input text.\n    \"\"\"\n    pattern = r'https?://[^\\s\")]+'\n    match = re.search(pattern, text)\n    return match.group(0) if match else None\nasync def async_call_html_context_findre(html_content, query, top_k=1):\n    try:\n        result = await process_and_query_html(html_content, query, top_k)",
-        "detail": "src.agentic-workflow",
-        "documentation": {}
-    },
-    {
-        "label": "run_async_blocking",
-        "kind": 2,
-        "importPath": "src.agentic-workflow",
-        "description": "src.agentic-workflow",
-        "peekOfCode": "def run_async_blocking(coro):\n    \"\"\"\n    Run an async coroutine inside a sync function, handling nested event loops.\n    \"\"\"\n    try:\n        loop = asyncio.get_running_loop()\n    except RuntimeError:\n        return asyncio.run(coro)\n    else:\n        return loop.run_until_complete(coro)",
+        "peekOfCode": "def extract_url(text: str) -> Optional[str]:\n    \"\"\"\n    Extract the first URL found in the input text.\n    \"\"\"\n    pattern = r'https?://[^\\s\")]+'\n    match = re.search(pattern, text)\n    return match.group(0) if match else None\ndef main():\n    with INPUT_PATH.open(\"r\") as f:\n        data = json.load(f)",
         "detail": "src.agentic-workflow",
         "documentation": {}
     },
@@ -286,7 +258,7 @@
         "kind": 5,
         "importPath": "src.agentic-workflow",
         "description": "src.agentic-workflow",
-        "peekOfCode": "INPUT_PATH = Path(\"resources/docs/classifier.json\")\ndef extract_url(text: str) -> Optional[str]:\n    \"\"\"\n    Extract the first URL found in the input text.\n    \"\"\"\n    pattern = r'https?://[^\\s\")]+'\n    match = re.search(pattern, text)\n    return match.group(0) if match else None\nasync def async_call_html_context_findre(html_content, query, top_k=1):\n    try:",
+        "peekOfCode": "INPUT_PATH = Path(\"resources/docs/classifier.json\")\ndef extract_url(text: str) -> Optional[str]:\n    \"\"\"\n    Extract the first URL found in the input text.\n    \"\"\"\n    pattern = r'https?://[^\\s\")]+'\n    match = re.search(pattern, text)\n    return match.group(0) if match else None\ndef main():\n    with INPUT_PATH.open(\"r\") as f:",
         "detail": "src.agentic-workflow",
         "documentation": {}
     },
@@ -327,11 +299,38 @@
         "documentation": {}
     },
     {
-        "label": "process_and_query_html",
+        "label": "initialize_pinecone",
         "kind": 2,
         "importPath": "src.rag_html_mistral_pinecone",
         "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "def process_and_query_html(html_content, query, top_k=1, chunk_size=1000, chunk_overlap=200):\n    \"\"\"Process HTML content by chunking it and query the vector store, always returning a result.\"\"\"\n    # Initialize text splitter\n    text_splitter = RecursiveCharacterTextSplitter(\n        chunk_size=chunk_size,\n        chunk_overlap=chunk_overlap,\n        length_function=len,\n        add_start_index=True\n    )\n    # Split the HTML content into chunks",
+        "peekOfCode": "def initialize_pinecone(index_name=\"default-index\"):  # Use a default index name\n    pc = Pinecone(api_key=pinecone_api_key)\n    # Create or connect to Pinecone index\n    if index_name not in pc.list_indexes().names():\n        pc.create_index(\n            name=index_name,\n            dimension=4096,  # Dimension for mistral-large-latest embeddings\n            metric=\"cosine\",\n            spec=ServerlessSpec(cloud=\"aws\", region=\"us-east-1\")\n        )",
+        "detail": "src.rag_html_mistral_pinecone",
+        "documentation": {}
+    },
+    {
+        "label": "chunk_html",
+        "kind": 2,
+        "importPath": "src.rag_html_mistral_pinecone",
+        "description": "src.rag_html_mistral_pinecone",
+        "peekOfCode": "def chunk_html(html_content, chunk_size):\n    chunks = []\n    for i in range(0, len(html_content), chunk_size):\n        chunk = html_content[i:i + chunk_size]\n        chunks.append(chunk)\n    return chunks\n# Find most similar chunk\ndef find_similar_chunk(html_content, chunk_size, query, index_name=\"default-index\"):\n    # Set Mistral AI embedding model (calls Mistral API)\n    Settings.embed_model = MistralAIEmbedding(",
+        "detail": "src.rag_html_mistral_pinecone",
+        "documentation": {}
+    },
+    {
+        "label": "find_similar_chunk",
+        "kind": 2,
+        "importPath": "src.rag_html_mistral_pinecone",
+        "description": "src.rag_html_mistral_pinecone",
+        "peekOfCode": "def find_similar_chunk(html_content, chunk_size, query, index_name=\"default-index\"):\n    # Set Mistral AI embedding model (calls Mistral API)\n    Settings.embed_model = MistralAIEmbedding(\n        model_name=\"mistral-embed\",\n        api_key=mistral_api_key\n    )\n    # Disable LLM since it's not needed for similarity search\n    Settings.llm = None\n    # Initialize Pinecone\n    pinecone_index = initialize_pinecone(index_name)",
+        "detail": "src.rag_html_mistral_pinecone",
+        "documentation": {}
+    },
+    {
+        "label": "process_html_query",
+        "kind": 2,
+        "importPath": "src.rag_html_mistral_pinecone",
+        "description": "src.rag_html_mistral_pinecone",
+        "peekOfCode": "def process_html_query(html_content, chunk_size, query, index_name=\"default-index\"):\n    result = find_similar_chunk(html_content, chunk_size, query, index_name)\n    output = f\"\"\"Number of chunks created: {result['total_chunks']}\nSelected chunk index: {result['selected_chunk_index']}\nSimilarity score: {result['similarity_score']:.4f}\nSelected chunk content:\n{result['selected_chunk']}\"\"\"\n    return output\n# Example usage\nif __name__ == \"__main__\":",
         "detail": "src.rag_html_mistral_pinecone",
         "documentation": {}
     },
@@ -340,7 +339,7 @@
         "kind": 5,
         "importPath": "src.rag_html_mistral_pinecone",
         "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "mistral_api_key = os.getenv(\"MISTRAL_API_KEY\")\npinecone_api_key = os.getenv(\"PINECONE_API_KEY\")\nindex_name = os.getenv(\"PINECONE_INDEX_NAME\")\nhf_token = os.getenv(\"HF_TOKEN\")\n# Validate environment variables\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not index_name:",
+        "peekOfCode": "mistral_api_key = os.getenv(\"MISTRAL_API_KEY\")\npinecone_api_key = os.getenv(\"PINECONE_API_KEY\")\nmax_token_limitation = int(os.getenv(\"MAX_TOKEN_LIMITATION\", 12000))  # Default to 12000 if not set\n# Validate environment variables\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\n# Initialize Pinecone client\ndef initialize_pinecone(index_name=\"default-index\"):  # Use a default index name",
         "detail": "src.rag_html_mistral_pinecone",
         "documentation": {}
     },
@@ -349,52 +348,16 @@
         "kind": 5,
         "importPath": "src.rag_html_mistral_pinecone",
         "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "pinecone_api_key = os.getenv(\"PINECONE_API_KEY\")\nindex_name = os.getenv(\"PINECONE_INDEX_NAME\")\nhf_token = os.getenv(\"HF_TOKEN\")\n# Validate environment variables\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not index_name:\n    raise ValueError(\"PINECONE_INDEX_NAME not set in environment.\")",
+        "peekOfCode": "pinecone_api_key = os.getenv(\"PINECONE_API_KEY\")\nmax_token_limitation = int(os.getenv(\"MAX_TOKEN_LIMITATION\", 12000))  # Default to 12000 if not set\n# Validate environment variables\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\n# Initialize Pinecone client\ndef initialize_pinecone(index_name=\"default-index\"):  # Use a default index name\n    pc = Pinecone(api_key=pinecone_api_key)",
         "detail": "src.rag_html_mistral_pinecone",
         "documentation": {}
     },
     {
-        "label": "index_name",
+        "label": "max_token_limitation",
         "kind": 5,
         "importPath": "src.rag_html_mistral_pinecone",
         "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "index_name = os.getenv(\"PINECONE_INDEX_NAME\")\nhf_token = os.getenv(\"HF_TOKEN\")\n# Validate environment variables\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not index_name:\n    raise ValueError(\"PINECONE_INDEX_NAME not set in environment.\")\nif not hf_token:",
-        "detail": "src.rag_html_mistral_pinecone",
-        "documentation": {}
-    },
-    {
-        "label": "hf_token",
-        "kind": 5,
-        "importPath": "src.rag_html_mistral_pinecone",
-        "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "hf_token = os.getenv(\"HF_TOKEN\")\n# Validate environment variables\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not index_name:\n    raise ValueError(\"PINECONE_INDEX_NAME not set in environment.\")\nif not hf_token:\n    print(\"Warning: HF_TOKEN not set. Set it to avoid dummy tokenizer. Some functionality may be limited.\")",
-        "detail": "src.rag_html_mistral_pinecone",
-        "documentation": {}
-    },
-    {
-        "label": "pc",
-        "kind": 5,
-        "importPath": "src.rag_html_mistral_pinecone",
-        "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "pc = Pinecone(api_key=pinecone_api_key)\n# Create or connect to a Pinecone serverless index\nif index_name not in pc.list_indexes().names():\n    pc.create_index(\n        name=index_name,\n        dimension=1024,  # Mistral-embed model output dimension\n        metric=\"cosine\",\n        spec=ServerlessSpec(cloud=\"aws\", region=\"us-east-1\")\n    )\n# Initialize Mistral embeddings and Pinecone vector store",
-        "detail": "src.rag_html_mistral_pinecone",
-        "documentation": {}
-    },
-    {
-        "label": "embeddings",
-        "kind": 5,
-        "importPath": "src.rag_html_mistral_pinecone",
-        "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "embeddings = MistralAIEmbeddings(model=\"mistral-embed\", api_key=mistral_api_key)\nvector_store = PineconeVectorStore(index_name=index_name, embedding=embeddings)\ndef process_and_query_html(html_content, query, top_k=1, chunk_size=1000, chunk_overlap=200):\n    \"\"\"Process HTML content by chunking it and query the vector store, always returning a result.\"\"\"\n    # Initialize text splitter\n    text_splitter = RecursiveCharacterTextSplitter(\n        chunk_size=chunk_size,\n        chunk_overlap=chunk_overlap,\n        length_function=len,\n        add_start_index=True",
-        "detail": "src.rag_html_mistral_pinecone",
-        "documentation": {}
-    },
-    {
-        "label": "vector_store",
-        "kind": 5,
-        "importPath": "src.rag_html_mistral_pinecone",
-        "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "vector_store = PineconeVectorStore(index_name=index_name, embedding=embeddings)\ndef process_and_query_html(html_content, query, top_k=1, chunk_size=1000, chunk_overlap=200):\n    \"\"\"Process HTML content by chunking it and query the vector store, always returning a result.\"\"\"\n    # Initialize text splitter\n    text_splitter = RecursiveCharacterTextSplitter(\n        chunk_size=chunk_size,\n        chunk_overlap=chunk_overlap,\n        length_function=len,\n        add_start_index=True\n    )",
+        "peekOfCode": "max_token_limitation = int(os.getenv(\"MAX_TOKEN_LIMITATION\", 12000))  # Default to 12000 if not set\n# Validate environment variables\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\n# Initialize Pinecone client\ndef initialize_pinecone(index_name=\"default-index\"):  # Use a default index name\n    pc = Pinecone(api_key=pinecone_api_key)\n    # Create or connect to Pinecone index",
         "detail": "src.rag_html_mistral_pinecone",
         "documentation": {}
     },
