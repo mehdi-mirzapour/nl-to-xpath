@@ -58,6 +58,22 @@
         "documentation": {}
     },
     {
+        "label": "process_instruction_with_html",
+        "importPath": "llm_xpath",
+        "description": "llm_xpath",
+        "isExtraImport": true,
+        "detail": "llm_xpath",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
         "label": "load_dotenv",
         "importPath": "dotenv",
         "description": "dotenv",
@@ -99,6 +115,14 @@
         "documentation": {}
     },
     {
+        "label": "MistralAIEmbeddings",
+        "importPath": "langchain_mistralai",
+        "description": "langchain_mistralai",
+        "isExtraImport": true,
+        "detail": "langchain_mistralai",
+        "documentation": {}
+    },
+    {
         "label": "PromptTemplate",
         "importPath": "langchain_core.prompts",
         "description": "langchain_core.prompts",
@@ -128,6 +152,56 @@
         "description": "langchain_core.runnables",
         "isExtraImport": true,
         "detail": "langchain_core.runnables",
+        "documentation": {}
+    },
+    {
+        "label": "tiktoken",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tiktoken",
+        "description": "tiktoken",
+        "detail": "tiktoken",
+        "documentation": {}
+    },
+    {
+        "label": "asyncio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "asyncio",
+        "description": "asyncio",
+        "detail": "asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "PineconeVectorStore",
+        "importPath": "langchain_pinecone",
+        "description": "langchain_pinecone",
+        "isExtraImport": true,
+        "detail": "langchain_pinecone",
+        "documentation": {}
+    },
+    {
+        "label": "Pinecone",
+        "importPath": "pinecone",
+        "description": "pinecone",
+        "isExtraImport": true,
+        "detail": "pinecone",
+        "documentation": {}
+    },
+    {
+        "label": "ServerlessSpec",
+        "importPath": "pinecone",
+        "description": "pinecone",
+        "isExtraImport": true,
+        "detail": "pinecone",
+        "documentation": {}
+    },
+    {
+        "label": "Document",
+        "importPath": "langchain_core.documents",
+        "description": "langchain_core.documents",
+        "isExtraImport": true,
+        "detail": "langchain_core.documents",
         "documentation": {}
     },
     {
@@ -160,7 +234,7 @@
         "kind": 2,
         "importPath": "src.agentic-workflow",
         "description": "src.agentic-workflow",
-        "peekOfCode": "def main():\n    with INPUT_PATH.open(\"r\") as f:\n        data = json.load(f)\n    with sync_playwright() as p:\n        browser = p.chromium.launch(headless=False)\n        page = browser.new_page()\n        for item in data.get(\"instructions\", []):\n            classification = item.get(\"classification\")\n            instruction_text = item.get(\"original instruction\")\n            if classification in {\"page.fill\", \"page.click\"}:",
+        "peekOfCode": "def main():\n    with INPUT_PATH.open(\"r\") as f:\n        data = json.load(f)\n    with sync_playwright() as p:\n        browser = p.chromium.launch(headless=False)\n        page = browser.new_page()\n        for item in data.get(\"instructions\", []):\n            classification = item.get(\"classification\")\n            instruction_text = item.get(\"original instruction\")\n            waiting_time = item.get(\"waiting_time\")",
         "detail": "src.agentic-workflow",
         "documentation": {}
     },
@@ -205,8 +279,80 @@
         "kind": 2,
         "importPath": "src.llm_xpath",
         "description": "src.llm_xpath",
-        "peekOfCode": "def process_instruction_with_html(instruction: str, html: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Load environment variables\n    load_dotenv()\n    api_key = os.getenv(\"MISTRAL_API_KEY\")\n    if not api_key:\n        raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\n    os.environ[\"MISTRAL_API_KEY\"] = api_key\n    # Prompt template\n    template = \"\"\"",
+        "peekOfCode": "def process_instruction_with_html(instruction: str, html: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Load environment variables\n    load_dotenv()\n    html= html[:80000]\n    api_key = os.getenv(\"MISTRAL_API_KEY\")\n    if not api_key:\n        raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\n    os.environ[\"MISTRAL_API_KEY\"] = api_key\n    # Prompt template",
         "detail": "src.llm_xpath",
+        "documentation": {}
+    },
+    {
+        "label": "chunk_raw_html",
+        "kind": 2,
+        "importPath": "src.rag_html_mistral_pinecone",
+        "description": "src.rag_html_mistral_pinecone",
+        "peekOfCode": "def chunk_raw_html(html_content, max_chunk_size=300):\n    \"\"\"Chunk raw HTML content into documents with metadata.\"\"\"\n    return [\n        Document(\n            page_content=html_content[i:i + max_chunk_size],\n            metadata={\n                'source': 'raw_html',\n                'original_html': html_content,\n                'start_offset': i,\n                'end_offset': min(i + max_chunk_size, len(html_content))",
+        "detail": "src.rag_html_mistral_pinecone",
+        "documentation": {}
+    },
+    {
+        "label": "mistral_api_key",
+        "kind": 5,
+        "importPath": "src.rag_html_mistral_pinecone",
+        "description": "src.rag_html_mistral_pinecone",
+        "peekOfCode": "mistral_api_key = os.getenv(\"MISTRAL_API_KEY\")\npinecone_api_key = os.getenv(\"PINECONE_API_KEY\")\nindex_name = os.getenv(\"PINECONE_INDEX_NAME\")\nhf_token = os.getenv(\"HF_TOKEN\")\n# Validate environment variables\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not index_name:",
+        "detail": "src.rag_html_mistral_pinecone",
+        "documentation": {}
+    },
+    {
+        "label": "pinecone_api_key",
+        "kind": 5,
+        "importPath": "src.rag_html_mistral_pinecone",
+        "description": "src.rag_html_mistral_pinecone",
+        "peekOfCode": "pinecone_api_key = os.getenv(\"PINECONE_API_KEY\")\nindex_name = os.getenv(\"PINECONE_INDEX_NAME\")\nhf_token = os.getenv(\"HF_TOKEN\")\n# Validate environment variables\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not index_name:\n    raise ValueError(\"PINECONE_INDEX_NAME not set in environment.\")",
+        "detail": "src.rag_html_mistral_pinecone",
+        "documentation": {}
+    },
+    {
+        "label": "index_name",
+        "kind": 5,
+        "importPath": "src.rag_html_mistral_pinecone",
+        "description": "src.rag_html_mistral_pinecone",
+        "peekOfCode": "index_name = os.getenv(\"PINECONE_INDEX_NAME\")\nhf_token = os.getenv(\"HF_TOKEN\")\n# Validate environment variables\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not index_name:\n    raise ValueError(\"PINECONE_INDEX_NAME not set in environment.\")\nif not hf_token:",
+        "detail": "src.rag_html_mistral_pinecone",
+        "documentation": {}
+    },
+    {
+        "label": "hf_token",
+        "kind": 5,
+        "importPath": "src.rag_html_mistral_pinecone",
+        "description": "src.rag_html_mistral_pinecone",
+        "peekOfCode": "hf_token = os.getenv(\"HF_TOKEN\")\n# Validate environment variables\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not index_name:\n    raise ValueError(\"PINECONE_INDEX_NAME not set in environment.\")\nif not hf_token:\n    print(\"Warning: HF_TOKEN not set. Set it to avoid dummy tokenizer.\")",
+        "detail": "src.rag_html_mistral_pinecone",
+        "documentation": {}
+    },
+    {
+        "label": "pc",
+        "kind": 5,
+        "importPath": "src.rag_html_mistral_pinecone",
+        "description": "src.rag_html_mistral_pinecone",
+        "peekOfCode": "pc = Pinecone(api_key=pinecone_api_key)\n# Create or connect to a Pinecone serverless index\nif index_name not in pc.list_indexes().names():\n    pc.create_index(\n        name=index_name,\n        dimension=1024,  # Mistral-embed model output dimension\n        metric=\"cosine\",\n        spec=ServerlessSpec(cloud=\"aws\", region=\"us-east-1\")\n    )\n# Initialize Mistral embeddings and Pinecone vector store",
+        "detail": "src.rag_html_mistral_pinecone",
+        "documentation": {}
+    },
+    {
+        "label": "embeddings",
+        "kind": 5,
+        "importPath": "src.rag_html_mistral_pinecone",
+        "description": "src.rag_html_mistral_pinecone",
+        "peekOfCode": "embeddings = MistralAIEmbeddings(model=\"mistral-embed\", api_key=mistral_api_key)\nvector_store = PineconeVectorStore(index_name=index_name, embedding=embeddings)\ndef chunk_raw_html(html_content, max_chunk_size=300):\n    \"\"\"Chunk raw HTML content into documents with metadata.\"\"\"\n    return [\n        Document(\n            page_content=html_content[i:i + max_chunk_size],\n            metadata={\n                'source': 'raw_html',\n                'original_html': html_content,",
+        "detail": "src.rag_html_mistral_pinecone",
+        "documentation": {}
+    },
+    {
+        "label": "vector_store",
+        "kind": 5,
+        "importPath": "src.rag_html_mistral_pinecone",
+        "description": "src.rag_html_mistral_pinecone",
+        "peekOfCode": "vector_store = PineconeVectorStore(index_name=index_name, embedding=embeddings)\ndef chunk_raw_html(html_content, max_chunk_size=300):\n    \"\"\"Chunk raw HTML content into documents with metadata.\"\"\"\n    return [\n        Document(\n            page_content=html_content[i:i + max_chunk_size],\n            metadata={\n                'source': 'raw_html',\n                'original_html': html_content,\n                'start_offset': i,",
+        "detail": "src.rag_html_mistral_pinecone",
         "documentation": {}
     },
     {

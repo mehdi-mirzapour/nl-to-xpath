@@ -3,7 +3,7 @@ import re
 from pathlib import Path
 from typing import Dict, Optional
 from playwright.sync_api import sync_playwright
-
+from llm_xpath import process_instruction_with_html
 INPUT_PATH = Path("resources/docs/classifier.json")
 
 def extract_url(text: str) -> Optional[str]:
@@ -28,24 +28,33 @@ def main():
             
             classification = item.get("classification")
             instruction_text = item.get("original instruction")
+            waiting_time = item.get("waiting_time")
 
 
-            if classification in {"page.fill", "page.click"}:
-                # result = get_xpath_and_html(instruction_text)
-                # print(result)
-                pass
+            if classification == "page.fill":
+                print(instruction_text)
+                result = process_instruction_with_html(instruction_text, page.content())
+                print(result)
+                page.locator(result["xpath"]).fill(result["fill"])
+                
+            if classification  == "page.click":
+                print(instruction_text)
+                result = process_instruction_with_html(instruction_text, page.content())
+                print(result)
+                page.locator(result["xpath"]).click()
                 
             if classification in {"page.wait"}:
-                # item["waiting_time"]
-                pass
+                page.wait_for_timeout(waiting_time*1000)
                 
             if classification in {"browser.close"}:
-                pass
+                browser.close()
 
-            elif classification == "page.goto":
+            if classification == "page.goto":
                 url = extract_url(instruction_text)
                 print(url)
                 page.goto(url)
+
+            
 
 
 

@@ -1,3 +1,4 @@
+import json
 from dotenv import load_dotenv
 import os
 from langchain_mistralai import ChatMistralAI
@@ -58,7 +59,10 @@ Output in JSON format:
     )
 
     result = chain.invoke({})
-    return extract_json_from_codeblock(result.content.strip())
+    result  extract_json_from_codeblock(result.content.strip())
+    result = json.loads(result)
+    return result
+
 
 if __name__ == "__main__":
     instruction = """    

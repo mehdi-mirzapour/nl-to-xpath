@@ -1,8 +1,12 @@
+
+import json
 from dotenv import load_dotenv
 import os
 from langchain_mistralai import ChatMistralAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnableLambda
+import tiktoken
+
 
 def extract_json_from_codeblock(output: str) -> str:
     """Remove code block markdown from model output."""
@@ -17,7 +21,9 @@ def process_instruction_with_html(instruction: str, html: str) -> str:
     """Run the instruction + HTML through Mistral and return JSON result."""
     # Load environment variables
     load_dotenv()
-
+    
+    html= html[:80000]
+    
     api_key = os.getenv("MISTRAL_API_KEY")
     if not api_key:
         raise ValueError("MISTRAL_API_KEY not set in environment.")
@@ -25,24 +31,24 @@ def process_instruction_with_html(instruction: str, html: str) -> str:
 
     # Prompt template
     template = """
-You are an expert UI assistant that converts natural language commands into web automation steps.
+You are an expert UI assistant that converts natural language commands into web automation step.
 
 You will be given:
 - A web page's full HTML
 - A natural language instruction from the user
 
 Your job:
-- Translate the instruction into 1 or more steps, each using an action from: "click", "hover", "scroll" — all lowercase.
-- Always use "click" for dropdown toggles (e.g., class includes `w-dropdown-toggle`) — never "hover" for those.
+- Translate the instruction into one step, each using an action from only both category: "click", "fill" all lowercase.
+- Always use "click" for dropdown toggles (e.g., class includes `w-dropdown-toggle`)
 - XPaths must be **valid XPath 1.0** and use `//` syntax where needed.
 - The output must be ONLY valid JSON (no text or explanation), following this format:
 
-{{
-  "steps": [
-    {{"action": "click", "xpath": "//div[@id='w-dropdown-toggle-0']"}},
-    {{"action": "click", "xpath": "//a[contains(text(), 'AI-Powered Widget')]"}}
-  ]
-}}
+Example 1:
+{{"action": "click", "xpath": "//input[@id='username']", fill="username/password"}}
+
+Example 2:
+{{"action": "click", "xpath": "//a[contains(text(), 'AI-Powered Widget')]", fill=""}}
+
 
 --- Page HTML ---
 {html}
@@ -53,6 +59,7 @@ Your job:
     prompt = PromptTemplate.from_template(template)
     llm = ChatMistralAI(model="mistral-large-latest", temperature=0)
 
+    
     chain = (
         {"instruction": RunnableLambda(lambda _: instruction), "html": RunnableLambda(lambda _: html)}
         | prompt
@@ -60,13 +67,18 @@ Your job:
     )
 
     result = chain.invoke({})
-    return extract_json_from_codeblock(result.content.strip())
+    result = extract_json_from_codeblock(result.content.strip())
+    if isinstance(result, str):
+        result = json.loads(result)
+        
+    print("JSON Result:", result)
+    return result
 
 if __name__ == "__main__":
     instruction = "Click on 'Integrations'"
     with open("resources/test_case_1.html", "r", encoding="utf-8") as f:
-        html = f.read()
-    
+        html =f.read()
+
     output = process_instruction_with_html(instruction, html)
     print("NL Instruction:", instruction)
     print("XPath Output:", output)

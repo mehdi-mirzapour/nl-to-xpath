@@ -1,5 +1,4 @@
 📝 Natural Language Description of Each Step
-Launch the browser and open a new tab.
 
 - Navigate to the website: https://app.thundercode.ai
 - Enter the username (mehdi@proptexx.com) into the email input field.
