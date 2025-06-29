@@ -73,8 +73,8 @@ Example 2:
     return result
 
 if __name__ == "__main__":
-    instruction = "Click on 'Integrations'"
-    with open("resources/test_case_1.html", "r", encoding="utf-8") as f:
+    instruction = "In the Company Overview form, fill in the \"Year Founded\" field with the value: 2043."
+    with open("resources/test_case_3.html", "r", encoding="utf-8") as f:
         html =f.read()
 
     output = process_instruction_with_html(instruction, html)

@@ -5,7 +5,7 @@ from typing import Dict, Optional
 
 from playwright.sync_api import sync_playwright
 from llm_xpath import process_instruction_with_html
-from rag_html_mistral_pinecone import process_and_query_html 
+from rag_html_mistral_pinecone import process_html_query 
 
 INPUT_PATH = Path("resources/docs/classifier.json")
 
@@ -40,7 +40,7 @@ def main():
             elif classification == "page.fill":
                 print(f"Instruction: {instruction_text}")
                 html = page.content()
-                small_html_context = process_and_query_html(html, query=instruction_text)
+                small_html_context = process_html_query(html, query=instruction_text)
                 result = process_instruction_with_html(instruction_text, small_html_context)
                 print(f"Filling field at XPath {result['xpath']} with value '{result['fill']}'")
                 page.locator(result["xpath"]).fill(result["fill"])
@@ -48,7 +48,7 @@ def main():
             elif classification == "page.click":
                 print(f"Instruction: {instruction_text}")
                 html = page.content()
-                small_html_context = process_and_query_html(html, query=instruction_text)
+                small_html_context = process_html_query(html, query=instruction_text)
                 result = process_instruction_with_html(instruction_text, small_html_context)
                 print(f"Clicking element at XPath {result['xpath']}")
                 page.locator(result["xpath"]).click()

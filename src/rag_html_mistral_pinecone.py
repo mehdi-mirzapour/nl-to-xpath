@@ -17,18 +17,52 @@ if not mistral_api_key:
 if not pinecone_api_key:
     raise ValueError("PINECONE_API_KEY not set in environment.")
 
-# Initialize Pinecone client
-def initialize_pinecone(index_name="default-index"):  # Use a default index name
-    pc = Pinecone(api_key=pinecone_api_key)
-    
-    # Create or connect to Pinecone index
-    if index_name not in pc.list_indexes().names():
-        pc.create_index(
-            name=index_name,
-            dimension=4096,  # Dimension for mistral-large-latest embeddings
-            metric="cosine",
-            spec=ServerlessSpec(cloud="aws", region="us-east-1")
-        )
+def initialize_pinecone(index_name, dimension=1024, metric="cosine", cloud="aws", region="us-east-1", namespace="default"):
+    if not pinecone_api_key:
+        raise ValueError("Pinecone API key is not provided.")
+
+    try:
+        pc = Pinecone(api_key=pinecone_api_key)
+    except Exception as e:
+        raise ConnectionError(f"Failed to initialize Pinecone client: {e}")
+
+    if index_name in pc.list_indexes().names():
+        index = pc.Index(index_name)
+        
+        # Check index configuration
+        index_desc = pc.describe_index(index_name)
+        if index_desc.dimension != dimension or index_desc.metric != metric:
+            raise RuntimeError(
+                f"Existing index '{index_name}' has dimension={index_desc.dimension} and metric={index_desc.metric}, "
+                f"but requested dimension={dimension} and metric={metric}."
+            )
+
+        # Check if namespace is empty
+        try:
+            stats = index.describe_index_stats()
+            namespace_stats = stats.get("namespaces", {}).get(namespace, {})
+            vector_count = namespace_stats.get("vector_count", 0)
+
+            if vector_count > 0:
+                print(f"Namespace '{namespace}' has {vector_count} vectors — deleting...")
+                index.delete(delete_all=True, namespace=namespace)
+            else:
+                print(f"Namespace '{namespace}' is already empty. No delete needed.")
+        except Exception as e:
+            raise RuntimeError(f"Failed to check or clear vectors in index '{index_name}': {e}")
+    else:
+        try:
+            pc.create_index(
+                name=index_name,
+                dimension=dimension,
+                metric=metric,
+                spec=ServerlessSpec(cloud=cloud, region=region)
+            )
+            while not pc.describe_index(index_name).status['ready']:
+                time.sleep(1)
+        except Exception as e:
+            raise RuntimeError(f"Failed to create index '{index_name}': {e}")
+
     return pc.Index(index_name)
 
 # Chunk HTML at character level
@@ -49,7 +83,7 @@ def find_similar_chunk(html_content, query, chunk_size= max_token_limitation, in
     
     # Disable LLM since it's not needed for similarity search
     Settings.llm = None
-    
+  
     
     # Initialize Pinecone
     pinecone_index = initialize_pinecone(index_name)
@@ -92,7 +126,8 @@ def find_similar_chunk(html_content, query, chunk_size= max_token_limitation, in
     }
 
 # Main function to process HTML and query
-def process_html_query(html_content, query, chunk_size=max_token_limitation, index_name="default-index"):
+def process_html_query(html_content, query, chunk_size=max_token_limitation, index_name=os.getenv("PINECONE_INDEX_NAME")
+):
     result = find_similar_chunk(html_content, query, chunk_size, index_name)
     
     output = f"""Number of chunks created: {result['total_chunks']}

@@ -66,7 +66,7 @@
         "documentation": {}
     },
     {
-        "label": "process_and_query_html",
+        "label": "process_html_query",
         "importPath": "rag_html_mistral_pinecone",
         "description": "rag_html_mistral_pinecone",
         "isExtraImport": true,
@@ -303,7 +303,7 @@
         "kind": 2,
         "importPath": "src.rag_html_mistral_pinecone",
         "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "def initialize_pinecone(index_name=\"default-index\"):  # Use a default index name\n    pc = Pinecone(api_key=pinecone_api_key)\n    # Create or connect to Pinecone index\n    if index_name not in pc.list_indexes().names():\n        pc.create_index(\n            name=index_name,\n            dimension=4096,  # Dimension for mistral-large-latest embeddings\n            metric=\"cosine\",\n            spec=ServerlessSpec(cloud=\"aws\", region=\"us-east-1\")\n        )",
+        "peekOfCode": "def initialize_pinecone(index_name, dimension=1024, metric=\"cosine\", cloud=\"aws\", region=\"us-east-1\", namespace=\"default\"):\n    if not pinecone_api_key:\n        raise ValueError(\"Pinecone API key is not provided.\")\n    try:\n        pc = Pinecone(api_key=pinecone_api_key)\n    except Exception as e:\n        raise ConnectionError(f\"Failed to initialize Pinecone client: {e}\")\n    if index_name in pc.list_indexes().names():\n        index = pc.Index(index_name)\n        # Check index configuration",
         "detail": "src.rag_html_mistral_pinecone",
         "documentation": {}
     },
@@ -330,7 +330,7 @@
         "kind": 2,
         "importPath": "src.rag_html_mistral_pinecone",
         "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "def process_html_query(html_content, query, chunk_size=max_token_limitation, index_name=\"default-index\"):\n    result = find_similar_chunk(html_content, query, chunk_size, index_name)\n    output = f\"\"\"Number of chunks created: {result['total_chunks']}\nSelected chunk index: {result['selected_chunk_index']}\nSimilarity score: {result['similarity_score']:.4f}\nSelected chunk content:\n{result['selected_chunk']}\"\"\"\n    return output\n# Example usage\nif __name__ == \"__main__\":",
+        "peekOfCode": "def process_html_query(html_content, query, chunk_size=max_token_limitation, index_name=os.getenv(\"PINECONE_INDEX_NAME\")\n):\n    result = find_similar_chunk(html_content, query, chunk_size, index_name)\n    output = f\"\"\"Number of chunks created: {result['total_chunks']}\nSelected chunk index: {result['selected_chunk_index']}\nSimilarity score: {result['similarity_score']:.4f}\nSelected chunk content:\n{result['selected_chunk']}\"\"\"\n    return output\n# Example usage",
         "detail": "src.rag_html_mistral_pinecone",
         "documentation": {}
     },
@@ -339,7 +339,7 @@
         "kind": 5,
         "importPath": "src.rag_html_mistral_pinecone",
         "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "mistral_api_key = os.getenv(\"MISTRAL_API_KEY\")\npinecone_api_key = os.getenv(\"PINECONE_API_KEY\")\nmax_token_limitation = int(os.getenv(\"MAX_TOKEN_LIMITATION\", 12000))  # Default to 12000 if not set\n# Validate environment variables\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\n# Initialize Pinecone client\ndef initialize_pinecone(index_name=\"default-index\"):  # Use a default index name",
+        "peekOfCode": "mistral_api_key = os.getenv(\"MISTRAL_API_KEY\")\npinecone_api_key = os.getenv(\"PINECONE_API_KEY\")\nmax_token_limitation = int(os.getenv(\"MAX_TOKEN_LIMITATION\", 12000))  # Default to 12000 if not set\n# Validate environment variables\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\ndef initialize_pinecone(index_name, dimension=1024, metric=\"cosine\", cloud=\"aws\", region=\"us-east-1\", namespace=\"default\"):\n    if not pinecone_api_key:",
         "detail": "src.rag_html_mistral_pinecone",
         "documentation": {}
     },
@@ -348,7 +348,7 @@
         "kind": 5,
         "importPath": "src.rag_html_mistral_pinecone",
         "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "pinecone_api_key = os.getenv(\"PINECONE_API_KEY\")\nmax_token_limitation = int(os.getenv(\"MAX_TOKEN_LIMITATION\", 12000))  # Default to 12000 if not set\n# Validate environment variables\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\n# Initialize Pinecone client\ndef initialize_pinecone(index_name=\"default-index\"):  # Use a default index name\n    pc = Pinecone(api_key=pinecone_api_key)",
+        "peekOfCode": "pinecone_api_key = os.getenv(\"PINECONE_API_KEY\")\nmax_token_limitation = int(os.getenv(\"MAX_TOKEN_LIMITATION\", 12000))  # Default to 12000 if not set\n# Validate environment variables\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\ndef initialize_pinecone(index_name, dimension=1024, metric=\"cosine\", cloud=\"aws\", region=\"us-east-1\", namespace=\"default\"):\n    if not pinecone_api_key:\n        raise ValueError(\"Pinecone API key is not provided.\")",
         "detail": "src.rag_html_mistral_pinecone",
         "documentation": {}
     },
@@ -357,7 +357,7 @@
         "kind": 5,
         "importPath": "src.rag_html_mistral_pinecone",
         "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "max_token_limitation = int(os.getenv(\"MAX_TOKEN_LIMITATION\", 12000))  # Default to 12000 if not set\n# Validate environment variables\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\n# Initialize Pinecone client\ndef initialize_pinecone(index_name=\"default-index\"):  # Use a default index name\n    pc = Pinecone(api_key=pinecone_api_key)\n    # Create or connect to Pinecone index",
+        "peekOfCode": "max_token_limitation = int(os.getenv(\"MAX_TOKEN_LIMITATION\", 12000))  # Default to 12000 if not set\n# Validate environment variables\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\ndef initialize_pinecone(index_name, dimension=1024, metric=\"cosine\", cloud=\"aws\", region=\"us-east-1\", namespace=\"default\"):\n    if not pinecone_api_key:\n        raise ValueError(\"Pinecone API key is not provided.\")\n    try:",
         "detail": "src.rag_html_mistral_pinecone",
         "documentation": {}
     },
