@@ -42,6 +42,24 @@
         "documentation": {}
     },
     {
+        "label": "nest_asyncio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "nest_asyncio",
+        "description": "nest_asyncio",
+        "detail": "nest_asyncio",
+        "documentation": {}
+    },
+    {
+        "label": "asyncio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "asyncio",
+        "description": "asyncio",
+        "detail": "asyncio",
+        "documentation": {}
+    },
+    {
         "label": "sync_playwright",
         "importPath": "playwright.sync_api",
         "description": "playwright.sync_api",
@@ -63,15 +81,6 @@
         "description": "llm_xpath",
         "isExtraImport": true,
         "detail": "llm_xpath",
-        "documentation": {}
-    },
-    {
-        "label": "asyncio",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "asyncio",
-        "description": "asyncio",
-        "detail": "asyncio",
         "documentation": {}
     },
     {
@@ -181,6 +190,15 @@
         "documentation": {}
     },
     {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
         "label": "PineconeVectorStore",
         "importPath": "langchain_pinecone",
         "description": "langchain_pinecone",
@@ -237,20 +255,20 @@
         "documentation": {}
     },
     {
-        "label": "sync_call_html_context_findre",
-        "kind": 2,
-        "importPath": "src.agentic-workflow",
-        "description": "src.agentic-workflow",
-        "peekOfCode": "def sync_call_html_context_findre(html_content, query, top_k=1):\n    \"\"\"Synchronous function that calls the async process_and_query_html.\"\"\"\n    try:\n        # Call the async function using asyncio.run\n        result = asyncio.run(process_and_query_html(html_content, query, top_k))\n        if result:\n            print(\"\\nQuery result:\")\n            print(f\"Chunk: {result['text'][:200]}...\")  # Truncate for display\n            print(f\"Source: {result['source']}\")\n            print(f\"Offsets: {result['start_offset']} - {result['end_offset']}\")",
-        "detail": "src.agentic-workflow",
-        "documentation": {}
-    },
-    {
         "label": "extract_url",
         "kind": 2,
         "importPath": "src.agentic-workflow",
         "description": "src.agentic-workflow",
-        "peekOfCode": "def extract_url(text: str) -> Optional[str]:\n    \"\"\"\n    Extract the first URL found in the input text.\n    \"\"\"\n    pattern = r'https?://[^\\s\")]+'\n    match = re.search(pattern, text)\n    return match.group(0) if match else None\ndef main():\n    with INPUT_PATH.open(\"r\") as f:\n        data = json.load(f)",
+        "peekOfCode": "def extract_url(text: str) -> Optional[str]:\n    \"\"\"\n    Extract the first URL found in the input text.\n    \"\"\"\n    pattern = r'https?://[^\\s\")]+'\n    match = re.search(pattern, text)\n    return match.group(0) if match else None\nasync def async_call_html_context_findre(html_content, query, top_k=1):\n    try:\n        result = await process_and_query_html(html_content, query, top_k)",
+        "detail": "src.agentic-workflow",
+        "documentation": {}
+    },
+    {
+        "label": "run_async_blocking",
+        "kind": 2,
+        "importPath": "src.agentic-workflow",
+        "description": "src.agentic-workflow",
+        "peekOfCode": "def run_async_blocking(coro):\n    \"\"\"\n    Run an async coroutine inside a sync function, handling nested event loops.\n    \"\"\"\n    try:\n        loop = asyncio.get_running_loop()\n    except RuntimeError:\n        return asyncio.run(coro)\n    else:\n        return loop.run_until_complete(coro)",
         "detail": "src.agentic-workflow",
         "documentation": {}
     },
@@ -268,7 +286,7 @@
         "kind": 5,
         "importPath": "src.agentic-workflow",
         "description": "src.agentic-workflow",
-        "peekOfCode": "INPUT_PATH = Path(\"resources/docs/classifier.json\")\ndef extract_url(text: str) -> Optional[str]:\n    \"\"\"\n    Extract the first URL found in the input text.\n    \"\"\"\n    pattern = r'https?://[^\\s\")]+'\n    match = re.search(pattern, text)\n    return match.group(0) if match else None\ndef main():\n    with INPUT_PATH.open(\"r\") as f:",
+        "peekOfCode": "INPUT_PATH = Path(\"resources/docs/classifier.json\")\ndef extract_url(text: str) -> Optional[str]:\n    \"\"\"\n    Extract the first URL found in the input text.\n    \"\"\"\n    pattern = r'https?://[^\\s\")]+'\n    match = re.search(pattern, text)\n    return match.group(0) if match else None\nasync def async_call_html_context_findre(html_content, query, top_k=1):\n    try:",
         "detail": "src.agentic-workflow",
         "documentation": {}
     },
@@ -304,8 +322,17 @@
         "kind": 2,
         "importPath": "src.llm_xpath",
         "description": "src.llm_xpath",
-        "peekOfCode": "def process_instruction_with_html(instruction: str, html: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Load environment variables\n    load_dotenv()\n    html= html[:80000]\n    api_key = os.getenv(\"MISTRAL_API_KEY\")\n    if not api_key:\n        raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\n    os.environ[\"MISTRAL_API_KEY\"] = api_key\n    # Prompt template",
+        "peekOfCode": "def process_instruction_with_html(instruction: str, html: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Load environment variables\n    load_dotenv()\n    api_key = os.getenv(\"MISTRAL_API_KEY\")\n    if not api_key:\n        raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\n    os.environ[\"MISTRAL_API_KEY\"] = api_key\n    # Prompt template\n    template = \"\"\"",
         "detail": "src.llm_xpath",
+        "documentation": {}
+    },
+    {
+        "label": "process_and_query_html",
+        "kind": 2,
+        "importPath": "src.rag_html_mistral_pinecone",
+        "description": "src.rag_html_mistral_pinecone",
+        "peekOfCode": "def process_and_query_html(html_content, query, top_k=1, chunk_size=1000, chunk_overlap=200):\n    \"\"\"Process HTML content by chunking it and query the vector store, always returning a result.\"\"\"\n    # Initialize text splitter\n    text_splitter = RecursiveCharacterTextSplitter(\n        chunk_size=chunk_size,\n        chunk_overlap=chunk_overlap,\n        length_function=len,\n        add_start_index=True\n    )\n    # Split the HTML content into chunks",
+        "detail": "src.rag_html_mistral_pinecone",
         "documentation": {}
     },
     {
@@ -358,7 +385,7 @@
         "kind": 5,
         "importPath": "src.rag_html_mistral_pinecone",
         "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "embeddings = MistralAIEmbeddings(model=\"mistral-embed\", api_key=mistral_api_key)\nvector_store = PineconeVectorStore(index_name=index_name, embedding=embeddings)\nasync def process_and_query_html(html_content, query, top_k=1, chunk_size=1000, chunk_overlap=200):\n    \"\"\"Process HTML content by chunking it and query the vector store, returning the most relevant chunk with metadata.\"\"\"\n    # Initialize text splitter\n    text_splitter = RecursiveCharacterTextSplitter(\n        chunk_size=chunk_size,\n        chunk_overlap=chunk_overlap,\n        length_function=len,\n        add_start_index=True",
+        "peekOfCode": "embeddings = MistralAIEmbeddings(model=\"mistral-embed\", api_key=mistral_api_key)\nvector_store = PineconeVectorStore(index_name=index_name, embedding=embeddings)\ndef process_and_query_html(html_content, query, top_k=1, chunk_size=1000, chunk_overlap=200):\n    \"\"\"Process HTML content by chunking it and query the vector store, always returning a result.\"\"\"\n    # Initialize text splitter\n    text_splitter = RecursiveCharacterTextSplitter(\n        chunk_size=chunk_size,\n        chunk_overlap=chunk_overlap,\n        length_function=len,\n        add_start_index=True",
         "detail": "src.rag_html_mistral_pinecone",
         "documentation": {}
     },
@@ -367,7 +394,7 @@
         "kind": 5,
         "importPath": "src.rag_html_mistral_pinecone",
         "description": "src.rag_html_mistral_pinecone",
-        "peekOfCode": "vector_store = PineconeVectorStore(index_name=index_name, embedding=embeddings)\nasync def process_and_query_html(html_content, query, top_k=1, chunk_size=1000, chunk_overlap=200):\n    \"\"\"Process HTML content by chunking it and query the vector store, returning the most relevant chunk with metadata.\"\"\"\n    # Initialize text splitter\n    text_splitter = RecursiveCharacterTextSplitter(\n        chunk_size=chunk_size,\n        chunk_overlap=chunk_overlap,\n        length_function=len,\n        add_start_index=True\n    )",
+        "peekOfCode": "vector_store = PineconeVectorStore(index_name=index_name, embedding=embeddings)\ndef process_and_query_html(html_content, query, top_k=1, chunk_size=1000, chunk_overlap=200):\n    \"\"\"Process HTML content by chunking it and query the vector store, always returning a result.\"\"\"\n    # Initialize text splitter\n    text_splitter = RecursiveCharacterTextSplitter(\n        chunk_size=chunk_size,\n        chunk_overlap=chunk_overlap,\n        length_function=len,\n        add_start_index=True\n    )",
         "detail": "src.rag_html_mistral_pinecone",
         "documentation": {}
     },

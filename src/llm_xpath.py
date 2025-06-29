@@ -21,9 +21,7 @@ def process_instruction_with_html(instruction: str, html: str) -> str:
     """Run the instruction + HTML through Mistral and return JSON result."""
     # Load environment variables
     load_dotenv()
-    
-    html= html[:80000]
-    
+        
     api_key = os.getenv("MISTRAL_API_KEY")
     if not api_key:
         raise ValueError("MISTRAL_API_KEY not set in environment.")
