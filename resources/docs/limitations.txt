@@ -16,5 +16,5 @@ automatic json output is not enabled for mistral in langchain to prevent halluci
 
 prints should be repaced to loggers
 
-
+otherStandards // Other Standards
 BIG Challenge for Evaluation: Dynamic Page Change

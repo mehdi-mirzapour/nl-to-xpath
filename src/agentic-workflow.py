@@ -18,7 +18,6 @@ def extract_url(text: str) -> Optional[str]:
     return match.group(0) if match else None
 
 
-
 def main():
     with INPUT_PATH.open("r") as f:
         data = json.load(f)
