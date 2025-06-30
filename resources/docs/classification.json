@@ -1,0 +1,34 @@
+{
+  "instructions": [
+    {
+      "original instruction": "Open the URL 'localhost:5173'.",
+      "classification": "page.goto",
+      "waiting_time": null
+    },
+    {
+      "original instruction": "Find the username input field and enter 'mehdi.mirzapour@gmail.com'.",
+      "classification": "page.fill",
+      "waiting_time": null
+    },
+    {
+      "original instruction": "Find the password input field and enter 'pass1234'.",
+      "classification": "page.fill",
+      "waiting_time": null
+    },
+    {
+      "original instruction": "Find and click on the 'Login' button.",
+      "classification": "page.click",
+      "waiting_time": null
+    },
+    {
+      "original instruction": "Navigate to the URL 'localhost:5173/items'.",
+      "classification": "page.goto",
+      "waiting_time": null
+    },
+    {
+      "original instruction": "Find and click on the 'Add Items' button.",
+      "classification": "page.click",
+      "waiting_time": null
+    }
+  ]
+}

@@ -9,45 +9,12 @@
         "documentation": {}
     },
     {
-        "label": "re",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "re",
-        "description": "re",
-        "detail": "re",
-        "documentation": {}
-    },
-    {
         "label": "logging",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "logging",
         "description": "logging",
         "detail": "logging",
-        "documentation": {}
-    },
-    {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
         "documentation": {}
     },
     {
@@ -99,27 +66,35 @@
         "documentation": {}
     },
     {
-        "label": "sync_playwright",
-        "importPath": "playwright.sync_api",
-        "description": "playwright.sync_api",
-        "isExtraImport": true,
-        "detail": "playwright.sync_api",
-        "documentation": {}
-    },
-    {
-        "label": "sync_playwright",
-        "importPath": "playwright.sync_api",
-        "description": "playwright.sync_api",
-        "isExtraImport": true,
-        "detail": "playwright.sync_api",
-        "documentation": {}
-    },
-    {
-        "label": "process_instruction_with_html",
+        "label": "extract_xpath_pattern",
         "importPath": "extractor",
         "description": "extractor",
         "isExtraImport": true,
         "detail": "extractor",
+        "documentation": {}
+    },
+    {
+        "label": "sync_playwright",
+        "importPath": "playwright.sync_api",
+        "description": "playwright.sync_api",
+        "isExtraImport": true,
+        "detail": "playwright.sync_api",
+        "documentation": {}
+    },
+    {
+        "label": "sync_playwright",
+        "importPath": "playwright.sync_api",
+        "description": "playwright.sync_api",
+        "isExtraImport": true,
+        "detail": "playwright.sync_api",
+        "documentation": {}
+    },
+    {
+        "label": "sync_playwright",
+        "importPath": "playwright.sync_api",
+        "description": "playwright.sync_api",
+        "isExtraImport": true,
+        "detail": "playwright.sync_api",
         "documentation": {}
     },
     {
@@ -136,6 +111,14 @@
         "description": "rich.logging",
         "isExtraImport": true,
         "detail": "rich.logging",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
         "documentation": {}
     },
     {
@@ -316,6 +299,23 @@
         "documentation": {}
     },
     {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
         "label": "etree",
         "importPath": "lxml",
         "description": "lxml",
@@ -332,38 +332,38 @@
         "documentation": {}
     },
     {
-        "label": "extract_url",
-        "kind": 2,
-        "importPath": "src.agent",
-        "description": "src.agent",
-        "peekOfCode": "def extract_url(text: str) -> Optional[str]:\n    pattern = r'https?://[^\\s\")]+'\n    match = re.search(pattern, text)\n    return match.group(0) if match else None\ndef main():\n    with INPUT_PATH.open(\"r\") as f:\n        data = json.load(f)\n    with sync_playwright() as p:\n        browser = p.chromium.launch(headless=False)\n        page = browser.new_page()",
-        "detail": "src.agent",
-        "documentation": {}
-    },
-    {
-        "label": "main",
-        "kind": 2,
-        "importPath": "src.agent",
-        "description": "src.agent",
-        "peekOfCode": "def main():\n    with INPUT_PATH.open(\"r\") as f:\n        data = json.load(f)\n    with sync_playwright() as p:\n        browser = p.chromium.launch(headless=False)\n        page = browser.new_page()\n        for item in data.get(\"instructions\", []):\n            classification = item.get(\"classification\")\n            instruction_text = item.get(\"original instruction\")\n            waiting_time = item.get(\"waiting_time\")",
-        "detail": "src.agent",
-        "documentation": {}
-    },
-    {
-        "label": "INPUT_PATH",
-        "kind": 5,
-        "importPath": "src.agent",
-        "description": "src.agent",
-        "peekOfCode": "INPUT_PATH = Path(\"resources/docs/classifier.json\")\n# ------------------------\n# Setup Logging with Emojis\n# ------------------------\nfrom rich.logging import RichHandler\nimport logging\nlogging.basicConfig(\n    level=\"INFO\",\n    format=\"%(message)s\",\n    datefmt=\"[%X]\",",
-        "detail": "src.agent",
-        "documentation": {}
-    },
-    {
         "label": "log",
         "kind": 5,
         "importPath": "src.agent",
         "description": "src.agent",
-        "peekOfCode": "log = logging.getLogger(\"rich\")\ndef extract_url(text: str) -> Optional[str]:\n    pattern = r'https?://[^\\s\")]+'\n    match = re.search(pattern, text)\n    return match.group(0) if match else None\ndef main():\n    with INPUT_PATH.open(\"r\") as f:\n        data = json.load(f)\n    with sync_playwright() as p:\n        browser = p.chromium.launch(headless=False)",
+        "peekOfCode": "log = logging.getLogger(\"rich\")\ninstruction = \"\"\"\nopen localhost:5173 and then login with user name as `mehdi.mirzapour@gmail.com` and password  as `pass1234`\nopen localhost:5173/items and click on add items.\n\"\"\"\n# # Wrap input in JSON structure\n# user_data = {\"user_inputs\": instruction.strip()}\n# log.info(f\"📦 User Input as JSON:\\n{json.dumps(user_data, indent=2)}\")\n# # Convert NL to structured instructions\n# output = segment(instruction, model)",
+        "detail": "src.agent",
+        "documentation": {}
+    },
+    {
+        "label": "instruction",
+        "kind": 5,
+        "importPath": "src.agent",
+        "description": "src.agent",
+        "peekOfCode": "instruction = \"\"\"\nopen localhost:5173 and then login with user name as `mehdi.mirzapour@gmail.com` and password  as `pass1234`\nopen localhost:5173/items and click on add items.\n\"\"\"\n# # Wrap input in JSON structure\n# user_data = {\"user_inputs\": instruction.strip()}\n# log.info(f\"📦 User Input as JSON:\\n{json.dumps(user_data, indent=2)}\")\n# # Convert NL to structured instructions\n# output = segment(instruction, model)\n# log.info(\"📤 Segmentor Output:\\n\" + str(output))",
+        "detail": "src.agent",
+        "documentation": {}
+    },
+    {
+        "label": "json_file",
+        "kind": 5,
+        "importPath": "src.agent",
+        "description": "src.agent",
+        "peekOfCode": "json_file = \"resources/docs/classification.json\"\noutput = load_instructions_from_file(json_file)\nlog.info(\"📤 Classifier Output:\\n\" + str(output))\nwith sync_playwright() as p:\n    browser = p.chromium.launch(headless=False)\n    page = browser.new_page()\n    for item in output.get(\"instructions\", []):\n        classification = item.get(\"classification\")\n        instruction_text = item.get(\"original instruction\")\n        waiting_time = item.get(\"waiting_time\")",
+        "detail": "src.agent",
+        "documentation": {}
+    },
+    {
+        "label": "output",
+        "kind": 5,
+        "importPath": "src.agent",
+        "description": "src.agent",
+        "peekOfCode": "output = load_instructions_from_file(json_file)\nlog.info(\"📤 Classifier Output:\\n\" + str(output))\nwith sync_playwright() as p:\n    browser = p.chromium.launch(headless=False)\n    page = browser.new_page()\n    for item in output.get(\"instructions\", []):\n        classification = item.get(\"classification\")\n        instruction_text = item.get(\"original instruction\")\n        waiting_time = item.get(\"waiting_time\")\n        log.info(f\"📝 Instruction: {instruction_text}\")",
         "detail": "src.agent",
         "documentation": {}
     },
@@ -500,6 +500,24 @@
         "description": "src.segmentor",
         "peekOfCode": "def segment(instructions: str, model) -> str:\n    \"\"\"Convert NL input into line-by-line web automation steps using OpenAI.\"\"\"\n    load_dotenv()\n    api_key = os.getenv(\"OPENAI_API_KEY\")\n    if not api_key:\n        raise ValueError(\"OPENAI_API_KEY not set in environment.\")\n    os.environ[\"OPENAI_API_KEY\"] = api_key\n    template = \"\"\"\nYou are a helpful assistant that takes a block of natural language describing a web-based task, and converts it into a list of individual, precise, and executable web automation steps.\nEach action should be:",
         "detail": "src.segmentor",
+        "documentation": {}
+    },
+    {
+        "label": "extract_url",
+        "kind": 2,
+        "importPath": "src.utils",
+        "description": "src.utils",
+        "peekOfCode": "def extract_url(text):\n    pattern = r'(https?://[^\\s\\'\"]+|localhost:[0-9]+)'\n    match = re.search(pattern, text)\n    return match.group(0) if match else None\ndef load_instructions_from_file(json_path: str):\n    \"\"\"Load instruction data from a JSON file.\"\"\"\n    file_path = Path(json_path)\n    if not file_path.exists():\n        raise FileNotFoundError(f\"File not found: {json_path}\")\n    with open(file_path, 'r', encoding='utf-8') as f:",
+        "detail": "src.utils",
+        "documentation": {}
+    },
+    {
+        "label": "load_instructions_from_file",
+        "kind": 2,
+        "importPath": "src.utils",
+        "description": "src.utils",
+        "peekOfCode": "def load_instructions_from_file(json_path: str):\n    \"\"\"Load instruction data from a JSON file.\"\"\"\n    file_path = Path(json_path)\n    if not file_path.exists():\n        raise FileNotFoundError(f\"File not found: {json_path}\")\n    with open(file_path, 'r', encoding='utf-8') as f:\n        data = json.load(f) \n    return data",
+        "detail": "src.utils",
         "documentation": {}
     },
     {
