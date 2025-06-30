@@ -18,6 +18,15 @@
         "documentation": {}
     },
     {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
         "label": "Path",
         "importPath": "pathlib",
         "description": "pathlib",
@@ -39,6 +48,30 @@
         "description": "typing",
         "isExtraImport": true,
         "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "importPath": "model_llm",
+        "description": "model_llm",
+        "isExtraImport": true,
+        "detail": "model_llm",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "importPath": "model_llm",
+        "description": "model_llm",
+        "isExtraImport": true,
+        "detail": "model_llm",
+        "documentation": {}
+    },
+    {
+        "label": "nl_to_instruct",
+        "importPath": "llm_nl_to_instruct",
+        "description": "llm_nl_to_instruct",
+        "isExtraImport": true,
+        "detail": "llm_nl_to_instruct",
         "documentation": {}
     },
     {
@@ -71,6 +104,30 @@
         "description": "rag_html_mistral_pinecone",
         "isExtraImport": true,
         "detail": "rag_html_mistral_pinecone",
+        "documentation": {}
+    },
+    {
+        "label": "RichHandler",
+        "importPath": "rich.logging",
+        "description": "rich.logging",
+        "isExtraImport": true,
+        "detail": "rich.logging",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
         "documentation": {}
     },
     {
@@ -139,6 +196,22 @@
         "documentation": {}
     },
     {
+        "label": "PromptTemplate",
+        "importPath": "langchain_core.prompts",
+        "description": "langchain_core.prompts",
+        "isExtraImport": true,
+        "detail": "langchain_core.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "RunnableLambda",
+        "importPath": "langchain_core.runnables",
+        "description": "langchain_core.runnables",
+        "isExtraImport": true,
+        "detail": "langchain_core.runnables",
+        "documentation": {}
+    },
+    {
         "label": "RunnableLambda",
         "importPath": "langchain_core.runnables",
         "description": "langchain_core.runnables",
@@ -161,6 +234,14 @@
         "importPath": "tiktoken",
         "description": "tiktoken",
         "detail": "tiktoken",
+        "documentation": {}
+    },
+    {
+        "label": "ChatOpenAI",
+        "importPath": "langchain_openai",
+        "description": "langchain_openai",
+        "isExtraImport": true,
+        "detail": "langchain_openai",
         "documentation": {}
     },
     {
@@ -240,7 +321,7 @@
         "kind": 2,
         "importPath": "src.agentic-workflow",
         "description": "src.agentic-workflow",
-        "peekOfCode": "def extract_url(text: str) -> Optional[str]:\n    \"\"\"\n    Extract the first URL found in the input text.\n    \"\"\"\n    pattern = r'https?://[^\\s\")]+'\n    match = re.search(pattern, text)\n    return match.group(0) if match else None\ndef main():\n    with INPUT_PATH.open(\"r\") as f:\n        data = json.load(f)",
+        "peekOfCode": "def extract_url(text: str) -> Optional[str]:\n    pattern = r'https?://[^\\s\")]+'\n    match = re.search(pattern, text)\n    return match.group(0) if match else None\ndef main():\n    with INPUT_PATH.open(\"r\") as f:\n        data = json.load(f)\n    with sync_playwright() as p:\n        browser = p.chromium.launch(headless=False)\n        page = browser.new_page()",
         "detail": "src.agentic-workflow",
         "documentation": {}
     },
@@ -258,7 +339,16 @@
         "kind": 5,
         "importPath": "src.agentic-workflow",
         "description": "src.agentic-workflow",
-        "peekOfCode": "INPUT_PATH = Path(\"resources/docs/classifier.json\")\ndef extract_url(text: str) -> Optional[str]:\n    \"\"\"\n    Extract the first URL found in the input text.\n    \"\"\"\n    pattern = r'https?://[^\\s\")]+'\n    match = re.search(pattern, text)\n    return match.group(0) if match else None\ndef main():\n    with INPUT_PATH.open(\"r\") as f:",
+        "peekOfCode": "INPUT_PATH = Path(\"resources/docs/classifier.json\")\n# ------------------------\n# Setup Logging with Emojis\n# ------------------------\nfrom rich.logging import RichHandler\nimport logging\nlogging.basicConfig(\n    level=\"INFO\",\n    format=\"%(message)s\",\n    datefmt=\"[%X]\",",
+        "detail": "src.agentic-workflow",
+        "documentation": {}
+    },
+    {
+        "label": "log",
+        "kind": 5,
+        "importPath": "src.agentic-workflow",
+        "description": "src.agentic-workflow",
+        "peekOfCode": "log = logging.getLogger(\"rich\")\ndef extract_url(text: str) -> Optional[str]:\n    pattern = r'https?://[^\\s\")]+'\n    match = re.search(pattern, text)\n    return match.group(0) if match else None\ndef main():\n    with INPUT_PATH.open(\"r\") as f:\n        data = json.load(f)\n    with sync_playwright() as p:\n        browser = p.chromium.launch(headless=False)",
         "detail": "src.agentic-workflow",
         "documentation": {}
     },
@@ -283,6 +373,24 @@
     {
         "label": "extract_json_from_codeblock",
         "kind": 2,
+        "importPath": "src.llm_nl_to_instruct",
+        "description": "src.llm_nl_to_instruct",
+        "peekOfCode": "def extract_json_from_codeblock(output: str) -> str:\n    \"\"\"Remove code block markdown from model output.\"\"\"\n    lines = output.strip().splitlines()\n    if lines and lines[0].strip().startswith(\"```\"):\n        lines = lines[1:]\n    if lines and lines[-1].strip().startswith(\"```\"):\n        lines = lines[:-1]\n    return \"\\n\".join(lines)\ndef nl_to_instruct(instructions: str, model) -> str:\n    \"\"\"Convert NL input into line-by-line web automation steps using OpenAI.\"\"\"",
+        "detail": "src.llm_nl_to_instruct",
+        "documentation": {}
+    },
+    {
+        "label": "nl_to_instruct",
+        "kind": 2,
+        "importPath": "src.llm_nl_to_instruct",
+        "description": "src.llm_nl_to_instruct",
+        "peekOfCode": "def nl_to_instruct(instructions: str, model) -> str:\n    \"\"\"Convert NL input into line-by-line web automation steps using OpenAI.\"\"\"\n    load_dotenv()\n    api_key = os.getenv(\"OPENAI_API_KEY\")\n    if not api_key:\n        raise ValueError(\"OPENAI_API_KEY not set in environment.\")\n    os.environ[\"OPENAI_API_KEY\"] = api_key\n    template = \"\"\"\nYou are a helpful assistant that takes a block of natural language describing a web-based task, and converts it into a list of individual, precise, and executable web automation steps.\nEach action should be:",
+        "detail": "src.llm_nl_to_instruct",
+        "documentation": {}
+    },
+    {
+        "label": "extract_json_from_codeblock",
+        "kind": 2,
         "importPath": "src.llm_xpath",
         "description": "src.llm_xpath",
         "peekOfCode": "def extract_json_from_codeblock(output: str) -> str:\n    \"\"\"Remove code block markdown from model output.\"\"\"\n    lines = output.strip().splitlines()\n    if lines[0].strip().startswith(\"```\"):\n        lines = lines[1:]\n    if lines and lines[-1].strip().startswith(\"```\"):\n        lines = lines[:-1]\n    return \"\\n\".join(lines)\ndef process_instruction_with_html(instruction: str, html: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"",
@@ -296,6 +404,24 @@
         "description": "src.llm_xpath",
         "peekOfCode": "def process_instruction_with_html(instruction: str, html: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Load environment variables\n    load_dotenv()\n    api_key = os.getenv(\"MISTRAL_API_KEY\")\n    if not api_key:\n        raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\n    os.environ[\"MISTRAL_API_KEY\"] = api_key\n    # Prompt template\n    template = \"\"\"",
         "detail": "src.llm_xpath",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"OPENAI_API_KEY\"]",
+        "kind": 5,
+        "importPath": "src.model_llm",
+        "description": "src.model_llm",
+        "peekOfCode": "os.environ[\"OPENAI_API_KEY\"] = os.getenv(\"OPENAI_API_KEY\")\nmodel = ChatOpenAI(model=\"gpt-4\", temperature=0.1)",
+        "detail": "src.model_llm",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "src.model_llm",
+        "description": "src.model_llm",
+        "peekOfCode": "model = ChatOpenAI(model=\"gpt-4\", temperature=0.1)",
+        "detail": "src.model_llm",
         "documentation": {}
     },
     {

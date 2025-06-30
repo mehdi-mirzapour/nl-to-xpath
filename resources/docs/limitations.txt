@@ -18,3 +18,5 @@ prints should be repaced to loggers
 
 otherStandards // Other Standards
 BIG Challenge for Evaluation: Dynamic Page Change
+
+It works well with mistral also

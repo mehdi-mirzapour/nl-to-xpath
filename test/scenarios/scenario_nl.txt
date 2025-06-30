@@ -6,11 +6,11 @@
 - Click the "Continue" button to log in.
 - Wait for 5 seconds to make sure the login process completes and everything loads properly.
 - Manually go to the "Company overview" section by changing the URL to: https://app.thundercode.ai/#/organization/overview
-- In the Company Overview form, fill in the "Year Founded" field with the value: 2029.
+- In the Company Overview form, fill in the "founded" field with the value: 2029.
 - Click the "Save" button to store the changes.
 - Wait for 5 seconds to let the changes persist.
 - Navigate to the "Quality Practices" section via direct URL: https://app.thundercode.ai/#/organization/quality-practices
-- Fill the "Other Standards" field with the text: ISO 9001, ISO 27002.
+- Fill the "otherStandards" field with the text: ISO 9001, ISO 27002.
 - Click the "Save" button again to confirm this information.
 - Wait 1 more second, likely to observe the saved result.
 - Close the browser.

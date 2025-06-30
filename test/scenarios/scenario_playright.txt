@@ -9,7 +9,7 @@
 
     # Step 3: Fill the password field using XPath
     page.locator("//input[@id='password']").fill("9X4RKrkr9p5e3DH")
-
+.
     # Step 4: Click the "Continue" button (based on visible text)
     page.locator("//button[contains(text(), 'Continue')]").click()
     
