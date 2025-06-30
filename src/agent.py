@@ -3,11 +3,12 @@ import re
 import logging
 from pathlib import Path
 from typing import Dict, Optional
-from model_llm import model
-from llm_nl_to_instruct import nl_to_instruct
+from models import model
+from segmentor import segment
+from classifier import classify
 from playwright.sync_api import sync_playwright
-from llm_xpath import process_instruction_with_html
-from rag_html_mistral_pinecone import process_html_query 
+from extractor import process_instruction_with_html
+from rag import process_html_query 
 
 INPUT_PATH = Path("resources/docs/classifier.json")
 
@@ -86,8 +87,12 @@ open localhost:5173/items and click on add items.
     log.info(f"📦 User Input as JSON:\n{json.dumps(user_data, indent=2)}")
 
     # Convert NL to structured instructions
-    output = nl_to_instruct(instruction, model)
+    output = segment(instruction, model)
+    log.info("📤 Segmentor Output:\n" + str(output))
+    
+    # Classify the instructions
+    output = classify(output, model)
+    log.info("📤 Classifier Output:\n" + str(output))
 
-    # 🪄 Log outputs
-    log.info("📤 Step-by-step Output:\n" + output.strip())
+    
 

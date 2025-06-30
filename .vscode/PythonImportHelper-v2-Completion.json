@@ -52,26 +52,42 @@
     },
     {
         "label": "model",
-        "importPath": "model_llm",
-        "description": "model_llm",
+        "importPath": "models",
+        "description": "models",
         "isExtraImport": true,
-        "detail": "model_llm",
+        "detail": "models",
         "documentation": {}
     },
     {
         "label": "model",
-        "importPath": "model_llm",
-        "description": "model_llm",
+        "importPath": "models",
+        "description": "models",
         "isExtraImport": true,
-        "detail": "model_llm",
+        "detail": "models",
         "documentation": {}
     },
     {
-        "label": "nl_to_instruct",
-        "importPath": "llm_nl_to_instruct",
-        "description": "llm_nl_to_instruct",
+        "label": "model",
+        "importPath": "models",
+        "description": "models",
         "isExtraImport": true,
-        "detail": "llm_nl_to_instruct",
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "segment",
+        "importPath": "segmentor",
+        "description": "segmentor",
+        "isExtraImport": true,
+        "detail": "segmentor",
+        "documentation": {}
+    },
+    {
+        "label": "classify",
+        "importPath": "classifier",
+        "description": "classifier",
+        "isExtraImport": true,
+        "detail": "classifier",
         "documentation": {}
     },
     {
@@ -92,18 +108,18 @@
     },
     {
         "label": "process_instruction_with_html",
-        "importPath": "llm_xpath",
-        "description": "llm_xpath",
+        "importPath": "extractor",
+        "description": "extractor",
         "isExtraImport": true,
-        "detail": "llm_xpath",
+        "detail": "extractor",
         "documentation": {}
     },
     {
         "label": "process_html_query",
-        "importPath": "rag_html_mistral_pinecone",
-        "description": "rag_html_mistral_pinecone",
+        "importPath": "rag",
+        "description": "rag",
         "isExtraImport": true,
-        "detail": "rag_html_mistral_pinecone",
+        "detail": "rag",
         "documentation": {}
     },
     {
@@ -112,46 +128,6 @@
         "description": "rich.logging",
         "isExtraImport": true,
         "detail": "rich.logging",
-        "documentation": {}
-    },
-    {
-        "label": "load_dotenv",
-        "importPath": "dotenv",
-        "description": "dotenv",
-        "isExtraImport": true,
-        "detail": "dotenv",
-        "documentation": {}
-    },
-    {
-        "label": "load_dotenv",
-        "importPath": "dotenv",
-        "description": "dotenv",
-        "isExtraImport": true,
-        "detail": "dotenv",
-        "documentation": {}
-    },
-    {
-        "label": "load_dotenv",
-        "importPath": "dotenv",
-        "description": "dotenv",
-        "isExtraImport": true,
-        "detail": "dotenv",
-        "documentation": {}
-    },
-    {
-        "label": "load_dotenv",
-        "importPath": "dotenv",
-        "description": "dotenv",
-        "isExtraImport": true,
-        "detail": "dotenv",
-        "documentation": {}
-    },
-    {
-        "label": "load_dotenv",
-        "importPath": "dotenv",
-        "description": "dotenv",
-        "isExtraImport": true,
-        "detail": "dotenv",
         "documentation": {}
     },
     {
@@ -164,6 +140,94 @@
         "documentation": {}
     },
     {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
+        "label": "PromptTemplate",
+        "importPath": "langchain_core.prompts",
+        "description": "langchain_core.prompts",
+        "isExtraImport": true,
+        "detail": "langchain_core.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "PromptTemplate",
+        "importPath": "langchain_core.prompts",
+        "description": "langchain_core.prompts",
+        "isExtraImport": true,
+        "detail": "langchain_core.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "PromptTemplate",
+        "importPath": "langchain_core.prompts",
+        "description": "langchain_core.prompts",
+        "isExtraImport": true,
+        "detail": "langchain_core.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "RunnableLambda",
+        "importPath": "langchain_core.runnables",
+        "description": "langchain_core.runnables",
+        "isExtraImport": true,
+        "detail": "langchain_core.runnables",
+        "documentation": {}
+    },
+    {
+        "label": "RunnableLambda",
+        "importPath": "langchain_core.runnables",
+        "description": "langchain_core.runnables",
+        "isExtraImport": true,
+        "detail": "langchain_core.runnables",
+        "documentation": {}
+    },
+    {
+        "label": "RunnableLambda",
+        "importPath": "langchain_core.runnables",
+        "description": "langchain_core.runnables",
+        "isExtraImport": true,
+        "detail": "langchain_core.runnables",
+        "documentation": {}
+    },
+    {
         "label": "ChatMistralAI",
         "importPath": "langchain_mistralai",
         "description": "langchain_mistralai",
@@ -177,54 +241,6 @@
         "description": "langchain_mistralai",
         "isExtraImport": true,
         "detail": "langchain_mistralai",
-        "documentation": {}
-    },
-    {
-        "label": "PromptTemplate",
-        "importPath": "langchain_core.prompts",
-        "description": "langchain_core.prompts",
-        "isExtraImport": true,
-        "detail": "langchain_core.prompts",
-        "documentation": {}
-    },
-    {
-        "label": "PromptTemplate",
-        "importPath": "langchain_core.prompts",
-        "description": "langchain_core.prompts",
-        "isExtraImport": true,
-        "detail": "langchain_core.prompts",
-        "documentation": {}
-    },
-    {
-        "label": "PromptTemplate",
-        "importPath": "langchain_core.prompts",
-        "description": "langchain_core.prompts",
-        "isExtraImport": true,
-        "detail": "langchain_core.prompts",
-        "documentation": {}
-    },
-    {
-        "label": "RunnableLambda",
-        "importPath": "langchain_core.runnables",
-        "description": "langchain_core.runnables",
-        "isExtraImport": true,
-        "detail": "langchain_core.runnables",
-        "documentation": {}
-    },
-    {
-        "label": "RunnableLambda",
-        "importPath": "langchain_core.runnables",
-        "description": "langchain_core.runnables",
-        "isExtraImport": true,
-        "detail": "langchain_core.runnables",
-        "documentation": {}
-    },
-    {
-        "label": "RunnableLambda",
-        "importPath": "langchain_core.runnables",
-        "description": "langchain_core.runnables",
-        "isExtraImport": true,
-        "detail": "langchain_core.runnables",
         "documentation": {}
     },
     {
@@ -319,172 +335,172 @@
     {
         "label": "extract_url",
         "kind": 2,
-        "importPath": "src.agentic-workflow",
-        "description": "src.agentic-workflow",
+        "importPath": "src.agent",
+        "description": "src.agent",
         "peekOfCode": "def extract_url(text: str) -> Optional[str]:\n    pattern = r'https?://[^\\s\")]+'\n    match = re.search(pattern, text)\n    return match.group(0) if match else None\ndef main():\n    with INPUT_PATH.open(\"r\") as f:\n        data = json.load(f)\n    with sync_playwright() as p:\n        browser = p.chromium.launch(headless=False)\n        page = browser.new_page()",
-        "detail": "src.agentic-workflow",
+        "detail": "src.agent",
         "documentation": {}
     },
     {
         "label": "main",
         "kind": 2,
-        "importPath": "src.agentic-workflow",
-        "description": "src.agentic-workflow",
+        "importPath": "src.agent",
+        "description": "src.agent",
         "peekOfCode": "def main():\n    with INPUT_PATH.open(\"r\") as f:\n        data = json.load(f)\n    with sync_playwright() as p:\n        browser = p.chromium.launch(headless=False)\n        page = browser.new_page()\n        for item in data.get(\"instructions\", []):\n            classification = item.get(\"classification\")\n            instruction_text = item.get(\"original instruction\")\n            waiting_time = item.get(\"waiting_time\")",
-        "detail": "src.agentic-workflow",
+        "detail": "src.agent",
         "documentation": {}
     },
     {
         "label": "INPUT_PATH",
         "kind": 5,
-        "importPath": "src.agentic-workflow",
-        "description": "src.agentic-workflow",
+        "importPath": "src.agent",
+        "description": "src.agent",
         "peekOfCode": "INPUT_PATH = Path(\"resources/docs/classifier.json\")\n# ------------------------\n# Setup Logging with Emojis\n# ------------------------\nfrom rich.logging import RichHandler\nimport logging\nlogging.basicConfig(\n    level=\"INFO\",\n    format=\"%(message)s\",\n    datefmt=\"[%X]\",",
-        "detail": "src.agentic-workflow",
+        "detail": "src.agent",
         "documentation": {}
     },
     {
         "label": "log",
         "kind": 5,
-        "importPath": "src.agentic-workflow",
-        "description": "src.agentic-workflow",
+        "importPath": "src.agent",
+        "description": "src.agent",
         "peekOfCode": "log = logging.getLogger(\"rich\")\ndef extract_url(text: str) -> Optional[str]:\n    pattern = r'https?://[^\\s\")]+'\n    match = re.search(pattern, text)\n    return match.group(0) if match else None\ndef main():\n    with INPUT_PATH.open(\"r\") as f:\n        data = json.load(f)\n    with sync_playwright() as p:\n        browser = p.chromium.launch(headless=False)",
-        "detail": "src.agentic-workflow",
+        "detail": "src.agent",
         "documentation": {}
     },
     {
         "label": "extract_json_from_codeblock",
         "kind": 2,
-        "importPath": "src.llm_classifier",
-        "description": "src.llm_classifier",
-        "peekOfCode": "def extract_json_from_codeblock(output: str) -> str:\n    \"\"\"Remove code block markdown from model output.\"\"\"\n    lines = output.strip().splitlines()\n    if lines[0].strip().startswith(\"```\"):\n        lines = lines[1:]\n    if lines and lines[-1].strip().startswith(\"```\"):\n        lines = lines[:-1]\n    return \"\\n\".join(lines)\ndef process_instruction_with_html(instructions: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"",
-        "detail": "src.llm_classifier",
+        "importPath": "src.classifier",
+        "description": "src.classifier",
+        "peekOfCode": "def extract_json_from_codeblock(output: str) -> dict:\n    \"\"\"Extract and parse JSON from a code block in LLM output.\"\"\"\n    lines = output.strip().splitlines()\n    if lines and lines[0].strip().startswith(\"```\"):\n        lines = lines[1:]\n    if lines and lines[-1].strip().startswith(\"```\"):\n        lines = lines[:-1]\n    json_str = \"\\n\".join(lines)\n    return json.loads(json_str)\ndef classify(instructions: str, model) -> dict:",
+        "detail": "src.classifier",
         "documentation": {}
     },
     {
-        "label": "process_instruction_with_html",
+        "label": "classify",
         "kind": 2,
-        "importPath": "src.llm_classifier",
-        "description": "src.llm_classifier",
-        "peekOfCode": "def process_instruction_with_html(instructions: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Load environment variables\n    load_dotenv()\n    api_key = os.getenv(\"MISTRAL_API_KEY\")\n    if not api_key:\n        raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\n    os.environ[\"MISTRAL_API_KEY\"] = api_key\n    # Prompt template\n    template = \"\"\"",
-        "detail": "src.llm_classifier",
-        "documentation": {}
-    },
-    {
-        "label": "extract_json_from_codeblock",
-        "kind": 2,
-        "importPath": "src.llm_nl_to_instruct",
-        "description": "src.llm_nl_to_instruct",
-        "peekOfCode": "def extract_json_from_codeblock(output: str) -> str:\n    \"\"\"Remove code block markdown from model output.\"\"\"\n    lines = output.strip().splitlines()\n    if lines and lines[0].strip().startswith(\"```\"):\n        lines = lines[1:]\n    if lines and lines[-1].strip().startswith(\"```\"):\n        lines = lines[:-1]\n    return \"\\n\".join(lines)\ndef nl_to_instruct(instructions: str, model) -> str:\n    \"\"\"Convert NL input into line-by-line web automation steps using OpenAI.\"\"\"",
-        "detail": "src.llm_nl_to_instruct",
-        "documentation": {}
-    },
-    {
-        "label": "nl_to_instruct",
-        "kind": 2,
-        "importPath": "src.llm_nl_to_instruct",
-        "description": "src.llm_nl_to_instruct",
-        "peekOfCode": "def nl_to_instruct(instructions: str, model) -> str:\n    \"\"\"Convert NL input into line-by-line web automation steps using OpenAI.\"\"\"\n    load_dotenv()\n    api_key = os.getenv(\"OPENAI_API_KEY\")\n    if not api_key:\n        raise ValueError(\"OPENAI_API_KEY not set in environment.\")\n    os.environ[\"OPENAI_API_KEY\"] = api_key\n    template = \"\"\"\nYou are a helpful assistant that takes a block of natural language describing a web-based task, and converts it into a list of individual, precise, and executable web automation steps.\nEach action should be:",
-        "detail": "src.llm_nl_to_instruct",
+        "importPath": "src.classifier",
+        "description": "src.classifier",
+        "peekOfCode": "def classify(instructions: str, model) -> dict:\n    \"\"\"Classify natural language instructions into web automation actions using MistralAI.\"\"\"\n    load_dotenv()\n    api_key = os.getenv(\"MISTRAL_API_KEY\")\n    if not api_key:\n        raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\n    os.environ[\"MISTRAL_API_KEY\"] = api_key\n    prompt_template = \"\"\"\nYou are an intelligent instruction classifier.\nYour task is to read a long natural language input where each line represents an instruction to be executed in a web automation context.",
+        "detail": "src.classifier",
         "documentation": {}
     },
     {
         "label": "extract_json_from_codeblock",
         "kind": 2,
-        "importPath": "src.llm_xpath",
-        "description": "src.llm_xpath",
+        "importPath": "src.extractor",
+        "description": "src.extractor",
         "peekOfCode": "def extract_json_from_codeblock(output: str) -> str:\n    \"\"\"Remove code block markdown from model output.\"\"\"\n    lines = output.strip().splitlines()\n    if lines[0].strip().startswith(\"```\"):\n        lines = lines[1:]\n    if lines and lines[-1].strip().startswith(\"```\"):\n        lines = lines[:-1]\n    return \"\\n\".join(lines)\ndef process_instruction_with_html(instruction: str, html: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"",
-        "detail": "src.llm_xpath",
+        "detail": "src.extractor",
         "documentation": {}
     },
     {
         "label": "process_instruction_with_html",
         "kind": 2,
-        "importPath": "src.llm_xpath",
-        "description": "src.llm_xpath",
+        "importPath": "src.extractor",
+        "description": "src.extractor",
         "peekOfCode": "def process_instruction_with_html(instruction: str, html: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Load environment variables\n    load_dotenv()\n    api_key = os.getenv(\"MISTRAL_API_KEY\")\n    if not api_key:\n        raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\n    os.environ[\"MISTRAL_API_KEY\"] = api_key\n    # Prompt template\n    template = \"\"\"",
-        "detail": "src.llm_xpath",
+        "detail": "src.extractor",
         "documentation": {}
     },
     {
         "label": "os.environ[\"OPENAI_API_KEY\"]",
         "kind": 5,
-        "importPath": "src.model_llm",
-        "description": "src.model_llm",
-        "peekOfCode": "os.environ[\"OPENAI_API_KEY\"] = os.getenv(\"OPENAI_API_KEY\")\nmodel = ChatOpenAI(model=\"gpt-4\", temperature=0.1)",
-        "detail": "src.model_llm",
+        "importPath": "src.models",
+        "description": "src.models",
+        "peekOfCode": "os.environ[\"OPENAI_API_KEY\"] = os.getenv(\"OPENAI_API_KEY\")\nmodel = ChatOpenAI(model=\"gpt-4\", temperature=0)\n# model = ChatMistralAI(model=\"mistral-large-latest\", temperature=0)",
+        "detail": "src.models",
         "documentation": {}
     },
     {
         "label": "model",
         "kind": 5,
-        "importPath": "src.model_llm",
-        "description": "src.model_llm",
-        "peekOfCode": "model = ChatOpenAI(model=\"gpt-4\", temperature=0.1)",
-        "detail": "src.model_llm",
+        "importPath": "src.models",
+        "description": "src.models",
+        "peekOfCode": "model = ChatOpenAI(model=\"gpt-4\", temperature=0)\n# model = ChatMistralAI(model=\"mistral-large-latest\", temperature=0)",
+        "detail": "src.models",
         "documentation": {}
     },
     {
         "label": "initialize_pinecone",
         "kind": 2,
-        "importPath": "src.rag_html_mistral_pinecone",
-        "description": "src.rag_html_mistral_pinecone",
+        "importPath": "src.rag",
+        "description": "src.rag",
         "peekOfCode": "def initialize_pinecone(index_name, dimension=1024, metric=\"cosine\", cloud=\"aws\", region=\"us-east-1\", namespace=\"default\"):\n    if not pinecone_api_key:\n        raise ValueError(\"Pinecone API key is not provided.\")\n    try:\n        pc = Pinecone(api_key=pinecone_api_key)\n    except Exception as e:\n        raise ConnectionError(f\"Failed to initialize Pinecone client: {e}\")\n    if index_name in pc.list_indexes().names():\n        index = pc.Index(index_name)\n        # Check index configuration",
-        "detail": "src.rag_html_mistral_pinecone",
+        "detail": "src.rag",
         "documentation": {}
     },
     {
         "label": "chunk_html",
         "kind": 2,
-        "importPath": "src.rag_html_mistral_pinecone",
-        "description": "src.rag_html_mistral_pinecone",
+        "importPath": "src.rag",
+        "description": "src.rag",
         "peekOfCode": "def chunk_html(html_content, chunk_size):\n    chunks = []\n    for i in range(0, len(html_content), chunk_size):\n        chunk = html_content[i:i + chunk_size]\n        chunks.append(chunk)\n    return chunks\n# Find most similar chunk\ndef find_similar_chunk(html_content, query, chunk_size= max_token_limitation, index_name=\"default-index\"):\n    # Set Mistral AI embedding model (calls Mistral API)\n    Settings.embed_model = MistralAIEmbedding(",
-        "detail": "src.rag_html_mistral_pinecone",
+        "detail": "src.rag",
         "documentation": {}
     },
     {
         "label": "find_similar_chunk",
         "kind": 2,
-        "importPath": "src.rag_html_mistral_pinecone",
-        "description": "src.rag_html_mistral_pinecone",
+        "importPath": "src.rag",
+        "description": "src.rag",
         "peekOfCode": "def find_similar_chunk(html_content, query, chunk_size= max_token_limitation, index_name=\"default-index\"):\n    # Set Mistral AI embedding model (calls Mistral API)\n    Settings.embed_model = MistralAIEmbedding(\n        model_name=\"mistral-embed\",\n        api_key=mistral_api_key\n    )\n    # Disable LLM since it's not needed for similarity search\n    Settings.llm = None\n    # Initialize Pinecone\n    pinecone_index = initialize_pinecone(index_name)",
-        "detail": "src.rag_html_mistral_pinecone",
+        "detail": "src.rag",
         "documentation": {}
     },
     {
         "label": "process_html_query",
         "kind": 2,
-        "importPath": "src.rag_html_mistral_pinecone",
-        "description": "src.rag_html_mistral_pinecone",
+        "importPath": "src.rag",
+        "description": "src.rag",
         "peekOfCode": "def process_html_query(html_content, query, chunk_size=max_token_limitation*3, index_name=os.getenv(\"PINECONE_INDEX_NAME\")\n):\n    if len(html_content) < (max_token_limitation*2.5) :\n      return html_content\n    result = find_similar_chunk(html_content, query, chunk_size, index_name)\n    output = f\"\"\"Number of chunks created: {result['total_chunks']}\nSelected chunk index: {result['selected_chunk_index']}\nSimilarity score: {result['similarity_score']:.4f}\n\"\"\"\n    print(output)",
-        "detail": "src.rag_html_mistral_pinecone",
+        "detail": "src.rag",
         "documentation": {}
     },
     {
         "label": "mistral_api_key",
         "kind": 5,
-        "importPath": "src.rag_html_mistral_pinecone",
-        "description": "src.rag_html_mistral_pinecone",
+        "importPath": "src.rag",
+        "description": "src.rag",
         "peekOfCode": "mistral_api_key = os.getenv(\"MISTRAL_API_KEY\")\npinecone_api_key = os.getenv(\"PINECONE_API_KEY\")\nmax_token_limitation = int(os.getenv(\"MAX_TOKEN_LIMITATION\", 12000))  # Default to 12000 if not set\n# Validate environment variables\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\ndef initialize_pinecone(index_name, dimension=1024, metric=\"cosine\", cloud=\"aws\", region=\"us-east-1\", namespace=\"default\"):\n    if not pinecone_api_key:",
-        "detail": "src.rag_html_mistral_pinecone",
+        "detail": "src.rag",
         "documentation": {}
     },
     {
         "label": "pinecone_api_key",
         "kind": 5,
-        "importPath": "src.rag_html_mistral_pinecone",
-        "description": "src.rag_html_mistral_pinecone",
+        "importPath": "src.rag",
+        "description": "src.rag",
         "peekOfCode": "pinecone_api_key = os.getenv(\"PINECONE_API_KEY\")\nmax_token_limitation = int(os.getenv(\"MAX_TOKEN_LIMITATION\", 12000))  # Default to 12000 if not set\n# Validate environment variables\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\ndef initialize_pinecone(index_name, dimension=1024, metric=\"cosine\", cloud=\"aws\", region=\"us-east-1\", namespace=\"default\"):\n    if not pinecone_api_key:\n        raise ValueError(\"Pinecone API key is not provided.\")",
-        "detail": "src.rag_html_mistral_pinecone",
+        "detail": "src.rag",
         "documentation": {}
     },
     {
         "label": "max_token_limitation",
         "kind": 5,
-        "importPath": "src.rag_html_mistral_pinecone",
-        "description": "src.rag_html_mistral_pinecone",
+        "importPath": "src.rag",
+        "description": "src.rag",
         "peekOfCode": "max_token_limitation = int(os.getenv(\"MAX_TOKEN_LIMITATION\", 12000))  # Default to 12000 if not set\n# Validate environment variables\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\ndef initialize_pinecone(index_name, dimension=1024, metric=\"cosine\", cloud=\"aws\", region=\"us-east-1\", namespace=\"default\"):\n    if not pinecone_api_key:\n        raise ValueError(\"Pinecone API key is not provided.\")\n    try:",
-        "detail": "src.rag_html_mistral_pinecone",
+        "detail": "src.rag",
+        "documentation": {}
+    },
+    {
+        "label": "extract_json_from_codeblock",
+        "kind": 2,
+        "importPath": "src.segmentor",
+        "description": "src.segmentor",
+        "peekOfCode": "def extract_json_from_codeblock(output: str) -> str:\n    \"\"\"Remove code block markdown from model output.\"\"\"\n    lines = output.strip().splitlines()\n    if lines[0].strip().startswith(\"```\"):\n        lines = lines[1:]\n    if lines and lines[-1].strip().startswith(\"```\"):\n        lines = lines[:-1]\n    json_str = \"\\n\".join(lines)\n    return json.loads(json_str)\ndef segment(instructions: str, model) -> str:",
+        "detail": "src.segmentor",
+        "documentation": {}
+    },
+    {
+        "label": "segment",
+        "kind": 2,
+        "importPath": "src.segmentor",
+        "description": "src.segmentor",
+        "peekOfCode": "def segment(instructions: str, model) -> str:\n    \"\"\"Convert NL input into line-by-line web automation steps using OpenAI.\"\"\"\n    load_dotenv()\n    api_key = os.getenv(\"OPENAI_API_KEY\")\n    if not api_key:\n        raise ValueError(\"OPENAI_API_KEY not set in environment.\")\n    os.environ[\"OPENAI_API_KEY\"] = api_key\n    template = \"\"\"\nYou are a helpful assistant that takes a block of natural language describing a web-based task, and converts it into a list of individual, precise, and executable web automation steps.\nEach action should be:",
+        "detail": "src.segmentor",
         "documentation": {}
     },
     {

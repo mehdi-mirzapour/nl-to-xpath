@@ -1,31 +1,31 @@
 import json
-from dotenv import load_dotenv
 import os
-from langchain_mistralai import ChatMistralAI
+from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnableLambda
+from models import model
 
-def extract_json_from_codeblock(output: str) -> str:
-    """Remove code block markdown from model output."""
+
+def extract_json_from_codeblock(output: str) -> dict:
+    """Extract and parse JSON from a code block in LLM output."""
     lines = output.strip().splitlines()
-    if lines[0].strip().startswith("```"):
+    if lines and lines[0].strip().startswith("```"):
         lines = lines[1:]
     if lines and lines[-1].strip().startswith("```"):
         lines = lines[:-1]
-    return "\n".join(lines)
+    json_str = "\n".join(lines)
+    return json.loads(json_str)
 
-def process_instruction_with_html(instructions: str) -> str:
-    """Run the instruction + HTML through Mistral and return JSON result."""
-    # Load environment variables
+
+def classify(instructions: str, model) -> dict:
+    """Classify natural language instructions into web automation actions using MistralAI."""
     load_dotenv()
-
     api_key = os.getenv("MISTRAL_API_KEY")
     if not api_key:
         raise ValueError("MISTRAL_API_KEY not set in environment.")
     os.environ["MISTRAL_API_KEY"] = api_key
 
-    # Prompt template
-    template = """
+    prompt_template = """
 You are an intelligent instruction classifier.
 Your task is to read a long natural language input where each line represents an instruction to be executed in a web automation context.
 
@@ -40,7 +40,7 @@ Output in JSON format:
 
 {{
   "instructions": [
-    {{ "original instruction": STRING, "classification": STRING , "waiting_time": Float}},
+    {{ "original instruction": STRING, "classification": STRING , "waiting_time": Float }},
     ...
   ]
 }}
@@ -49,19 +49,17 @@ Output in JSON format:
 {instructions}
 """
 
-    prompt = PromptTemplate.from_template(template)
-    llm = ChatMistralAI(model="mistral-large-latest", temperature=0)
+    prompt = PromptTemplate.from_template(prompt_template)
 
     chain = (
         {"instructions": RunnableLambda(lambda _: instructions)}
         | prompt
-        | llm
+        | model
     )
 
-    result = chain.invoke({})
-    result  extract_json_from_codeblock(result.content.strip())
-    result = json.loads(result)
-    return result
+    raw_output = chain.invoke({})
+    parsed_output = extract_json_from_codeblock(raw_output.content.strip())
+    return parsed_output
 
 
 if __name__ == "__main__":
@@ -81,6 +79,7 @@ if __name__ == "__main__":
 - Wait 1 more second, likely to observe the saved result.
 - Close the browser.
     """
-    output = process_instruction_with_html(instruction)
-    print("NL Instruction:", instruction)
-    print("XPath Output:", output)
+
+    output = classify(instruction, model)
+    print("\nOriginal Instructions:\n", instruction.strip())
+    print("\nStructured Output:\n", json.dumps(output, indent=2))
