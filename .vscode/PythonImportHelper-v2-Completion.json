@@ -75,6 +75,14 @@
         "documentation": {}
     },
     {
+        "label": "model",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
         "label": "segment",
         "importPath": "segmentor",
         "description": "segmentor",
@@ -244,15 +252,6 @@
         "documentation": {}
     },
     {
-        "label": "tiktoken",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "tiktoken",
-        "description": "tiktoken",
-        "detail": "tiktoken",
-        "documentation": {}
-    },
-    {
         "label": "ChatOpenAI",
         "importPath": "langchain_openai",
         "description": "langchain_openai",
@@ -391,16 +390,16 @@
         "kind": 2,
         "importPath": "src.extractor",
         "description": "src.extractor",
-        "peekOfCode": "def extract_json_from_codeblock(output: str) -> str:\n    \"\"\"Remove code block markdown from model output.\"\"\"\n    lines = output.strip().splitlines()\n    if lines[0].strip().startswith(\"```\"):\n        lines = lines[1:]\n    if lines and lines[-1].strip().startswith(\"```\"):\n        lines = lines[:-1]\n    return \"\\n\".join(lines)\ndef process_instruction_with_html(instruction: str, html: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"",
+        "peekOfCode": "def extract_json_from_codeblock(output: str) -> str:\n    \"\"\"Remove code block markdown from model output.\"\"\"\n    lines = output.strip().splitlines()\n    if lines[0].strip().startswith(\"```\"):\n        lines = lines[1:]\n    if lines and lines[-1].strip().startswith(\"```\"):\n        lines = lines[:-1]\n    return \"\\n\".join(lines)\ndef extract_xpath_pattern(instruction: str, html: str, model) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"",
         "detail": "src.extractor",
         "documentation": {}
     },
     {
-        "label": "process_instruction_with_html",
+        "label": "extract_xpath_pattern",
         "kind": 2,
         "importPath": "src.extractor",
         "description": "src.extractor",
-        "peekOfCode": "def process_instruction_with_html(instruction: str, html: str) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Load environment variables\n    load_dotenv()\n    api_key = os.getenv(\"MISTRAL_API_KEY\")\n    if not api_key:\n        raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\n    os.environ[\"MISTRAL_API_KEY\"] = api_key\n    # Prompt template\n    template = \"\"\"",
+        "peekOfCode": "def extract_xpath_pattern(instruction: str, html: str, model) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Load environment variables\n    load_dotenv()\n    api_key = os.getenv(\"MISTRAL_API_KEY\")\n    if not api_key:\n        raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\n    os.environ[\"MISTRAL_API_KEY\"] = api_key\n    # Prompt template\n    template = \"\"\"",
         "detail": "src.extractor",
         "documentation": {}
     },

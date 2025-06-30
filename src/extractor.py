@@ -5,8 +5,7 @@ import os
 from langchain_mistralai import ChatMistralAI
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnableLambda
-import tiktoken
-
+from models import model
 
 def extract_json_from_codeblock(output: str) -> str:
     """Remove code block markdown from model output."""
@@ -17,7 +16,7 @@ def extract_json_from_codeblock(output: str) -> str:
         lines = lines[:-1]
     return "\n".join(lines)
 
-def process_instruction_with_html(instruction: str, html: str) -> str:
+def extract_xpath_pattern(instruction: str, html: str, model) -> str:
     """Run the instruction + HTML through Mistral and return JSON result."""
     # Load environment variables
     load_dotenv()
@@ -54,14 +53,11 @@ Example 2:
 --- Command ---
 {instruction}
 """
-    prompt = PromptTemplate.from_template(template)
-    llm = ChatMistralAI(model="mistral-large-latest", temperature=0)
-
-    
+    prompt = PromptTemplate.from_template(template)    
     chain = (
         {"instruction": RunnableLambda(lambda _: instruction), "html": RunnableLambda(lambda _: html)}
         | prompt
-        | llm
+        | model
     )
 
     result = chain.invoke({})
@@ -77,6 +73,6 @@ if __name__ == "__main__":
     with open("resources/test_case_3.html", "r", encoding="utf-8") as f:
         html =f.read()
 
-    output = process_instruction_with_html(instruction, html)
+    output = extract_xpath_pattern(instruction, html, model)
     print("NL Instruction:", instruction)
     print("XPath Output:", output)
