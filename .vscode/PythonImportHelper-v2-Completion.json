@@ -50,6 +50,22 @@
         "documentation": {}
     },
     {
+        "label": "model",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "segment",
+        "importPath": "segmentor",
+        "description": "segmentor",
+        "isExtraImport": true,
+        "detail": "segmentor",
+        "documentation": {}
+    },
+    {
         "label": "segment",
         "importPath": "segmentor",
         "description": "segmentor",
@@ -66,11 +82,43 @@
         "documentation": {}
     },
     {
+        "label": "classify",
+        "importPath": "classifier",
+        "description": "classifier",
+        "isExtraImport": true,
+        "detail": "classifier",
+        "documentation": {}
+    },
+    {
         "label": "extract_xpath_pattern",
         "importPath": "extractor",
         "description": "extractor",
         "isExtraImport": true,
         "detail": "extractor",
+        "documentation": {}
+    },
+    {
+        "label": "extract_xpath_pattern",
+        "importPath": "extractor",
+        "description": "extractor",
+        "isExtraImport": true,
+        "detail": "extractor",
+        "documentation": {}
+    },
+    {
+        "label": "sync_playwright",
+        "importPath": "playwright.sync_api",
+        "description": "playwright.sync_api",
+        "isExtraImport": true,
+        "detail": "playwright.sync_api",
+        "documentation": {}
+    },
+    {
+        "label": "sync_playwright",
+        "importPath": "playwright.sync_api",
+        "description": "playwright.sync_api",
+        "isExtraImport": true,
+        "detail": "playwright.sync_api",
         "documentation": {}
     },
     {
@@ -114,11 +162,101 @@
         "documentation": {}
     },
     {
+        "label": "RichHandler",
+        "importPath": "rich.logging",
+        "description": "rich.logging",
+        "isExtraImport": true,
+        "detail": "rich.logging",
+        "documentation": {}
+    },
+    {
         "label": "*",
         "importPath": "utils",
         "description": "utils",
         "isExtraImport": true,
         "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "load_instructions_from_file",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "extract_url",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "threading",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "threading",
+        "description": "threading",
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Request",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Form",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTMLResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "StaticFiles",
+        "importPath": "fastapi.staticfiles",
+        "description": "fastapi.staticfiles",
+        "isExtraImport": true,
+        "detail": "fastapi.staticfiles",
+        "documentation": {}
+    },
+    {
+        "label": "Jinja2Templates",
+        "importPath": "fastapi.templating",
+        "description": "fastapi.templating",
+        "isExtraImport": true,
+        "detail": "fastapi.templating",
         "documentation": {}
     },
     {
@@ -336,7 +474,7 @@
         "kind": 5,
         "importPath": "src.agent",
         "description": "src.agent",
-        "peekOfCode": "log = logging.getLogger(\"rich\")\ninstruction = \"\"\"\nopen localhost:5173 and then login with user name as `mehdi.mirzapour@gmail.com` and password  as `pass1234`\nopen localhost:5173/items and click on add items.\n\"\"\"\n# # Wrap input in JSON structure\n# user_data = {\"user_inputs\": instruction.strip()}\n# log.info(f\"📦 User Input as JSON:\\n{json.dumps(user_data, indent=2)}\")\n# # Convert NL to structured instructions\n# output = segment(instruction, model)",
+        "peekOfCode": "log = logging.getLogger(\"rich\")\ninstruction = \"\"\"\nopen localhost:5173 and then login with user name as `mehdi.mirzapour@gmail.com` and password  as `pass1234`\nopen localhost:5173/items .\nclick on add items and then fill out the Title with \"Meeting Agenda\" and then the Description as \"Topics to Discuss\". click on save buttom.\nclick on the add items and enter the Title as \"Event Name\" and the Description as \"Event Details\". click on save buttom.\nexit the browser.\n\"\"\"\n# Wrap input in JSON structure\nuser_data = {\"user_inputs\": instruction.strip()}",
         "detail": "src.agent",
         "documentation": {}
     },
@@ -345,16 +483,16 @@
         "kind": 5,
         "importPath": "src.agent",
         "description": "src.agent",
-        "peekOfCode": "instruction = \"\"\"\nopen localhost:5173 and then login with user name as `mehdi.mirzapour@gmail.com` and password  as `pass1234`\nopen localhost:5173/items and click on add items.\n\"\"\"\n# # Wrap input in JSON structure\n# user_data = {\"user_inputs\": instruction.strip()}\n# log.info(f\"📦 User Input as JSON:\\n{json.dumps(user_data, indent=2)}\")\n# # Convert NL to structured instructions\n# output = segment(instruction, model)\n# log.info(\"📤 Segmentor Output:\\n\" + str(output))",
+        "peekOfCode": "instruction = \"\"\"\nopen localhost:5173 and then login with user name as `mehdi.mirzapour@gmail.com` and password  as `pass1234`\nopen localhost:5173/items .\nclick on add items and then fill out the Title with \"Meeting Agenda\" and then the Description as \"Topics to Discuss\". click on save buttom.\nclick on the add items and enter the Title as \"Event Name\" and the Description as \"Event Details\". click on save buttom.\nexit the browser.\n\"\"\"\n# Wrap input in JSON structure\nuser_data = {\"user_inputs\": instruction.strip()}\nlog.info(f\"📦 User Input as JSON:\\n{json.dumps(user_data, indent=2)}\")",
         "detail": "src.agent",
         "documentation": {}
     },
     {
-        "label": "json_file",
+        "label": "user_data",
         "kind": 5,
         "importPath": "src.agent",
         "description": "src.agent",
-        "peekOfCode": "json_file = \"resources/docs/classification.json\"\noutput = load_instructions_from_file(json_file)\nlog.info(\"📤 Classifier Output:\\n\" + str(output))\nwith sync_playwright() as p:\n    browser = p.chromium.launch(headless=False)\n    page = browser.new_page()\n    for item in output.get(\"instructions\", []):\n        classification = item.get(\"classification\")\n        instruction_text = item.get(\"original instruction\")\n        waiting_time = item.get(\"waiting_time\")",
+        "peekOfCode": "user_data = {\"user_inputs\": instruction.strip()}\nlog.info(f\"📦 User Input as JSON:\\n{json.dumps(user_data, indent=2)}\")\n# Convert NL to structured instructions\noutput = segment(instruction, model)\nlog.info(\"📤 Segmentor Output:\\n\" + str(output))\n# Classify the instructions\noutput = classify(output, model)\nlog.info(\"📤 Classifier Output:\\n\" + str(output))\n# Save to JSON file\nwith open(\"resources/docs/classification.json\", \"w\") as f:",
         "detail": "src.agent",
         "documentation": {}
     },
@@ -363,8 +501,98 @@
         "kind": 5,
         "importPath": "src.agent",
         "description": "src.agent",
-        "peekOfCode": "output = load_instructions_from_file(json_file)\nlog.info(\"📤 Classifier Output:\\n\" + str(output))\nwith sync_playwright() as p:\n    browser = p.chromium.launch(headless=False)\n    page = browser.new_page()\n    for item in output.get(\"instructions\", []):\n        classification = item.get(\"classification\")\n        instruction_text = item.get(\"original instruction\")\n        waiting_time = item.get(\"waiting_time\")\n        log.info(f\"📝 Instruction: {instruction_text}\")",
+        "peekOfCode": "output = segment(instruction, model)\nlog.info(\"📤 Segmentor Output:\\n\" + str(output))\n# Classify the instructions\noutput = classify(output, model)\nlog.info(\"📤 Classifier Output:\\n\" + str(output))\n# Save to JSON file\nwith open(\"resources/docs/classification.json\", \"w\") as f:\n    json.dump(output, f, indent=4)\nwith open(\"resources/docs/classification.json\", \"r\") as f:\n    out = json.load(f)",
         "detail": "src.agent",
+        "documentation": {}
+    },
+    {
+        "label": "output",
+        "kind": 5,
+        "importPath": "src.agent",
+        "description": "src.agent",
+        "peekOfCode": "output = classify(output, model)\nlog.info(\"📤 Classifier Output:\\n\" + str(output))\n# Save to JSON file\nwith open(\"resources/docs/classification.json\", \"w\") as f:\n    json.dump(output, f, indent=4)\nwith open(\"resources/docs/classification.json\", \"r\") as f:\n    out = json.load(f)\nlog.info(\"📤 Classifier Output:\\n\" + str(output))\nwith sync_playwright() as p:\n    browser = p.chromium.launch(headless=False)",
+        "detail": "src.agent",
+        "documentation": {}
+    },
+    {
+        "label": "UILogHandler",
+        "kind": 6,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "class UILogHandler(logging.Handler):\n    def emit(self, record):\n        log_entry = self.format(record)\n        log_stream.append(log_entry)\nformatter = logging.Formatter(\"%(message)s\")\nui_handler = UILogHandler()\nui_handler.setFormatter(formatter)\nlogging.basicConfig(\n    level=logging.INFO,\n    handlers=[RichHandler(markup=True), ui_handler]",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "index",
+        "kind": 2,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "def index(request: Request):\n    return templates.TemplateResponse(\"index.html\", {\"request\": request, \"logs\": log_stream})\n@app.post(\"/run\", response_class=HTMLResponse)\ndef run_instruction(request: Request, instruction: str = Form(...)):\n    def automation_thread():\n        log.info(f\"📥 Instruction: {instruction}\")\n        segmented = segment(instruction, model)\n        classified = classify(segmented, model)\n        with sync_playwright() as p:\n            browser = p.chromium.launch(headless=False)",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "run_instruction",
+        "kind": 2,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "def run_instruction(request: Request, instruction: str = Form(...)):\n    def automation_thread():\n        log.info(f\"📥 Instruction: {instruction}\")\n        segmented = segment(instruction, model)\n        classified = classify(segmented, model)\n        with sync_playwright() as p:\n            browser = p.chromium.launch(headless=False)\n            page = browser.new_page()\n            for item in classified.get(\"instructions\", []):\n                classification = item.get(\"classification\")",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "log_stream",
+        "kind": 5,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "log_stream = []\nclass UILogHandler(logging.Handler):\n    def emit(self, record):\n        log_entry = self.format(record)\n        log_stream.append(log_entry)\nformatter = logging.Formatter(\"%(message)s\")\nui_handler = UILogHandler()\nui_handler.setFormatter(formatter)\nlogging.basicConfig(\n    level=logging.INFO,",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "formatter",
+        "kind": 5,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "formatter = logging.Formatter(\"%(message)s\")\nui_handler = UILogHandler()\nui_handler.setFormatter(formatter)\nlogging.basicConfig(\n    level=logging.INFO,\n    handlers=[RichHandler(markup=True), ui_handler]\n)\nlog = logging.getLogger(\"rich\")\n# ------------------------\n# FastAPI App Setup",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "ui_handler",
+        "kind": 5,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "ui_handler = UILogHandler()\nui_handler.setFormatter(formatter)\nlogging.basicConfig(\n    level=logging.INFO,\n    handlers=[RichHandler(markup=True), ui_handler]\n)\nlog = logging.getLogger(\"rich\")\n# ------------------------\n# FastAPI App Setup\n# ------------------------",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "log",
+        "kind": 5,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "log = logging.getLogger(\"rich\")\n# ------------------------\n# FastAPI App Setup\n# ------------------------\napp = FastAPI()\ntemplates = Jinja2Templates(directory=\"templates\")\napp.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\n@app.get(\"/\", response_class=HTMLResponse)\ndef index(request: Request):\n    return templates.TemplateResponse(\"index.html\", {\"request\": request, \"logs\": log_stream})",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "app = FastAPI()\ntemplates = Jinja2Templates(directory=\"templates\")\napp.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\n@app.get(\"/\", response_class=HTMLResponse)\ndef index(request: Request):\n    return templates.TemplateResponse(\"index.html\", {\"request\": request, \"logs\": log_stream})\n@app.post(\"/run\", response_class=HTMLResponse)\ndef run_instruction(request: Request, instruction: str = Form(...)):\n    def automation_thread():\n        log.info(f\"📥 Instruction: {instruction}\")",
+        "detail": "src.app",
+        "documentation": {}
+    },
+    {
+        "label": "templates",
+        "kind": 5,
+        "importPath": "src.app",
+        "description": "src.app",
+        "peekOfCode": "templates = Jinja2Templates(directory=\"templates\")\napp.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\n@app.get(\"/\", response_class=HTMLResponse)\ndef index(request: Request):\n    return templates.TemplateResponse(\"index.html\", {\"request\": request, \"logs\": log_stream})\n@app.post(\"/run\", response_class=HTMLResponse)\ndef run_instruction(request: Request, instruction: str = Form(...)):\n    def automation_thread():\n        log.info(f\"📥 Instruction: {instruction}\")\n        segmented = segment(instruction, model)",
+        "detail": "src.app",
         "documentation": {}
     },
     {

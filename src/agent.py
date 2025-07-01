@@ -24,22 +24,31 @@ log = logging.getLogger("rich")
 
 instruction = """
 open localhost:5173 and then login with user name as `mehdi.mirzapour@gmail.com` and password  as `pass1234`
-open localhost:5173/items and click on add items.
+open localhost:5173/items .
+click on add items and then fill out the Title with "Meeting Agenda" and then the Description as "Topics to Discuss". click on save buttom.
+click on the add items and enter the Title as "Event Name" and the Description as "Event Details". click on save buttom.
+exit the browser.
 """
-# # Wrap input in JSON structure
-# user_data = {"user_inputs": instruction.strip()}
-# log.info(f"📦 User Input as JSON:\n{json.dumps(user_data, indent=2)}")
+# Wrap input in JSON structure
+user_data = {"user_inputs": instruction.strip()}
+log.info(f"📦 User Input as JSON:\n{json.dumps(user_data, indent=2)}")
 
-# # Convert NL to structured instructions
-# output = segment(instruction, model)
-# log.info("📤 Segmentor Output:\n" + str(output))
+# Convert NL to structured instructions
+output = segment(instruction, model)
+log.info("📤 Segmentor Output:\n" + str(output))
 
-# # Classify the instructions
-# output = classify(output, model)
-# log.info("📤 Classifier Output:\n" + str(output))
+# Classify the instructions
+output = classify(output, model)
+log.info("📤 Classifier Output:\n" + str(output))
 
-json_file = "resources/docs/classification.json"
-output = load_instructions_from_file(json_file)
+
+# Save to JSON file
+with open("resources/docs/classification.json", "w") as f:
+    json.dump(output, f, indent=4)
+    
+with open("resources/docs/classification.json", "r") as f:
+    out = json.load(f)
+
 log.info("📤 Classifier Output:\n" + str(output))
 
 with sync_playwright() as p:
@@ -71,6 +80,7 @@ with sync_playwright() as p:
             result = extract_xpath_pattern(instruction_text, html, model)
             log.info(f"🔢 Clicking field at XPath `{result['xpath']}`")
             page.locator(result["xpath"]).click()
+            page.wait_for_timeout(5000) # wait for 5 seconds to let the page loads
 
         elif classification == "page.wait":
             log.info(f"⏳ Waiting for {waiting_time} seconds...")
@@ -80,7 +90,6 @@ with sync_playwright() as p:
             log.info("👋 Closing browser...")
             browser.close()
                 
-        page.wait_for_timeout(5 * 1000)  # 5 minutes = 300000 ms
 
             
         

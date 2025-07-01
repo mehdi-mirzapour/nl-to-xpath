@@ -5,6 +5,8 @@ The model can perform five actions aligned with
     page.wait
     browser.close
 
+Fine-tuning the model with some problematic cases. 
+https://docs.mistral.ai/guides/finetuning/
 
 Assumptions each command in each line
 Postediting is not enabled yet
@@ -20,3 +22,13 @@ otherStandards // Other Standards
 BIG Challenge for Evaluation: Dynamic Page Change
 
 It works well with mistral also
+
+Web browsers and Playwright aren’t "smart" — they need precise instructions like:
+
+python
+Copy
+Edit
+page.locator('input[name="email"]').fill("me@example.com")
+They can’t interpret:
+
+"Type my email into the login box"

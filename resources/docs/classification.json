@@ -1,34 +1,74 @@
 {
-  "instructions": [
-    {
-      "original instruction": "Open the URL 'localhost:5173'.",
-      "classification": "page.goto",
-      "waiting_time": null
-    },
-    {
-      "original instruction": "Find the username input field and enter 'mehdi.mirzapour@gmail.com'.",
-      "classification": "page.fill",
-      "waiting_time": null
-    },
-    {
-      "original instruction": "Find the password input field and enter 'pass1234'.",
-      "classification": "page.fill",
-      "waiting_time": null
-    },
-    {
-      "original instruction": "Find and click on the 'Login' button.",
-      "classification": "page.click",
-      "waiting_time": null
-    },
-    {
-      "original instruction": "Navigate to the URL 'localhost:5173/items'.",
-      "classification": "page.goto",
-      "waiting_time": null
-    },
-    {
-      "original instruction": "Find and click on the 'Add Items' button.",
-      "classification": "page.click",
-      "waiting_time": null
-    }
-  ]
+    "instructions": [
+        {
+            "original instruction": "Open the URL 'localhost:5173'.",
+            "classification": "page.goto",
+            "waiting_time": null
+        },
+        {
+            "original instruction": "Enter 'mehdi.mirzapour@gmail.com' into the username field.",
+            "classification": "page.fill",
+            "waiting_time": null
+        },
+        {
+            "original instruction": "Enter 'pass1234' into the password field.",
+            "classification": "page.fill",
+            "waiting_time": null
+        },
+        {
+            "original instruction": "Click on the 'Login' button.",
+            "classification": "page.click",
+            "waiting_time": null
+        },
+        {
+            "original instruction": "Navigate to 'localhost:5173/items'.",
+            "classification": "page.goto",
+            "waiting_time": null
+        },
+        {
+            "original instruction": "Click on the 'Add Items' button.",
+            "classification": "page.click",
+            "waiting_time": null
+        },
+        {
+            "original instruction": "Enter 'Meeting Agenda' into the 'Title' field.",
+            "classification": "page.fill",
+            "waiting_time": null
+        },
+        {
+            "original instruction": "Enter 'Topics to Discuss' into the 'Description' field.",
+            "classification": "page.fill",
+            "waiting_time": null
+        },
+        {
+            "original instruction": "Click on the 'Save' button.",
+            "classification": "page.click",
+            "waiting_time": null
+        },
+        {
+            "original instruction": "Click on the 'Add Items' button again.",
+            "classification": "page.click",
+            "waiting_time": null
+        },
+        {
+            "original instruction": "Enter 'Event Name' into the 'Title' field.",
+            "classification": "page.fill",
+            "waiting_time": null
+        },
+        {
+            "original instruction": "Enter 'Event Details' into the 'Description' field.",
+            "classification": "page.fill",
+            "waiting_time": null
+        },
+        {
+            "original instruction": "Click on the 'Save' button.",
+            "classification": "page.click",
+            "waiting_time": null
+        },
+        {
+            "original instruction": "Close the browser.",
+            "classification": "browser.close",
+            "waiting_time": null
+        }
+    ]
 }

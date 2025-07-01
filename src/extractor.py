@@ -69,7 +69,7 @@ Example 2:
     return result
 
 if __name__ == "__main__":
-    instruction = "In the Company Overview form, fill in the \"Year Founded\" field with the value: 2043."
+    instruction = "Click on the 'Login' button."
     with open("resources/test_case_3.html", "r", encoding="utf-8") as f:
         html =f.read()
 
