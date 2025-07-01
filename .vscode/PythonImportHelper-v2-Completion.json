@@ -507,7 +507,7 @@
         "kind": 2,
         "importPath": "src.utils",
         "description": "src.utils",
-        "peekOfCode": "def extract_url(text):\n    pattern = r'(https?://[^\\s\\'\"]+|localhost:[0-9]+)'\n    match = re.search(pattern, text)\n    return match.group(0) if match else None\ndef load_instructions_from_file(json_path: str):\n    \"\"\"Load instruction data from a JSON file.\"\"\"\n    file_path = Path(json_path)\n    if not file_path.exists():\n        raise FileNotFoundError(f\"File not found: {json_path}\")\n    with open(file_path, 'r', encoding='utf-8') as f:",
+        "peekOfCode": "def extract_url(text):\n    pattern = r'(https?://[^\\s\\'\"]+|localhost:\\d+[^\\s\\'\"]*)'\n    match = re.search(pattern, text)\n    return match.group(0) if match else None\ndef load_instructions_from_file(json_path: str):\n    \"\"\"Load instruction data from a JSON file.\"\"\"\n    file_path = Path(json_path)\n    if not file_path.exists():\n        raise FileNotFoundError(f\"File not found: {json_path}\")\n    with open(file_path, 'r', encoding='utf-8') as f:",
         "detail": "src.utils",
         "documentation": {}
     },

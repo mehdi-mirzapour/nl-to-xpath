@@ -2,10 +2,13 @@ import re
 from pathlib import Path
 import json
 
+import re
+
 def extract_url(text):
-    pattern = r'(https?://[^\s\'"]+|localhost:[0-9]+)'
+    pattern = r'(https?://[^\s\'"]+|localhost:\d+[^\s\'"]*)'
     match = re.search(pattern, text)
     return match.group(0) if match else None
+
 
 def load_instructions_from_file(json_path: str):
     """Load instruction data from a JSON file."""

@@ -62,16 +62,14 @@ with sync_playwright() as p:
 
         elif classification == "page.fill":
             html = page.content()
-            small_html_context = process_html_query(html, query=instruction_text)
-            result = process_instruction_with_html(instruction_text, small_html_context)
+            result = extract_xpath_pattern(instruction_text, html, model)
             log.info(f"🔢 Filling field at XPath `{result['xpath']}` with value `{result['fill']}`")
             page.locator(result["xpath"]).fill(result["fill"])
 
         elif classification == "page.click":
             html = page.content()
-            small_html_context = process_html_query(html, query=instruction_text)
-            result = process_instruction_with_html(instruction_text, small_html_context)
-            log.info(f"👆 Clicking element at XPath `{result['xpath']}`")
+            result = extract_xpath_pattern(instruction_text, html, model)
+            log.info(f"🔢 Clicking field at XPath `{result['xpath']}`")
             page.locator(result["xpath"]).click()
 
         elif classification == "page.wait":
@@ -81,5 +79,8 @@ with sync_playwright() as p:
         elif classification == "browser.close":
             log.info("👋 Closing browser...")
             browser.close()
-    
-    
+                
+        page.wait_for_timeout(5 * 1000)  # 5 minutes = 300000 ms
+
+            
+        
