@@ -65,7 +65,6 @@ Example 2:
     if isinstance(result, str):
         result = json.loads(result)
         
-    print("JSON Result:", result)
     return result
 
 if __name__ == "__main__":
