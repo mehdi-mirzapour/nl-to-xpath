@@ -8,6 +8,8 @@ from playwright.sync_api import sync_playwright
 from rag_html import process_html_query 
 from rich.logging import RichHandler
 from utils import *
+from pprint import pformat
+
 
 # ------------------------
 # Setup Logging with Emojis
@@ -15,10 +17,10 @@ from utils import *
 logging.basicConfig(
     level="INFO",
     format="%(message)s",
-    datefmt="[%X]",
-    handlers=[RichHandler(markup=True)]
+    handlers=[RichHandler(markup=True, rich_tracebacks=True)]
 )
 log = logging.getLogger("rich")
+
 
 instruction = """
 open localhost:5173 and then login with user name as `mehdi.mirzapour@gmail.com` and password  as `pass1234`
@@ -68,18 +70,33 @@ with sync_playwright() as p:
         elif classification == "page.fill":
             html = page.content()
             result = extract_xpath_pattern(instruction_text, html, model)
-            log.info(f"🖊️ Filling field at XPath `{result['xpath']}` with value `{result['fill']}`")
+            
+            prefix_spaces = " " * 30
+
+            print(f"{prefix_spaces}🖨️  Extracted XPath result (print):")
+            for key, value in result.items():
+                print(f"{prefix_spaces}   {key}: {value}")
+            
             page.locator(result["xpath"]).fill(result["fill"])
 
         elif classification == "page.click":
             html = page.content()
             result = extract_xpath_pattern(instruction_text, html, model)
-            log.info(f"🖱️ Clicking field at XPath `{result['xpath']}`")
+            
+            prefix_spaces = " " * 30
+
+            print(f"{prefix_spaces}🖨️  Extracted XPath result (print):")
+            for key, value in result.items():
+                print(f"{prefix_spaces}   {key}: {value}")
+
+                
             page.locator(result["xpath"]).click()
             page.wait_for_timeout(5000)
 
         elif classification == "page.wait":
             log.info(f"⏳ Waiting for {waiting_time} seconds...")
+            if waiting_time is None:
+                waiting_time = 5
             page.wait_for_timeout(waiting_time * 1000)
 
         elif classification == "browser.close":
