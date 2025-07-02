@@ -46,7 +46,7 @@
             "waiting_time": null
         },
         {
-            "original instruction": "Click on the 'Add Items' button again.",
+            "original instruction": "Click on the 'Add Items' button.",
             "classification": "page.click",
             "waiting_time": null
         },

@@ -32,3 +32,5 @@ page.locator('input[name="email"]').fill("me@example.com")
 They can’t interpret:
 
 "Type my email into the login box"
+
+"Hover over 'ok' under 'Employee' section"
