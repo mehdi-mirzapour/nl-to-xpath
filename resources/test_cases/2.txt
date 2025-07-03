@@ -1,0 +1,3 @@
+open localhost:5173 and then login with user name as mehdi.mirzapour@gmail.com and password  as pass1234
+open localhost:5173/items .
+hover over `Full name` and then `Full name` and then `Actions`.
