@@ -541,7 +541,7 @@
         "kind": 2,
         "importPath": "src.xpath_extractor",
         "description": "src.xpath_extractor",
-        "peekOfCode": "def extract_xpath_pattern(instruction: str, html: str, model) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Load environment variables\n    load_dotenv()\n    api_key = os.getenv(\"MISTRAL_API_KEY\")\n    if not api_key:\n        raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\n    os.environ[\"MISTRAL_API_KEY\"] = api_key\n    # Prompt template\n    template = \"\"\"",
+        "peekOfCode": "def extract_xpath_pattern(instruction: str, html: str, model) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Prompt template\n    template = \"\"\"\nYou are an expert UI assistant that converts natural language commands into web automation step.\nYou will be given:\n- A web page's full HTML\n- A natural language instruction from the user\nYour job:\n- Translate the instruction into one step, each using an action from only both category: \"click\", \"fill\" all lowercase.",
         "detail": "src.xpath_extractor",
         "documentation": {}
     },

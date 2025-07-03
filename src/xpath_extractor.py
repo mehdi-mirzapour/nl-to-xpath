@@ -18,13 +18,6 @@ def extract_json_from_codeblock(output: str) -> str:
 
 def extract_xpath_pattern(instruction: str, html: str, model) -> str:
     """Run the instruction + HTML through Mistral and return JSON result."""
-    # Load environment variables
-    load_dotenv()
-        
-    api_key = os.getenv("MISTRAL_API_KEY")
-    if not api_key:
-        raise ValueError("MISTRAL_API_KEY not set in environment.")
-    os.environ["MISTRAL_API_KEY"] = api_key
 
     # Prompt template
     template = """
