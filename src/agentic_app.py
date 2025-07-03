@@ -1,3 +1,4 @@
+import argparse
 import json
 import logging
 from models import model
@@ -8,8 +9,6 @@ from playwright.sync_api import sync_playwright
 from rag_html import process_html_query 
 from rich.logging import RichHandler
 from utils import *
-from pprint import pformat
-
 
 # ------------------------
 # Setup Logging with Emojis
@@ -21,17 +20,21 @@ logging.basicConfig(
 )
 log = logging.getLogger("rich")
 
+# ------------------------
+# Parse command-line argument for instruction file
+# ------------------------
+parser = argparse.ArgumentParser(description="Run browser instructions from a file.")
+parser.add_argument("instruction_file", help="Path to the instruction text file.")
+args = parser.parse_args()
 
-instruction = """
-open localhost:5173 and then login with user name as `mehdi.mirzapour@gmail.com` and password  as `pass1234`
-open localhost:5173/items .
-click on add items and then fill out the Title with "Meeting Agenda" and then the Description as "Topics to Discuss". click on save buttom.
-click on the add items and enter the Title as "Event Name" and the Description as "Event Details". click on save buttom.
-exit the browser.
-"""
+# ------------------------
+# Read instructions from file
+# ------------------------
+with open(args.instruction_file, "r") as f:
+    instruction = f.read().strip()
 
 # Wrap input in JSON structure
-user_data = {"user_inputs": instruction.strip()}
+user_data = {"user_inputs": instruction}
 log.info(f"🗃️  User Input as JSON:\n{json.dumps(user_data, indent=2)}")
 
 # Convert NL to structured instructions
@@ -70,26 +73,17 @@ with sync_playwright() as p:
         elif classification == "page.fill":
             html = page.content()
             result = extract_xpath_pattern(instruction_text, html, model)
-            
-            prefix_spaces = " " * 30
-
-            print(f"{prefix_spaces}🖨️  Extracted XPath result (print):")
+            print(" " * 30 + "🖨️  Extracted XPath result (print):")
             for key, value in result.items():
-                print(f"{prefix_spaces}   {key}: {value}")
-            
+                print(" " * 30 + f"{key}: {value}")
             page.locator(result["xpath"]).fill(result["fill"])
 
         elif classification == "page.click":
             html = page.content()
             result = extract_xpath_pattern(instruction_text, html, model)
-            
-            prefix_spaces = " " * 30
-
-            print(f"{prefix_spaces}🖨️  Extracted XPath result (print):")
+            print(" " * 30 + "🖨️  Extracted XPath result (print):")
             for key, value in result.items():
-                print(f"{prefix_spaces}   {key}: {value}")
-
-                
+                print(" " * 30 + f"{key}: {value}")
             page.locator(result["xpath"]).click()
             page.wait_for_timeout(5000)
 

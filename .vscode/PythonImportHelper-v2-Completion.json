@@ -1,5 +1,14 @@
 [
     {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
         "label": "json",
         "kind": 6,
         "isExtraImport": true,
@@ -127,14 +136,6 @@
         "description": "utils",
         "isExtraImport": true,
         "detail": "utils",
-        "documentation": {}
-    },
-    {
-        "label": "pformat",
-        "importPath": "pprint",
-        "description": "pprint",
-        "isExtraImport": true,
-        "detail": "pprint",
         "documentation": {}
     },
     {
@@ -352,16 +353,25 @@
         "kind": 5,
         "importPath": "src.agentic_app",
         "description": "src.agentic_app",
-        "peekOfCode": "log = logging.getLogger(\"rich\")\ninstruction = \"\"\"\nopen localhost:5173 and then login with user name as `mehdi.mirzapour@gmail.com` and password  as `pass1234`\nopen localhost:5173/items .\nclick on add items and then fill out the Title with \"Meeting Agenda\" and then the Description as \"Topics to Discuss\". click on save buttom.\nclick on the add items and enter the Title as \"Event Name\" and the Description as \"Event Details\". click on save buttom.\nexit the browser.\n\"\"\"\n# Wrap input in JSON structure\nuser_data = {\"user_inputs\": instruction.strip()}",
+        "peekOfCode": "log = logging.getLogger(\"rich\")\n# ------------------------\n# Parse command-line argument for instruction file\n# ------------------------\nparser = argparse.ArgumentParser(description=\"Run browser instructions from a file.\")\nparser.add_argument(\"instruction_file\", help=\"Path to the instruction text file.\")\nargs = parser.parse_args()\n# ------------------------\n# Read instructions from file\n# ------------------------",
         "detail": "src.agentic_app",
         "documentation": {}
     },
     {
-        "label": "instruction",
+        "label": "parser",
         "kind": 5,
         "importPath": "src.agentic_app",
         "description": "src.agentic_app",
-        "peekOfCode": "instruction = \"\"\"\nopen localhost:5173 and then login with user name as `mehdi.mirzapour@gmail.com` and password  as `pass1234`\nopen localhost:5173/items .\nclick on add items and then fill out the Title with \"Meeting Agenda\" and then the Description as \"Topics to Discuss\". click on save buttom.\nclick on the add items and enter the Title as \"Event Name\" and the Description as \"Event Details\". click on save buttom.\nexit the browser.\n\"\"\"\n# Wrap input in JSON structure\nuser_data = {\"user_inputs\": instruction.strip()}\nlog.info(f\"🗃️  User Input as JSON:\\n{json.dumps(user_data, indent=2)}\")",
+        "peekOfCode": "parser = argparse.ArgumentParser(description=\"Run browser instructions from a file.\")\nparser.add_argument(\"instruction_file\", help=\"Path to the instruction text file.\")\nargs = parser.parse_args()\n# ------------------------\n# Read instructions from file\n# ------------------------\nwith open(args.instruction_file, \"r\") as f:\n    instruction = f.read().strip()\n# Wrap input in JSON structure\nuser_data = {\"user_inputs\": instruction}",
+        "detail": "src.agentic_app",
+        "documentation": {}
+    },
+    {
+        "label": "args",
+        "kind": 5,
+        "importPath": "src.agentic_app",
+        "description": "src.agentic_app",
+        "peekOfCode": "args = parser.parse_args()\n# ------------------------\n# Read instructions from file\n# ------------------------\nwith open(args.instruction_file, \"r\") as f:\n    instruction = f.read().strip()\n# Wrap input in JSON structure\nuser_data = {\"user_inputs\": instruction}\nlog.info(f\"🗃️  User Input as JSON:\\n{json.dumps(user_data, indent=2)}\")\n# Convert NL to structured instructions",
         "detail": "src.agentic_app",
         "documentation": {}
     },
@@ -370,7 +380,7 @@
         "kind": 5,
         "importPath": "src.agentic_app",
         "description": "src.agentic_app",
-        "peekOfCode": "user_data = {\"user_inputs\": instruction.strip()}\nlog.info(f\"🗃️  User Input as JSON:\\n{json.dumps(user_data, indent=2)}\")\n# Convert NL to structured instructions\noutput = segment(instruction, model)\nlog.info(\"🧩 Sentence Segmentor Output:\\n\" + str(output))\n# Classify the instructions\noutput = classify(output, model)\nlog.info(\"🧠 Task Mapper Output:\\n\" + str(output))\n# Save to JSON file\nwith open(\"resources/docs/classification.json\", \"w\") as f:",
+        "peekOfCode": "user_data = {\"user_inputs\": instruction}\nlog.info(f\"🗃️  User Input as JSON:\\n{json.dumps(user_data, indent=2)}\")\n# Convert NL to structured instructions\noutput = segment(instruction, model)\nlog.info(\"🧩 Sentence Segmentor Output:\\n\" + str(output))\n# Classify the instructions\noutput = classify(output, model)\nlog.info(\"🧠 Task Mapper Output:\\n\" + str(output))\n# Save to JSON file\nwith open(\"resources/docs/classification.json\", \"w\") as f:",
         "detail": "src.agentic_app",
         "documentation": {}
     },
