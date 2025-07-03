@@ -45,12 +45,22 @@ log.info("🧩 Sentence Segmentor Output:\n" + str(output))
 output = classify(output, model)
 log.info("🧠 Task Mapper Output:\n" + str(output))
 
-# Save to JSON file
-with open("resources/docs/classification.json", "w") as f:
+# Save to JSON file (same name as input but .json extension)
+json_path = args.instruction_file.rsplit('.', 1)[0] + ".json"
+with open(json_path, "w") as f:
     json.dump(output, f, indent=4)
 
-with open("resources/docs/classification.json", "r") as f:
+with open(json_path, "r") as f:
     out = json.load(f)
+
+page_commands = [
+    "from playwright.sync_api import sync_playwright",
+    "",
+    "with sync_playwright() as p:",
+    "    browser = p.chromium.launch(headless=False)",
+    "    page = browser.new_page()",
+    ""
+]
 
 with sync_playwright() as p:
     browser = p.chromium.launch(headless=False)
@@ -69,6 +79,7 @@ with sync_playwright() as p:
             url = extract_url(instruction_text)
             log.info(f"🌍 Navigating to: {url}")
             page.goto(url)
+            page_commands.append(f"    page.goto({repr(url)})")
 
         elif classification == "page.fill":
             html = page.content()
@@ -77,6 +88,7 @@ with sync_playwright() as p:
             for key, value in result.items():
                 print(" " * 30 + f"{key}: {value}")
             page.locator(result["xpath"]).fill(result["fill"])
+            page_commands.append(f'    page.locator({repr(result["xpath"])}).fill({repr(result["fill"])})')
 
         elif classification == "page.click":
             html = page.content()
@@ -86,13 +98,28 @@ with sync_playwright() as p:
                 print(" " * 30 + f"{key}: {value}")
             page.locator(result["xpath"]).click()
             page.wait_for_timeout(5000)
+            page_commands.append(f'    page.locator({repr(result["xpath"])}).click()')
+            page_commands.append(f"    page.wait_for_timeout(5000)")
 
         elif classification == "page.wait":
             log.info(f"⏳ Waiting for {waiting_time} seconds...")
             if waiting_time is None:
                 waiting_time = 5
             page.wait_for_timeout(waiting_time * 1000)
+            page_commands.append(f"    page.wait_for_timeout({waiting_time * 1000})")
 
         elif classification == "browser.close":
             log.info("🚪 Closing browser...")
             browser.close()
+            page_commands.append("    browser.close()")
+
+# Add final line to close browser context if not closed explicitly
+if not any("browser.close()" in cmd for cmd in page_commands):
+    page_commands.append("    browser.close()")
+
+# Save page commands as .py file with same base name as input
+py_path = args.instruction_file.rsplit('.', 1)[0] + ".py"
+with open(py_path, "w") as f:
+    f.write("\n".join(page_commands))
+
+log.info(f"💾 Saved browser commands to {py_path}")

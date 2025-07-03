@@ -1,5 +1,21 @@
 [
     {
+        "label": "sync_playwright",
+        "importPath": "playwright.sync_api",
+        "description": "playwright.sync_api",
+        "isExtraImport": true,
+        "detail": "playwright.sync_api",
+        "documentation": {}
+    },
+    {
+        "label": "sync_playwright",
+        "importPath": "playwright.sync_api",
+        "description": "playwright.sync_api",
+        "isExtraImport": true,
+        "detail": "playwright.sync_api",
+        "documentation": {}
+    },
+    {
         "label": "argparse",
         "kind": 6,
         "isExtraImport": true,
@@ -80,22 +96,6 @@
         "description": "xpath_extractor",
         "isExtraImport": true,
         "detail": "xpath_extractor",
-        "documentation": {}
-    },
-    {
-        "label": "sync_playwright",
-        "importPath": "playwright.sync_api",
-        "description": "playwright.sync_api",
-        "isExtraImport": true,
-        "detail": "playwright.sync_api",
-        "documentation": {}
-    },
-    {
-        "label": "sync_playwright",
-        "importPath": "playwright.sync_api",
-        "description": "playwright.sync_api",
-        "isExtraImport": true,
-        "detail": "playwright.sync_api",
         "documentation": {}
     },
     {
@@ -348,7 +348,7 @@
         "kind": 5,
         "importPath": "src.agentic_app",
         "description": "src.agentic_app",
-        "peekOfCode": "user_data = {\"user_inputs\": instruction}\nlog.info(f\"🗃️  User Input as JSON:\\n{json.dumps(user_data, indent=2)}\")\n# Convert NL to structured instructions\noutput = segment(instruction, model)\nlog.info(\"🧩 Sentence Segmentor Output:\\n\" + str(output))\n# Classify the instructions\noutput = classify(output, model)\nlog.info(\"🧠 Task Mapper Output:\\n\" + str(output))\n# Save to JSON file\nwith open(\"resources/docs/classification.json\", \"w\") as f:",
+        "peekOfCode": "user_data = {\"user_inputs\": instruction}\nlog.info(f\"🗃️  User Input as JSON:\\n{json.dumps(user_data, indent=2)}\")\n# Convert NL to structured instructions\noutput = segment(instruction, model)\nlog.info(\"🧩 Sentence Segmentor Output:\\n\" + str(output))\n# Classify the instructions\noutput = classify(output, model)\nlog.info(\"🧠 Task Mapper Output:\\n\" + str(output))\n# Save to JSON file (same name as input but .json extension)\njson_path = args.instruction_file.rsplit('.', 1)[0] + \".json\"",
         "detail": "src.agentic_app",
         "documentation": {}
     },
@@ -357,7 +357,7 @@
         "kind": 5,
         "importPath": "src.agentic_app",
         "description": "src.agentic_app",
-        "peekOfCode": "output = segment(instruction, model)\nlog.info(\"🧩 Sentence Segmentor Output:\\n\" + str(output))\n# Classify the instructions\noutput = classify(output, model)\nlog.info(\"🧠 Task Mapper Output:\\n\" + str(output))\n# Save to JSON file\nwith open(\"resources/docs/classification.json\", \"w\") as f:\n    json.dump(output, f, indent=4)\nwith open(\"resources/docs/classification.json\", \"r\") as f:\n    out = json.load(f)",
+        "peekOfCode": "output = segment(instruction, model)\nlog.info(\"🧩 Sentence Segmentor Output:\\n\" + str(output))\n# Classify the instructions\noutput = classify(output, model)\nlog.info(\"🧠 Task Mapper Output:\\n\" + str(output))\n# Save to JSON file (same name as input but .json extension)\njson_path = args.instruction_file.rsplit('.', 1)[0] + \".json\"\nwith open(json_path, \"w\") as f:\n    json.dump(output, f, indent=4)\nwith open(json_path, \"r\") as f:",
         "detail": "src.agentic_app",
         "documentation": {}
     },
@@ -366,7 +366,34 @@
         "kind": 5,
         "importPath": "src.agentic_app",
         "description": "src.agentic_app",
-        "peekOfCode": "output = classify(output, model)\nlog.info(\"🧠 Task Mapper Output:\\n\" + str(output))\n# Save to JSON file\nwith open(\"resources/docs/classification.json\", \"w\") as f:\n    json.dump(output, f, indent=4)\nwith open(\"resources/docs/classification.json\", \"r\") as f:\n    out = json.load(f)\nwith sync_playwright() as p:\n    browser = p.chromium.launch(headless=False)\n    page = browser.new_page()",
+        "peekOfCode": "output = classify(output, model)\nlog.info(\"🧠 Task Mapper Output:\\n\" + str(output))\n# Save to JSON file (same name as input but .json extension)\njson_path = args.instruction_file.rsplit('.', 1)[0] + \".json\"\nwith open(json_path, \"w\") as f:\n    json.dump(output, f, indent=4)\nwith open(json_path, \"r\") as f:\n    out = json.load(f)\npage_commands = [\n    \"from playwright.sync_api import sync_playwright\",",
+        "detail": "src.agentic_app",
+        "documentation": {}
+    },
+    {
+        "label": "json_path",
+        "kind": 5,
+        "importPath": "src.agentic_app",
+        "description": "src.agentic_app",
+        "peekOfCode": "json_path = args.instruction_file.rsplit('.', 1)[0] + \".json\"\nwith open(json_path, \"w\") as f:\n    json.dump(output, f, indent=4)\nwith open(json_path, \"r\") as f:\n    out = json.load(f)\npage_commands = [\n    \"from playwright.sync_api import sync_playwright\",\n    \"\",\n    \"with sync_playwright() as p:\",\n    \"    browser = p.chromium.launch(headless=False)\",",
+        "detail": "src.agentic_app",
+        "documentation": {}
+    },
+    {
+        "label": "page_commands",
+        "kind": 5,
+        "importPath": "src.agentic_app",
+        "description": "src.agentic_app",
+        "peekOfCode": "page_commands = [\n    \"from playwright.sync_api import sync_playwright\",\n    \"\",\n    \"with sync_playwright() as p:\",\n    \"    browser = p.chromium.launch(headless=False)\",\n    \"    page = browser.new_page()\",\n    \"\"\n]\nwith sync_playwright() as p:\n    browser = p.chromium.launch(headless=False)",
+        "detail": "src.agentic_app",
+        "documentation": {}
+    },
+    {
+        "label": "py_path",
+        "kind": 5,
+        "importPath": "src.agentic_app",
+        "description": "src.agentic_app",
+        "peekOfCode": "py_path = args.instruction_file.rsplit('.', 1)[0] + \".py\"\nwith open(py_path, \"w\") as f:\n    f.write(\"\\n\".join(page_commands))\nlog.info(f\"💾 Saved browser commands to {py_path}\")",
         "detail": "src.agentic_app",
         "documentation": {}
     },
