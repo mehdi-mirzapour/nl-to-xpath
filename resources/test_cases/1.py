@@ -5,10 +5,9 @@ with sync_playwright() as p:
     page = browser.new_page()
 
     page.goto('localhost:5173')
-    page.wait_for_timeout(5000)
     page.locator("//input[@id='username']").fill('mehdi.mirzapour@gmail.com')
     page.locator("//input[@name='password']").fill('pass1234')
-    page.locator("//button[@type='submit']").click()
+    page.locator("//button[contains(text(), 'Log In')]").click()
     page.wait_for_timeout(5000)
     page.goto('localhost:5173/items')
     page.locator("//button[@value='add-item']").click()

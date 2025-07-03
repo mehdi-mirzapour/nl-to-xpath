@@ -6,11 +6,6 @@
             "waiting_time": null
         },
         {
-            "original instruction": "Find the login form.",
-            "classification": "page.wait",
-            "waiting_time": null
-        },
-        {
             "original instruction": "Enter 'mehdi.mirzapour@gmail.com' into the username field.",
             "classification": "page.fill",
             "waiting_time": null
@@ -21,7 +16,7 @@
             "waiting_time": null
         },
         {
-            "original instruction": "Submit the login form.",
+            "original instruction": "Click on the 'Login' button.",
             "classification": "page.click",
             "waiting_time": null
         },
@@ -31,7 +26,7 @@
             "waiting_time": null
         },
         {
-            "original instruction": "Find and click on the 'Add Items' button.",
+            "original instruction": "Click on the 'Add Items' button.",
             "classification": "page.click",
             "waiting_time": null
         },
@@ -46,12 +41,12 @@
             "waiting_time": null
         },
         {
-            "original instruction": "Find and click on the 'Save' button.",
+            "original instruction": "Click on the 'Save' button.",
             "classification": "page.click",
             "waiting_time": null
         },
         {
-            "original instruction": "Find and click on the 'Add Items' button again.",
+            "original instruction": "Click on the 'Add Items' button.",
             "classification": "page.click",
             "waiting_time": null
         },
@@ -66,7 +61,7 @@
             "waiting_time": null
         },
         {
-            "original instruction": "Find and click on the 'Save' button.",
+            "original instruction": "Click on the 'Save' button.",
             "classification": "page.click",
             "waiting_time": null
         },
