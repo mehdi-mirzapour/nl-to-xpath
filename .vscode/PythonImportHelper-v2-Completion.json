@@ -99,22 +99,6 @@
         "documentation": {}
     },
     {
-        "label": "sync_playwright",
-        "importPath": "playwright.sync_api",
-        "description": "playwright.sync_api",
-        "isExtraImport": true,
-        "detail": "playwright.sync_api",
-        "documentation": {}
-    },
-    {
-        "label": "sync_playwright",
-        "importPath": "playwright.sync_api",
-        "description": "playwright.sync_api",
-        "isExtraImport": true,
-        "detail": "playwright.sync_api",
-        "documentation": {}
-    },
-    {
         "label": "process_html_query",
         "importPath": "rag_html",
         "description": "rag_html",
@@ -333,22 +317,6 @@
         "documentation": {}
     },
     {
-        "label": "etree",
-        "importPath": "lxml",
-        "description": "lxml",
-        "isExtraImport": true,
-        "detail": "lxml",
-        "documentation": {}
-    },
-    {
-        "label": "html",
-        "importPath": "lxml",
-        "description": "lxml",
-        "isExtraImport": true,
-        "detail": "lxml",
-        "documentation": {}
-    },
-    {
         "label": "log",
         "kind": 5,
         "importPath": "src.agentic_app",
@@ -553,60 +521,6 @@
         "description": "src.xpath_extractor",
         "peekOfCode": "def extract_xpath_pattern(instruction: str, html: str, model) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Prompt template\n    template = \"\"\"\nYou are an expert UI assistant that converts natural language commands into web automation step.\nYou will be given:\n- A web page's full HTML\n- A natural language instruction from the user\nYour job:\n- Translate the instruction into one step, each using an action from only both category: \"click\", \"fill\" all lowercase.",
         "detail": "src.xpath_extractor",
-        "documentation": {}
-    },
-    {
-        "label": "describe_element",
-        "kind": 2,
-        "importPath": "test.test_nl_to_xpath",
-        "description": "test.test_nl_to_xpath",
-        "peekOfCode": "def describe_element(elem):\n    tag = elem.tag\n    text = (elem.text or \"\").strip()\n    attrib = {k: v for k, v in elem.attrib.items()}\n    return f\"<{tag} {attrib}> text='{text}'\"\nfor entry in instructions:\n    nl = entry[\"nl\"]\n    xpath = entry[\"xpath\"]\n    elements = dom.xpath(xpath)\n    print(f\"Instruction: {nl}\")",
-        "detail": "test.test_nl_to_xpath",
-        "documentation": {}
-    },
-    {
-        "label": "instructions",
-        "kind": 5,
-        "importPath": "test.test_nl_to_xpath",
-        "description": "test.test_nl_to_xpath",
-        "peekOfCode": "instructions = [\n    {\n        \"nl\": \"Click on 'about us'\",\n        \"xpath\": \"//a[normalize-space(text())='About Us']\"\n    },\n    {\n        \"nl\": \"Hover over 'ok' under 'Employee' section\",\n        \"xpath\": (\n            \"//section[@id='employee-section']\"\n            \"//div[contains(@class, 'employee')]\"",
-        "detail": "test.test_nl_to_xpath",
-        "documentation": {}
-    },
-    {
-        "label": "html_file_path",
-        "kind": 5,
-        "importPath": "test.test_nl_to_xpath",
-        "description": "test.test_nl_to_xpath",
-        "peekOfCode": "html_file_path = \"resources/test_case_1.html\"\n# Read HTML from file\nwith open(html_file_path, 'r', encoding='utf-8') as f:\n    html_content = f.read()\n# Parse the HTML string into an lxml etree object\ndom = etree.HTML(html_content)\ndef describe_element(elem):\n    tag = elem.tag\n    text = (elem.text or \"\").strip()\n    attrib = {k: v for k, v in elem.attrib.items()}",
-        "detail": "test.test_nl_to_xpath",
-        "documentation": {}
-    },
-    {
-        "label": "dom",
-        "kind": 5,
-        "importPath": "test.test_nl_to_xpath",
-        "description": "test.test_nl_to_xpath",
-        "peekOfCode": "dom = etree.HTML(html_content)\ndef describe_element(elem):\n    tag = elem.tag\n    text = (elem.text or \"\").strip()\n    attrib = {k: v for k, v in elem.attrib.items()}\n    return f\"<{tag} {attrib}> text='{text}'\"\nfor entry in instructions:\n    nl = entry[\"nl\"]\n    xpath = entry[\"xpath\"]\n    elements = dom.xpath(xpath)",
-        "detail": "test.test_nl_to_xpath",
-        "documentation": {}
-    },
-    {
-        "label": "tree",
-        "kind": 5,
-        "importPath": "test.test_xpath",
-        "description": "test.test_xpath",
-        "peekOfCode": "tree = html.fromstring(content)\n# Define XPath expressions to test\nxpaths = {\n    \"All links\": \"//a\",\n    \"About Us link by text\": \"//a[text()='About Us']\",\n    \"About Us link by href\": \"//a[@href='/about-us']\",\n    \"All buttons\": \"//button\",\n    \"Visible OK buttons\": \"//button[text()='OK' and not(contains(@style, 'display: none'))]\",\n    \"Hidden button\": \"//button[contains(@style, 'display: none')]\",\n    \"Country dropdown\": \"//select[@id='country-select']\",",
-        "detail": "test.test_xpath",
-        "documentation": {}
-    },
-    {
-        "label": "xpaths",
-        "kind": 5,
-        "importPath": "test.test_xpath",
-        "description": "test.test_xpath",
-        "peekOfCode": "xpaths = {\n    \"All links\": \"//a\",\n    \"About Us link by text\": \"//a[text()='About Us']\",\n    \"About Us link by href\": \"//a[@href='/about-us']\",\n    \"All buttons\": \"//button\",\n    \"Visible OK buttons\": \"//button[text()='OK' and not(contains(@style, 'display: none'))]\",\n    \"Hidden button\": \"//button[contains(@style, 'display: none')]\",\n    \"Country dropdown\": \"//select[@id='country-select']\",\n    \"Employee section header\": \"//section[@id='employee-section']/h2\",\n    \"Option with value='canada'\": \"//option[@value='canada']\",",
-        "detail": "test.test_xpath",
         "documentation": {}
     }
 ]
