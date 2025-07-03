@@ -9,6 +9,7 @@ from playwright.sync_api import sync_playwright
 from rag_html import process_html_query 
 from rich.logging import RichHandler
 from utils import *
+import os
 
 # ------------------------
 # Setup Logging with Emojis
@@ -99,6 +100,51 @@ with sync_playwright() as p:
             page.locator(result["xpath"]).click()
             page.wait_for_timeout(5000)
             page_commands.append(f'    page.locator({repr(result["xpath"])}).click()')
+            page_commands.append(f"    page.wait_for_timeout(5000)")
+
+        elif classification == "page.hover":
+            html = page.content()
+            result = extract_xpath_pattern(instruction_text, html, model)
+            print(" " * 30 + "🖨️  Extracted XPath result (print):")
+            for key, value in result.items():
+                print(" " * 30 + f"{key}: {value}")
+            xpath = result["xpath"]
+            # Wait for element to ensure it's present and visible
+            page.wait_for_selector(xpath, state='visible', timeout=10000)
+            element = page.locator(xpath)
+            
+            # Verify element is visible
+            if not element.is_visible():
+                print("Error: Element is not visible!")
+                browser.close()
+                exit()
+            
+            # Add temporary CSS to highlight the element on click
+            page.evaluate(
+                """() => {
+                    const style = document.createElement('style');
+                    style.innerHTML = 'th:active, th:focus { background-color: yellow !important; outline: 2px solid blue !important; }';
+                    document.head.appendChild(style);
+                }"""
+            )
+            
+            # Get bounding box for explicit mouse movement
+            bounding_box = element.bounding_box()
+            if bounding_box:
+                x = bounding_box['x'] + bounding_box['width'] / 2
+                y = bounding_box['y'] + bounding_box['height'] / 2
+                print(f"Moving mouse to: ({x}, {y})")
+                page.mouse.move(x, y)  # Explicit mouse movement for visibility
+                # Perform click to select the element
+                element.click()
+                # Capture screenshot to verify
+                png_path = args.instruction_file.rsplit('.', 1)[0] + ".png"
+                page.screenshot(path=png_path)
+                print(f"Screenshot saved at: {os.path.abspath(png_path)}")
+                # Add delay to observe effect
+                page.wait_for_timeout(3000)
+            
+            page_commands.append(f'    page.locator({repr(result["xpath"])}).hover()')
             page_commands.append(f"    page.wait_for_timeout(5000)")
 
         elif classification == "page.wait":

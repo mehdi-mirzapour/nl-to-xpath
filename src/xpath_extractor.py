@@ -28,7 +28,7 @@ You will be given:
 - A natural language instruction from the user
 
 Your job:
-- Translate the instruction into one step, each using an action from only both category: "click", "fill" all lowercase.
+- Translate the instruction into one step, each using an action from only three categories: "click", "hover", "fill" all lowercase.
 - Always use "click" for dropdown toggles (e.g., class includes `w-dropdown-toggle`)
 - XPaths must be **valid XPath 1.0** and use `//` syntax where needed.
 - The output must be ONLY valid JSON (no text or explanation), following this format:

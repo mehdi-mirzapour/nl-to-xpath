@@ -56,6 +56,14 @@
         "documentation": {}
     },
     {
+        "label": "sync_playwright",
+        "importPath": "playwright.sync_api",
+        "description": "playwright.sync_api",
+        "isExtraImport": true,
+        "detail": "playwright.sync_api",
+        "documentation": {}
+    },
+    {
         "label": "argparse",
         "kind": 6,
         "isExtraImport": true,
@@ -163,6 +171,15 @@
         "documentation": {}
     },
     {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
         "label": "ChatOpenAI",
         "importPath": "langchain_openai",
         "description": "langchain_openai",
@@ -224,15 +241,6 @@
         "description": "dotenv",
         "isExtraImport": true,
         "detail": "dotenv",
-        "documentation": {}
-    },
-    {
-        "label": "os",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
         "documentation": {}
     },
     {
@@ -586,7 +594,7 @@
         "kind": 2,
         "importPath": "src.xpath_extractor",
         "description": "src.xpath_extractor",
-        "peekOfCode": "def extract_xpath_pattern(instruction: str, html: str, model) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Prompt template\n    template = \"\"\"\nYou are an expert UI assistant that converts natural language commands into web automation step.\nYou will be given:\n- A web page's full HTML\n- A natural language instruction from the user\nYour job:\n- Translate the instruction into one step, each using an action from only both category: \"click\", \"fill\" all lowercase.",
+        "peekOfCode": "def extract_xpath_pattern(instruction: str, html: str, model) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Prompt template\n    template = \"\"\"\nYou are an expert UI assistant that converts natural language commands into web automation step.\nYou will be given:\n- A web page's full HTML\n- A natural language instruction from the user\nYour job:\n- Translate the instruction into one step, each using an action from only three categories: \"click\", \"hover\", \"fill\" all lowercase.",
         "detail": "src.xpath_extractor",
         "documentation": {}
     }

@@ -33,6 +33,7 @@ For each line, classify it as one of the following actions:
    - page.goto
    - page.fill
    - page.click
+   - page.hover
    - page.wait
    - browser.close
 
