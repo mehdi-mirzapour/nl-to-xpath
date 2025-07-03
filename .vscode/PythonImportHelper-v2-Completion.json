@@ -123,6 +123,30 @@
         "documentation": {}
     },
     {
+        "label": "model",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "segment",
+        "importPath": "sentence_segmentor",
+        "description": "sentence_segmentor",
+        "isExtraImport": true,
+        "detail": "sentence_segmentor",
+        "documentation": {}
+    },
+    {
         "label": "segment",
         "importPath": "sentence_segmentor",
         "description": "sentence_segmentor",
@@ -136,6 +160,14 @@
         "description": "task_mapper",
         "isExtraImport": true,
         "detail": "task_mapper",
+        "documentation": {}
+    },
+    {
+        "label": "extract_xpath_pattern",
+        "importPath": "xpath_extractor",
+        "description": "xpath_extractor",
+        "isExtraImport": true,
+        "detail": "xpath_extractor",
         "documentation": {}
     },
     {
@@ -362,6 +394,15 @@
         "description": "pathlib",
         "isExtraImport": true,
         "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
         "documentation": {}
     },
     {
@@ -596,6 +637,24 @@
         "description": "src.xpath_extractor",
         "peekOfCode": "def extract_xpath_pattern(instruction: str, html: str, model) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Prompt template\n    template = \"\"\"\nYou are an expert UI assistant that converts natural language commands into web automation step.\nYou will be given:\n- A web page's full HTML\n- A natural language instruction from the user\nYour job:\n- Translate the instruction into one step, each using an action from only three categories: \"click\", \"hover\", \"fill\" all lowercase.",
         "detail": "src.xpath_extractor",
+        "documentation": {}
+    },
+    {
+        "label": "test_segment_basic_instruction",
+        "kind": 2,
+        "importPath": "tests.test_sent_segmentor",
+        "description": "tests.test_sent_segmentor",
+        "peekOfCode": "def test_segment_basic_instruction():\n    instruction = \"\"\"\n    open localhost:5173 and then login with user name as `mehdi.mirzapour@gmail.com` and password  as `pass1234`\n    open localhost:5173/items and click on add items.\n    \"\"\"\n    expected_output = {\n        \"instructions\": [\n            \"Open the URL 'localhost:5173'.\",\n            \"Find the username input field and enter 'mehdi.mirzapour@gmail.com'.\",\n            \"Find the password input field and enter 'pass1234'.\",",
+        "detail": "tests.test_sent_segmentor",
+        "documentation": {}
+    },
+    {
+        "label": "test_extract_xpath_pattern_login_button",
+        "kind": 2,
+        "importPath": "tests.test_xpath_extractor",
+        "description": "tests.test_xpath_extractor",
+        "peekOfCode": "def test_extract_xpath_pattern_login_button():\n    instruction = \"Click on the 'Login' button.\"\n    with open(\"resources/unit_tests/unit_test.html\", \"r\", encoding=\"utf-8\") as f:\n        html = f.read()\n    result = extract_xpath_pattern(instruction, html, model)\n    assert isinstance(result, dict)\n    assert result[\"action\"] == \"click\"\n    assert \"Login\" in result[\"xpath\"]\n    assert result[\"fill\"] == \"\"",
+        "detail": "tests.test_xpath_extractor",
         "documentation": {}
     }
 ]

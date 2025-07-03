@@ -62,7 +62,7 @@ Example 2:
 
 if __name__ == "__main__":
     instruction = "Click on the 'Login' button."
-    with open("resources/test_case_3.html", "r", encoding="utf-8") as f:
+    with open("resources/unit_tests/unit_test.html", "r", encoding="utf-8") as f:
         html =f.read()
 
     output = extract_xpath_pattern(instruction, html, model)
