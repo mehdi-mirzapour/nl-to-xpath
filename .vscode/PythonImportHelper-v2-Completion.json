@@ -653,7 +653,7 @@
         "kind": 2,
         "importPath": "tests.test_xpath_extractor",
         "description": "tests.test_xpath_extractor",
-        "peekOfCode": "def test_extract_xpath_pattern_login_button():\n    instruction = \"Click on the 'Login' button.\"\n    with open(\"resources/unit_tests/unit_test.html\", \"r\", encoding=\"utf-8\") as f:\n        html = f.read()\n    result = extract_xpath_pattern(instruction, html, model)\n    assert isinstance(result, dict)\n    assert result[\"action\"] == \"click\"\n    assert \"Login\" in result[\"xpath\"]\n    assert result[\"fill\"] == \"\"",
+        "peekOfCode": "def test_extract_xpath_pattern_login_button():\n    instruction = \"Click on the 'Login' button.\"\n    with open(\"resources/unit_tests/unit_test.html\", \"r\", encoding=\"utf-8\") as f:\n        html = f.read()\n    result = extract_xpath_pattern(instruction, html, model)\n    assert isinstance(result, dict)\n    assert result[\"action\"] == \"click\"\n    assert result[\"fill\"] == \"\"",
         "detail": "tests.test_xpath_extractor",
         "documentation": {}
     }

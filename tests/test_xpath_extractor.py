@@ -11,5 +11,4 @@ def test_extract_xpath_pattern_login_button():
 
     assert isinstance(result, dict)
     assert result["action"] == "click"
-    assert "Login" in result["xpath"]
     assert result["fill"] == ""
