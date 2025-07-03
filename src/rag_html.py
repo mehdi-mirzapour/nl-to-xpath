@@ -128,8 +128,8 @@ def find_similar_chunk(html_content, query, chunk_size= max_token_limitation, in
 # Main function to process HTML and query
 def process_html_query(html_content, query, chunk_size=max_token_limitation*3, index_name=os.getenv("PINECONE_INDEX_NAME")
 ):
-    if len(html_content) < (max_token_limitation*2.5) :
-      return html_content
+    # if len(html_content) < (max_token_limitation*2.5) :
+    #   return html_content
     result = find_similar_chunk(html_content, query, chunk_size, index_name)
     
     output = f"""Number of chunks created: {result['total_chunks']}
