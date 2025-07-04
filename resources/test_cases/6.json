@@ -13,7 +13,7 @@
         {
             "original instruction": "Find the login form.",
             "classification": "page.wait",
-            "waiting_time": null
+            "waiting_time": 2.0
         },
         {
             "original instruction": "Enter 'mehdi.mirzapour@gmail.com' into the username field.",
@@ -26,7 +26,7 @@
             "waiting_time": null
         },
         {
-            "original instruction": "Click on the 'Login' button.",
+            "original instruction": "Submit the login form.",
             "classification": "page.click",
             "waiting_time": null
         },
@@ -51,7 +51,7 @@
             "waiting_time": null
         },
         {
-            "original instruction": "Click on the 'Save' button.",
+            "original instruction": "Find and click on the 'Save' button.",
             "classification": "page.click",
             "waiting_time": null
         },

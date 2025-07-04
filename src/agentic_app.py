@@ -133,14 +133,13 @@ with sync_playwright() as p:
             if bounding_box:
                 x = bounding_box['x'] + bounding_box['width'] / 2
                 y = bounding_box['y'] + bounding_box['height'] / 2
-                print(f"Moving mouse to: ({x}, {y})")
+                print(" " * 30 + f"Moving mouse to: ({x}, {y})")
                 page.mouse.move(x, y)  # Explicit mouse movement for visibility
                 # Perform click to select the element
                 element.click()
                 # Capture screenshot to verify
                 png_path = args.instruction_file.rsplit('.', 1)[0] + ".png"
                 page.screenshot(path=png_path)
-                print(f"Screenshot saved at: {os.path.abspath(png_path)}")
                 # Add delay to observe effect
                 page.wait_for_timeout(3000)
             
