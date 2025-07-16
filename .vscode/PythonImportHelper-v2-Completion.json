@@ -64,142 +64,43 @@
         "documentation": {}
     },
     {
-        "label": "argparse",
-        "kind": 6,
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
         "isExtraImport": true,
-        "importPath": "argparse",
-        "description": "argparse",
-        "detail": "argparse",
+        "detail": "fastapi",
         "documentation": {}
     },
     {
-        "label": "json",
-        "kind": 6,
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
         "isExtraImport": true,
-        "importPath": "json",
-        "description": "json",
-        "detail": "json",
+        "detail": "fastapi",
         "documentation": {}
     },
     {
-        "label": "logging",
-        "kind": 6,
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
         "isExtraImport": true,
-        "importPath": "logging",
-        "description": "logging",
-        "detail": "logging",
+        "detail": "fastapi",
         "documentation": {}
     },
     {
-        "label": "model",
-        "importPath": "models",
-        "description": "models",
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
         "isExtraImport": true,
-        "detail": "models",
+        "detail": "fastapi",
         "documentation": {}
     },
     {
-        "label": "model",
-        "importPath": "models",
-        "description": "models",
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
         "isExtraImport": true,
-        "detail": "models",
-        "documentation": {}
-    },
-    {
-        "label": "model",
-        "importPath": "models",
-        "description": "models",
-        "isExtraImport": true,
-        "detail": "models",
-        "documentation": {}
-    },
-    {
-        "label": "model",
-        "importPath": "models",
-        "description": "models",
-        "isExtraImport": true,
-        "detail": "models",
-        "documentation": {}
-    },
-    {
-        "label": "model",
-        "importPath": "models",
-        "description": "models",
-        "isExtraImport": true,
-        "detail": "models",
-        "documentation": {}
-    },
-    {
-        "label": "model",
-        "importPath": "models",
-        "description": "models",
-        "isExtraImport": true,
-        "detail": "models",
-        "documentation": {}
-    },
-    {
-        "label": "segment",
-        "importPath": "sentence_segmentor",
-        "description": "sentence_segmentor",
-        "isExtraImport": true,
-        "detail": "sentence_segmentor",
-        "documentation": {}
-    },
-    {
-        "label": "segment",
-        "importPath": "sentence_segmentor",
-        "description": "sentence_segmentor",
-        "isExtraImport": true,
-        "detail": "sentence_segmentor",
-        "documentation": {}
-    },
-    {
-        "label": "classify",
-        "importPath": "task_mapper",
-        "description": "task_mapper",
-        "isExtraImport": true,
-        "detail": "task_mapper",
-        "documentation": {}
-    },
-    {
-        "label": "extract_xpath_pattern",
-        "importPath": "xpath_extractor",
-        "description": "xpath_extractor",
-        "isExtraImport": true,
-        "detail": "xpath_extractor",
-        "documentation": {}
-    },
-    {
-        "label": "extract_xpath_pattern",
-        "importPath": "xpath_extractor",
-        "description": "xpath_extractor",
-        "isExtraImport": true,
-        "detail": "xpath_extractor",
-        "documentation": {}
-    },
-    {
-        "label": "process_html_query",
-        "importPath": "rag_html",
-        "description": "rag_html",
-        "isExtraImport": true,
-        "detail": "rag_html",
-        "documentation": {}
-    },
-    {
-        "label": "RichHandler",
-        "importPath": "rich.logging",
-        "description": "rich.logging",
-        "isExtraImport": true,
-        "detail": "rich.logging",
-        "documentation": {}
-    },
-    {
-        "label": "*",
-        "importPath": "utils",
-        "description": "utils",
-        "isExtraImport": true,
-        "detail": "utils",
+        "detail": "fastapi",
         "documentation": {}
     },
     {
@@ -209,30 +110,6 @@
         "importPath": "os",
         "description": "os",
         "detail": "os",
-        "documentation": {}
-    },
-    {
-        "label": "ChatOpenAI",
-        "importPath": "langchain_openai",
-        "description": "langchain_openai",
-        "isExtraImport": true,
-        "detail": "langchain_openai",
-        "documentation": {}
-    },
-    {
-        "label": "ChatMistralAI",
-        "importPath": "langchain_mistralai",
-        "description": "langchain_mistralai",
-        "isExtraImport": true,
-        "detail": "langchain_mistralai",
-        "documentation": {}
-    },
-    {
-        "label": "ChatMistralAI",
-        "importPath": "langchain_mistralai",
-        "description": "langchain_mistralai",
-        "isExtraImport": true,
-        "detail": "langchain_mistralai",
         "documentation": {}
     },
     {
@@ -332,6 +209,63 @@
         "documentation": {}
     },
     {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "importPath": "models",
+        "description": "models",
+        "isExtraImport": true,
+        "detail": "models",
+        "documentation": {}
+    },
+    {
         "label": "PromptTemplate",
         "importPath": "langchain_core.prompts",
         "description": "langchain_core.prompts",
@@ -377,6 +311,112 @@
         "description": "langchain_core.runnables",
         "isExtraImport": true,
         "detail": "langchain_core.runnables",
+        "documentation": {}
+    },
+    {
+        "label": "ChatMistralAI",
+        "importPath": "langchain_mistralai",
+        "description": "langchain_mistralai",
+        "isExtraImport": true,
+        "detail": "langchain_mistralai",
+        "documentation": {}
+    },
+    {
+        "label": "ChatMistralAI",
+        "importPath": "langchain_mistralai",
+        "description": "langchain_mistralai",
+        "isExtraImport": true,
+        "detail": "langchain_mistralai",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "segment",
+        "importPath": "sentence_segmentor",
+        "description": "sentence_segmentor",
+        "isExtraImport": true,
+        "detail": "sentence_segmentor",
+        "documentation": {}
+    },
+    {
+        "label": "segment",
+        "importPath": "sentence_segmentor",
+        "description": "sentence_segmentor",
+        "isExtraImport": true,
+        "detail": "sentence_segmentor",
+        "documentation": {}
+    },
+    {
+        "label": "classify",
+        "importPath": "task_mapper",
+        "description": "task_mapper",
+        "isExtraImport": true,
+        "detail": "task_mapper",
+        "documentation": {}
+    },
+    {
+        "label": "extract_xpath_pattern",
+        "importPath": "xpath_extractor",
+        "description": "xpath_extractor",
+        "isExtraImport": true,
+        "detail": "xpath_extractor",
+        "documentation": {}
+    },
+    {
+        "label": "extract_xpath_pattern",
+        "importPath": "xpath_extractor",
+        "description": "xpath_extractor",
+        "isExtraImport": true,
+        "detail": "xpath_extractor",
+        "documentation": {}
+    },
+    {
+        "label": "process_html_query",
+        "importPath": "rag_html",
+        "description": "rag_html",
+        "isExtraImport": true,
+        "detail": "rag_html",
+        "documentation": {}
+    },
+    {
+        "label": "RichHandler",
+        "importPath": "rich.logging",
+        "description": "rich.logging",
+        "isExtraImport": true,
+        "detail": "rich.logging",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "ChatOpenAI",
+        "importPath": "langchain_openai",
+        "description": "langchain_openai",
+        "isExtraImport": true,
+        "detail": "langchain_openai",
         "documentation": {}
     },
     {
@@ -403,6 +443,203 @@
         "importPath": "pytest",
         "description": "pytest",
         "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "CORSMiddleware",
+        "importPath": "fastapi.middleware.cors",
+        "description": "fastapi.middleware.cors",
+        "isExtraImport": true,
+        "detail": "fastapi.middleware.cors",
+        "documentation": {}
+    },
+    {
+        "label": "services.sentence_segmentor.app",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "services.sentence_segmentor.app",
+        "description": "services.sentence_segmentor.app",
+        "detail": "services.sentence_segmentor.app",
+        "documentation": {}
+    },
+    {
+        "label": "services.task_mapper.app",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "services.task_mapper.app",
+        "description": "services.task_mapper.app",
+        "detail": "services.task_mapper.app",
+        "documentation": {}
+    },
+    {
+        "label": "services.xpath_extractor.app",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "services.xpath_extractor.app",
+        "description": "services.xpath_extractor.app",
+        "detail": "services.xpath_extractor.app",
+        "documentation": {}
+    },
+    {
+        "label": "services.rag_html.app",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "services.rag_html.app",
+        "description": "services.rag_html.app",
+        "detail": "services.rag_html.app",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "services.rag_html.app",
+        "description": "services.rag_html.app",
+        "peekOfCode": "router = APIRouter()\n@router.get(\"/html_cut/\", tags=[\"Pre-processors\"])\nasync def read_users():\n    return [{\"username\": \"Rick\"}, {\"username\": \"Morty\"}]",
+        "detail": "services.rag_html.app",
+        "documentation": {}
+    },
+    {
+        "label": "initialize_pinecone",
+        "kind": 2,
+        "importPath": "services.rag_html.rag_html",
+        "description": "services.rag_html.rag_html",
+        "peekOfCode": "def initialize_pinecone(index_name, dimension=1024, metric=\"cosine\", cloud=\"aws\", region=\"us-east-1\", namespace=\"default\"):\n    if not pinecone_api_key:\n        raise ValueError(\"Pinecone API key is not provided.\")\n    try:\n        pc = Pinecone(api_key=pinecone_api_key)\n    except Exception as e:\n        raise ConnectionError(f\"Failed to initialize Pinecone client: {e}\")\n    if index_name in pc.list_indexes().names():\n        index = pc.Index(index_name)\n        # Check index configuration",
+        "detail": "services.rag_html.rag_html",
+        "documentation": {}
+    },
+    {
+        "label": "chunk_html",
+        "kind": 2,
+        "importPath": "services.rag_html.rag_html",
+        "description": "services.rag_html.rag_html",
+        "peekOfCode": "def chunk_html(html_content, chunk_size):\n    chunks = []\n    for i in range(0, len(html_content), chunk_size):\n        chunk = html_content[i:i + chunk_size]\n        chunks.append(chunk)\n    return chunks\n# Find most similar chunk\ndef find_similar_chunk(html_content, query, chunk_size= max_token_limitation, index_name=\"default-index\"):\n    # Set Mistral AI embedding model (calls Mistral API)\n    Settings.embed_model = MistralAIEmbedding(",
+        "detail": "services.rag_html.rag_html",
+        "documentation": {}
+    },
+    {
+        "label": "find_similar_chunk",
+        "kind": 2,
+        "importPath": "services.rag_html.rag_html",
+        "description": "services.rag_html.rag_html",
+        "peekOfCode": "def find_similar_chunk(html_content, query, chunk_size= max_token_limitation, index_name=\"default-index\"):\n    # Set Mistral AI embedding model (calls Mistral API)\n    Settings.embed_model = MistralAIEmbedding(\n        model_name=\"mistral-embed\",\n        api_key=mistral_api_key\n    )\n    # Disable LLM since it's not needed for similarity search\n    Settings.llm = None\n    # Initialize Pinecone\n    pinecone_index = initialize_pinecone(index_name)",
+        "detail": "services.rag_html.rag_html",
+        "documentation": {}
+    },
+    {
+        "label": "process_html_query",
+        "kind": 2,
+        "importPath": "services.rag_html.rag_html",
+        "description": "services.rag_html.rag_html",
+        "peekOfCode": "def process_html_query(html_content, query, chunk_size=max_token_limitation*3, index_name=os.getenv(\"PINECONE_INDEX_NAME\")\n):\n    # if len(html_content) < (max_token_limitation*2.5) :\n    #   return html_content\n    result = find_similar_chunk(html_content, query, chunk_size, index_name)\n    output = f\"\"\"Number of chunks created: {result['total_chunks']}\nSelected chunk index: {result['selected_chunk_index']}\nSimilarity score: {result['similarity_score']:.4f}\n\"\"\"\n    print(output)",
+        "detail": "services.rag_html.rag_html",
+        "documentation": {}
+    },
+    {
+        "label": "mistral_api_key",
+        "kind": 5,
+        "importPath": "services.rag_html.rag_html",
+        "description": "services.rag_html.rag_html",
+        "peekOfCode": "mistral_api_key = os.getenv(\"MISTRAL_API_KEY\")\npinecone_api_key = os.getenv(\"PINECONE_API_KEY\")\nmax_token_limitation = int(os.getenv(\"MAX_TOKEN_LIMITATION\", 12000))  # Default to 12000 if not set\n# Validate environment variables\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\ndef initialize_pinecone(index_name, dimension=1024, metric=\"cosine\", cloud=\"aws\", region=\"us-east-1\", namespace=\"default\"):\n    if not pinecone_api_key:",
+        "detail": "services.rag_html.rag_html",
+        "documentation": {}
+    },
+    {
+        "label": "pinecone_api_key",
+        "kind": 5,
+        "importPath": "services.rag_html.rag_html",
+        "description": "services.rag_html.rag_html",
+        "peekOfCode": "pinecone_api_key = os.getenv(\"PINECONE_API_KEY\")\nmax_token_limitation = int(os.getenv(\"MAX_TOKEN_LIMITATION\", 12000))  # Default to 12000 if not set\n# Validate environment variables\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\ndef initialize_pinecone(index_name, dimension=1024, metric=\"cosine\", cloud=\"aws\", region=\"us-east-1\", namespace=\"default\"):\n    if not pinecone_api_key:\n        raise ValueError(\"Pinecone API key is not provided.\")",
+        "detail": "services.rag_html.rag_html",
+        "documentation": {}
+    },
+    {
+        "label": "max_token_limitation",
+        "kind": 5,
+        "importPath": "services.rag_html.rag_html",
+        "description": "services.rag_html.rag_html",
+        "peekOfCode": "max_token_limitation = int(os.getenv(\"MAX_TOKEN_LIMITATION\", 12000))  # Default to 12000 if not set\n# Validate environment variables\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\ndef initialize_pinecone(index_name, dimension=1024, metric=\"cosine\", cloud=\"aws\", region=\"us-east-1\", namespace=\"default\"):\n    if not pinecone_api_key:\n        raise ValueError(\"Pinecone API key is not provided.\")\n    try:",
+        "detail": "services.rag_html.rag_html",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "services.sentence_segmentor.app",
+        "description": "services.sentence_segmentor.app",
+        "peekOfCode": "router = APIRouter()\n@router.get(\"/sent-segment/\", tags=[\"Pre-processors\"])\nasync def read_users():\n    return [{\"username\": \"Rick\"}, {\"username\": \"Morty\"}]",
+        "detail": "services.sentence_segmentor.app",
+        "documentation": {}
+    },
+    {
+        "label": "extract_json_from_codeblock",
+        "kind": 2,
+        "importPath": "services.sentence_segmentor.sentence_segmentor",
+        "description": "services.sentence_segmentor.sentence_segmentor",
+        "peekOfCode": "def extract_json_from_codeblock(output: str) -> str:\n    \"\"\"Remove code block markdown from model output.\"\"\"\n    lines = output.strip().splitlines()\n    if lines[0].strip().startswith(\"```\"):\n        lines = lines[1:]\n    if lines and lines[-1].strip().startswith(\"```\"):\n        lines = lines[:-1]\n    json_str = \"\\n\".join(lines)\n    return json.loads(json_str)\ndef segment(instructions: str, model) -> str:",
+        "detail": "services.sentence_segmentor.sentence_segmentor",
+        "documentation": {}
+    },
+    {
+        "label": "segment",
+        "kind": 2,
+        "importPath": "services.sentence_segmentor.sentence_segmentor",
+        "description": "services.sentence_segmentor.sentence_segmentor",
+        "peekOfCode": "def segment(instructions: str, model) -> str:\n    \"\"\"Convert NL input into line-by-line web automation steps using OpenAI.\"\"\"\n    load_dotenv()\n    api_key = os.getenv(\"OPENAI_API_KEY\")\n    if not api_key:\n        raise ValueError(\"OPENAI_API_KEY not set in environment.\")\n    os.environ[\"OPENAI_API_KEY\"] = api_key\n    template = \"\"\"\nYou are a helpful assistant that takes a block of natural language describing a web-based task, and converts it into a list of individual, precise, and executable web automation steps.\nEach action should be:",
+        "detail": "services.sentence_segmentor.sentence_segmentor",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "services.task_mapper.app",
+        "description": "services.task_mapper.app",
+        "peekOfCode": "router = APIRouter()\n@router.get(\"/sent-task-mapper/\", tags=[\"Pre-processors\"])\nasync def read_users():\n    return [{\"username\": \"Rick\"}, {\"username\": \"Morty\"}]",
+        "detail": "services.task_mapper.app",
+        "documentation": {}
+    },
+    {
+        "label": "extract_json_from_codeblock",
+        "kind": 2,
+        "importPath": "services.task_mapper.task_mapper",
+        "description": "services.task_mapper.task_mapper",
+        "peekOfCode": "def extract_json_from_codeblock(output: str) -> dict:\n    \"\"\"Extract and parse JSON from a code block in LLM output.\"\"\"\n    lines = output.strip().splitlines()\n    if lines and lines[0].strip().startswith(\"```\"):\n        lines = lines[1:]\n    if lines and lines[-1].strip().startswith(\"```\"):\n        lines = lines[:-1]\n    json_str = \"\\n\".join(lines)\n    return json.loads(json_str)\ndef classify(instructions: str, model) -> dict:",
+        "detail": "services.task_mapper.task_mapper",
+        "documentation": {}
+    },
+    {
+        "label": "classify",
+        "kind": 2,
+        "importPath": "services.task_mapper.task_mapper",
+        "description": "services.task_mapper.task_mapper",
+        "peekOfCode": "def classify(instructions: str, model) -> dict:\n    \"\"\"Classify natural language instructions into web automation actions using MistralAI.\"\"\"\n    load_dotenv()\n    api_key = os.getenv(\"MISTRAL_API_KEY\")\n    if not api_key:\n        raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\n    os.environ[\"MISTRAL_API_KEY\"] = api_key\n    prompt_template = \"\"\"\nYou are an intelligent instruction classifier.\nYour task is to read a long natural language input where each line represents an instruction to be executed in a web automation context.",
+        "detail": "services.task_mapper.task_mapper",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "services.xpath_extractor.app",
+        "description": "services.xpath_extractor.app",
+        "peekOfCode": "router = APIRouter()\n@router.get(\"/xpath-extract/\", tags=[\"Processors\"])\nasync def read_users():\n    return [{\"username\": \"Rick\"}, {\"username\": \"Morty\"}]",
+        "detail": "services.xpath_extractor.app",
+        "documentation": {}
+    },
+    {
+        "label": "extract_json_from_codeblock",
+        "kind": 2,
+        "importPath": "services.xpath_extractor.xpath_extractor",
+        "description": "services.xpath_extractor.xpath_extractor",
+        "peekOfCode": "def extract_json_from_codeblock(output: str) -> str:\n    \"\"\"Remove code block markdown from model output.\"\"\"\n    lines = output.strip().splitlines()\n    if lines[0].strip().startswith(\"```\"):\n        lines = lines[1:]\n    if lines and lines[-1].strip().startswith(\"```\"):\n        lines = lines[:-1]\n    return \"\\n\".join(lines)\ndef extract_xpath_pattern(instruction: str, html: str, model) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"",
+        "detail": "services.xpath_extractor.xpath_extractor",
+        "documentation": {}
+    },
+    {
+        "label": "extract_xpath_pattern",
+        "kind": 2,
+        "importPath": "services.xpath_extractor.xpath_extractor",
+        "description": "services.xpath_extractor.xpath_extractor",
+        "peekOfCode": "def extract_xpath_pattern(instruction: str, html: str, model) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Prompt template\n    template = \"\"\"\nYou are an expert UI assistant that converts natural language commands into web automation step.\nYou will be given:\n- A web page's full HTML\n- A natural language instruction from the user\nYour job:\n- Translate the instruction into one step, each using an action from only three categories: \"click\", \"hover\", \"fill\" all lowercase.",
+        "detail": "services.xpath_extractor.xpath_extractor",
         "documentation": {}
     },
     {
@@ -505,105 +742,6 @@
         "documentation": {}
     },
     {
-        "label": "initialize_pinecone",
-        "kind": 2,
-        "importPath": "src.rag_html",
-        "description": "src.rag_html",
-        "peekOfCode": "def initialize_pinecone(index_name, dimension=1024, metric=\"cosine\", cloud=\"aws\", region=\"us-east-1\", namespace=\"default\"):\n    if not pinecone_api_key:\n        raise ValueError(\"Pinecone API key is not provided.\")\n    try:\n        pc = Pinecone(api_key=pinecone_api_key)\n    except Exception as e:\n        raise ConnectionError(f\"Failed to initialize Pinecone client: {e}\")\n    if index_name in pc.list_indexes().names():\n        index = pc.Index(index_name)\n        # Check index configuration",
-        "detail": "src.rag_html",
-        "documentation": {}
-    },
-    {
-        "label": "chunk_html",
-        "kind": 2,
-        "importPath": "src.rag_html",
-        "description": "src.rag_html",
-        "peekOfCode": "def chunk_html(html_content, chunk_size):\n    chunks = []\n    for i in range(0, len(html_content), chunk_size):\n        chunk = html_content[i:i + chunk_size]\n        chunks.append(chunk)\n    return chunks\n# Find most similar chunk\ndef find_similar_chunk(html_content, query, chunk_size= max_token_limitation, index_name=\"default-index\"):\n    # Set Mistral AI embedding model (calls Mistral API)\n    Settings.embed_model = MistralAIEmbedding(",
-        "detail": "src.rag_html",
-        "documentation": {}
-    },
-    {
-        "label": "find_similar_chunk",
-        "kind": 2,
-        "importPath": "src.rag_html",
-        "description": "src.rag_html",
-        "peekOfCode": "def find_similar_chunk(html_content, query, chunk_size= max_token_limitation, index_name=\"default-index\"):\n    # Set Mistral AI embedding model (calls Mistral API)\n    Settings.embed_model = MistralAIEmbedding(\n        model_name=\"mistral-embed\",\n        api_key=mistral_api_key\n    )\n    # Disable LLM since it's not needed for similarity search\n    Settings.llm = None\n    # Initialize Pinecone\n    pinecone_index = initialize_pinecone(index_name)",
-        "detail": "src.rag_html",
-        "documentation": {}
-    },
-    {
-        "label": "process_html_query",
-        "kind": 2,
-        "importPath": "src.rag_html",
-        "description": "src.rag_html",
-        "peekOfCode": "def process_html_query(html_content, query, chunk_size=max_token_limitation*3, index_name=os.getenv(\"PINECONE_INDEX_NAME\")\n):\n    # if len(html_content) < (max_token_limitation*2.5) :\n    #   return html_content\n    result = find_similar_chunk(html_content, query, chunk_size, index_name)\n    output = f\"\"\"Number of chunks created: {result['total_chunks']}\nSelected chunk index: {result['selected_chunk_index']}\nSimilarity score: {result['similarity_score']:.4f}\n\"\"\"\n    print(output)",
-        "detail": "src.rag_html",
-        "documentation": {}
-    },
-    {
-        "label": "mistral_api_key",
-        "kind": 5,
-        "importPath": "src.rag_html",
-        "description": "src.rag_html",
-        "peekOfCode": "mistral_api_key = os.getenv(\"MISTRAL_API_KEY\")\npinecone_api_key = os.getenv(\"PINECONE_API_KEY\")\nmax_token_limitation = int(os.getenv(\"MAX_TOKEN_LIMITATION\", 12000))  # Default to 12000 if not set\n# Validate environment variables\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\ndef initialize_pinecone(index_name, dimension=1024, metric=\"cosine\", cloud=\"aws\", region=\"us-east-1\", namespace=\"default\"):\n    if not pinecone_api_key:",
-        "detail": "src.rag_html",
-        "documentation": {}
-    },
-    {
-        "label": "pinecone_api_key",
-        "kind": 5,
-        "importPath": "src.rag_html",
-        "description": "src.rag_html",
-        "peekOfCode": "pinecone_api_key = os.getenv(\"PINECONE_API_KEY\")\nmax_token_limitation = int(os.getenv(\"MAX_TOKEN_LIMITATION\", 12000))  # Default to 12000 if not set\n# Validate environment variables\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\ndef initialize_pinecone(index_name, dimension=1024, metric=\"cosine\", cloud=\"aws\", region=\"us-east-1\", namespace=\"default\"):\n    if not pinecone_api_key:\n        raise ValueError(\"Pinecone API key is not provided.\")",
-        "detail": "src.rag_html",
-        "documentation": {}
-    },
-    {
-        "label": "max_token_limitation",
-        "kind": 5,
-        "importPath": "src.rag_html",
-        "description": "src.rag_html",
-        "peekOfCode": "max_token_limitation = int(os.getenv(\"MAX_TOKEN_LIMITATION\", 12000))  # Default to 12000 if not set\n# Validate environment variables\nif not mistral_api_key:\n    raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\nif not pinecone_api_key:\n    raise ValueError(\"PINECONE_API_KEY not set in environment.\")\ndef initialize_pinecone(index_name, dimension=1024, metric=\"cosine\", cloud=\"aws\", region=\"us-east-1\", namespace=\"default\"):\n    if not pinecone_api_key:\n        raise ValueError(\"Pinecone API key is not provided.\")\n    try:",
-        "detail": "src.rag_html",
-        "documentation": {}
-    },
-    {
-        "label": "extract_json_from_codeblock",
-        "kind": 2,
-        "importPath": "src.sentence_segmentor",
-        "description": "src.sentence_segmentor",
-        "peekOfCode": "def extract_json_from_codeblock(output: str) -> str:\n    \"\"\"Remove code block markdown from model output.\"\"\"\n    lines = output.strip().splitlines()\n    if lines[0].strip().startswith(\"```\"):\n        lines = lines[1:]\n    if lines and lines[-1].strip().startswith(\"```\"):\n        lines = lines[:-1]\n    json_str = \"\\n\".join(lines)\n    return json.loads(json_str)\ndef segment(instructions: str, model) -> str:",
-        "detail": "src.sentence_segmentor",
-        "documentation": {}
-    },
-    {
-        "label": "segment",
-        "kind": 2,
-        "importPath": "src.sentence_segmentor",
-        "description": "src.sentence_segmentor",
-        "peekOfCode": "def segment(instructions: str, model) -> str:\n    \"\"\"Convert NL input into line-by-line web automation steps using OpenAI.\"\"\"\n    load_dotenv()\n    api_key = os.getenv(\"OPENAI_API_KEY\")\n    if not api_key:\n        raise ValueError(\"OPENAI_API_KEY not set in environment.\")\n    os.environ[\"OPENAI_API_KEY\"] = api_key\n    template = \"\"\"\nYou are a helpful assistant that takes a block of natural language describing a web-based task, and converts it into a list of individual, precise, and executable web automation steps.\nEach action should be:",
-        "detail": "src.sentence_segmentor",
-        "documentation": {}
-    },
-    {
-        "label": "extract_json_from_codeblock",
-        "kind": 2,
-        "importPath": "src.task_mapper",
-        "description": "src.task_mapper",
-        "peekOfCode": "def extract_json_from_codeblock(output: str) -> dict:\n    \"\"\"Extract and parse JSON from a code block in LLM output.\"\"\"\n    lines = output.strip().splitlines()\n    if lines and lines[0].strip().startswith(\"```\"):\n        lines = lines[1:]\n    if lines and lines[-1].strip().startswith(\"```\"):\n        lines = lines[:-1]\n    json_str = \"\\n\".join(lines)\n    return json.loads(json_str)\ndef classify(instructions: str, model) -> dict:",
-        "detail": "src.task_mapper",
-        "documentation": {}
-    },
-    {
-        "label": "classify",
-        "kind": 2,
-        "importPath": "src.task_mapper",
-        "description": "src.task_mapper",
-        "peekOfCode": "def classify(instructions: str, model) -> dict:\n    \"\"\"Classify natural language instructions into web automation actions using MistralAI.\"\"\"\n    load_dotenv()\n    api_key = os.getenv(\"MISTRAL_API_KEY\")\n    if not api_key:\n        raise ValueError(\"MISTRAL_API_KEY not set in environment.\")\n    os.environ[\"MISTRAL_API_KEY\"] = api_key\n    prompt_template = \"\"\"\nYou are an intelligent instruction classifier.\nYour task is to read a long natural language input where each line represents an instruction to be executed in a web automation context.",
-        "detail": "src.task_mapper",
-        "documentation": {}
-    },
-    {
         "label": "extract_url",
         "kind": 2,
         "importPath": "src.utils",
@@ -622,24 +760,6 @@
         "documentation": {}
     },
     {
-        "label": "extract_json_from_codeblock",
-        "kind": 2,
-        "importPath": "src.xpath_extractor",
-        "description": "src.xpath_extractor",
-        "peekOfCode": "def extract_json_from_codeblock(output: str) -> str:\n    \"\"\"Remove code block markdown from model output.\"\"\"\n    lines = output.strip().splitlines()\n    if lines[0].strip().startswith(\"```\"):\n        lines = lines[1:]\n    if lines and lines[-1].strip().startswith(\"```\"):\n        lines = lines[:-1]\n    return \"\\n\".join(lines)\ndef extract_xpath_pattern(instruction: str, html: str, model) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"",
-        "detail": "src.xpath_extractor",
-        "documentation": {}
-    },
-    {
-        "label": "extract_xpath_pattern",
-        "kind": 2,
-        "importPath": "src.xpath_extractor",
-        "description": "src.xpath_extractor",
-        "peekOfCode": "def extract_xpath_pattern(instruction: str, html: str, model) -> str:\n    \"\"\"Run the instruction + HTML through Mistral and return JSON result.\"\"\"\n    # Prompt template\n    template = \"\"\"\nYou are an expert UI assistant that converts natural language commands into web automation step.\nYou will be given:\n- A web page's full HTML\n- A natural language instruction from the user\nYour job:\n- Translate the instruction into one step, each using an action from only three categories: \"click\", \"hover\", \"fill\" all lowercase.",
-        "detail": "src.xpath_extractor",
-        "documentation": {}
-    },
-    {
         "label": "test_segment_basic_instruction",
         "kind": 2,
         "importPath": "tests.test_sent_segmentor",
@@ -655,6 +775,15 @@
         "description": "tests.test_xpath_extractor",
         "peekOfCode": "def test_extract_xpath_pattern_login_button():\n    instruction = \"Click on the 'Login' button.\"\n    with open(\"resources/unit_tests/unit_test.html\", \"r\", encoding=\"utf-8\") as f:\n        html = f.read()\n    result = extract_xpath_pattern(instruction, html, model)\n    assert isinstance(result, dict)\n    assert result[\"action\"] == \"click\"\n    assert result[\"fill\"] == \"\"",
         "detail": "tests.test_xpath_extractor",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = FastAPI()\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"https://myfrontend.com\"],\n    allow_credentials=True,\n    allow_methods=[\"GET\", \"POST\"],\n    allow_headers=[\"Authorization\", \"Content-Type\"],\n)\napp.include_router(sent_router.router)\napp.include_router(task_router.router)",
+        "detail": "app",
         "documentation": {}
     }
 ]
