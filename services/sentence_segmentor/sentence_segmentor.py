@@ -4,6 +4,7 @@ import os
 from models import model
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnableLambda
+from prompt import PROMPT
 
 
 def extract_json_from_codeblock(output: str) -> str:
@@ -24,22 +25,7 @@ def segment(instructions: str, model) -> str:
         raise ValueError("OPENAI_API_KEY not set in environment.")
     os.environ["OPENAI_API_KEY"] = api_key
 
-    template = """
-You are a helpful assistant that takes a block of natural language describing a web-based task, and converts it into a list of individual, precise, and executable web automation steps.
-
-Each action should be:
-- On its own line.
-- Described clearly in imperative form.
-- Computationally digestible, without extra fluff or explanation.
-
-
-Output JSON format:
-{{
-"instructions": [STRING, ...]
-}}
-
-{instructions}
-"""
+    template = PROMPT
 
     prompt = PromptTemplate.from_template(template)
 
