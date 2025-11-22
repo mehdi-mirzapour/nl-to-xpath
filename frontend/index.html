@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NL-to-XPath Live Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        #sidebar {
+            width: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+            overflow-y: auto;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        #sidebar::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #sidebar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        #sidebar::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        button {
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px 0 rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        button:hover::before {
+            left: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(102, 126, 234, 0.6);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            background: linear-gradient(135deg, #555 0%, #666 100%);
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .instruction-item {
+            padding: 14px 18px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            cursor: default;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .instruction-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .instruction-item.active {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+            border-left: 3px solid #667eea;
+            color: #fff;
+            box-shadow: 0 4px 15px 0 rgba(102, 126, 234, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        .instruction-item.completed {
+            background: rgba(255, 255, 255, 0.02);
+            color: #666;
+            text-decoration: line-through;
+            border-left: 3px solid #4caf50;
+        }
+
+        #main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            position: relative;
+        }
+
+        .live-view-container {
+            position: relative;
+            max-width: 90%;
+            max-height: 75vh;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px 0 rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #live-view {
+            display: block;
+            max-width: 100%;
+            max-height: 75vh;
+            border-radius: 16px;
+        }
+
+        #status-bar {
+            margin-top: 30px;
+            padding: 14px 30px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+            backdrop-filter: blur(10px);
+            color: white;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px 0 rgba(102, 126, 234, 0.3);
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .glow:nth-child(1) {
+            top: -150px;
+            left: -150px;
+        }
+
+        .glow:nth-child(2) {
+            bottom: -150px;
+            right: -150px;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(30px, 30px);
+            }
+        }
+
+        .instruction-count {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="sidebar">
+        <h1>Instructions <span class="instruction-count" id="count">0</span></h1>
+        <p class="subtitle">Natural Language to XPath Automation</p>
+        <button id="start-btn" onclick="startDemo()">▶ Start Demo</button>
+        <div id="instruction-list">
+            <!-- Instructions will be populated here -->
+        </div>
+    </div>
+
+    <div id="main">
+        <div class="glow"></div>
+        <div class="glow"></div>
+        <div class="live-view-container">
+            <img id="live-view"
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='600'%3E%3Crect width='1000' height='600' fill='%231a1a2e'/%3E%3Ctext x='50%25' y='50%25' font-family='Inter, sans-serif' font-size='32' fill='%23667eea' text-anchor='middle' dominant-baseline='middle'%3E⚡ Ready to Execute%3C/text%3E%3C/svg%3E"
+                alt="Live View">
+        </div>
+        <div id="status-bar">🚀 Ready to start execution</div>
+    </div>
+
+    <script>
+        let socket;
+        const instructionList = document.getElementById('instruction-list');
+        const liveView = document.getElementById('live-view');
+        const statusBar = document.getElementById('status-bar');
+        const startBtn = document.getElementById('start-btn');
+        const countBadge = document.getElementById('count');
+        let instructions = [];
+
+        // Fetch instructions on load
+        async function loadInstructions() {
+            try {
+                const response = await fetch('/instructions');
+                const data = await response.json();
+                // Split by newlines and filter empty lines
+                instructions = data.content.split('\n').filter(line => line.trim() !== '');
+                countBadge.textContent = instructions.length;
+                renderInstructions();
+            } catch (error) {
+                console.error('Failed to load instructions:', error);
+                statusBar.textContent = '❌ Error loading instructions';
+            }
+        }
+
+        function renderInstructions(activeIndex = -1) {
+            instructionList.innerHTML = '';
+            instructions.forEach((text, index) => {
+                const div = document.createElement('div');
+                div.className = 'instruction-item';
+                if (index === activeIndex) {
+                    div.classList.add('active');
+                } else if (index < activeIndex) {
+                    div.classList.add('completed');
+                }
+                div.textContent = text;
+                instructionList.appendChild(div);
+            });
+        }
+
+        function startDemo() {
+            startBtn.disabled = true;
+            startBtn.textContent = '⏳ Connecting...';
+            statusBar.textContent = '🔌 Connecting to server...';
+
+            // Connect to WebSocket
+            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            socket = new WebSocket(`${protocol}//${window.location.host}/ws`);
+
+            socket.onopen = () => {
+                statusBar.textContent = '✨ Connected! Starting execution...';
+                startBtn.textContent = '⏸ Running...';
+                socket.send('start');
+            };
+
+            socket.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+
+                if (data.status === 'complete') {
+                    statusBar.textContent = '✅ Execution Complete!';
+                    startBtn.textContent = '▶ Start Demo';
+                    // Mark all instructions as completed
+                    renderInstructions(instructions.length);
+                    startBtn.disabled = false;
+                    socket.close();
+                    return;
+                }
+
+                // Update UI
+                if (data.step !== undefined) {
+                    renderInstructions(data.step);
+                    statusBar.textContent = `⚡ Executing: ${data.instruction}`;
+                    if (data.image) {
+                        liveView.src = data.image;
+                    }
+                }
+            };
+
+            socket.onclose = () => {
+                if (statusBar.textContent !== '✅ Execution Complete!') {
+                    statusBar.textContent = '🔌 Connection closed';
+                    startBtn.textContent = '▶ Start Demo';
+                    startBtn.disabled = false;
+                }
+            };
+
+            socket.onerror = (error) => {
+                console.error('WebSocket error:', error);
+                statusBar.textContent = '❌ WebSocket Error';
+                startBtn.textContent = '▶ Start Demo';
+                startBtn.disabled = false;
+            };
+        }
+
+        // Initial load
+        loadInstructions();
+    </script>
+
+</body>
+
+</html>

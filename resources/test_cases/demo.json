@@ -1,0 +1,34 @@
+{
+    "instructions": [
+        {
+            "original instruction": "open https://www.saucedemo.com/",
+            "classification": "page.goto",
+            "waiting_time": 0
+        },
+        {
+            "original instruction": "enter 'standard_user' into the username field",
+            "classification": "page.fill",
+            "waiting_time": 0
+        },
+        {
+            "original instruction": "enter 'secret_sauce' into the password field",
+            "classification": "page.fill",
+            "waiting_time": 0
+        },
+        {
+            "original instruction": "click on the login button",
+            "classification": "page.click",
+            "waiting_time": 0
+        },
+        {
+            "original instruction": "wait for 3 seconds",
+            "classification": "page.wait",
+            "waiting_time": 3
+        },
+        {
+            "original instruction": "exit the browser",
+            "classification": "browser.close",
+            "waiting_time": 0
+        }
+    ]
+}

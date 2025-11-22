@@ -1,0 +1,6 @@
+open https://www.saucedemo.com/
+enter 'standard_user' into the username field
+enter 'secret_sauce' into the password field
+click on the login button
+wait for 3 seconds
+exit the browser
